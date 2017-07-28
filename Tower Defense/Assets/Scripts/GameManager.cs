@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
     public static GameManager instance = null;
     private int mode = 0;
 
+    /*comment for testing conflicting pull request*/
+
     private void Awake()
     {
         if (instance == null)
