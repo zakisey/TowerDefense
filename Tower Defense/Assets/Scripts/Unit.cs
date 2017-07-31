@@ -4,36 +4,41 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
-    private float range = 2.5f;//のち消去
+    private float range = 3.0f;
     private float atk = 1.0f;
-    public GameObject rangeCircle;
-    private GameObject hoverInstance;
-    private CircleCollider2D myCollider;
+    /// <summary>
+    /// 攻撃範囲用
+    /// </summary>
+    public GameObject rangeCircleCollider;
+    /// <summary>
+    /// 画像用
+    /// </summary>
+    public GameObject rangeCirclePicture;
+
+    //private GameObject hoverInstance;
+    //private CircleCollider2D myCollider;
+
+   
     private float colliderRadius;
 
     // Use this for initialization
     void Start ()
     {
-        myCollider = transform.GetComponent<CircleCollider2D>();
-        colliderRadius = myCollider.radius;
+        //範囲
+        rangeCircleCollider = Instantiate(rangeCircleCollider, transform.position, Quaternion.identity);
+        rangeCircleCollider.transform.parent = this.gameObject.transform;
+
+        //画像
+        rangeCirclePicture = Instantiate(rangeCirclePicture, transform.position, Quaternion.identity);
+        rangeCirclePicture.transform.parent = this.gameObject.transform;
+        rangeCirclePicture.transform.localScale = new Vector3(range, range);
+        rangeCirclePicture.SetActive(false);
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        /*
-        //コライダーに移譲
-        GameObject enemy = BoardManager.instance.SearchNearestEnemy();
-        if (enemy == null)
-        {
-            return;
-        }
-        Enemy enemyScript = enemy.GetComponent<Enemy>();
-        if (Vector2.Distance(this.transform.position, enemy.transform.position) <= this.range)
-        {
-            enemyScript.HP -= this.atk;
-        }
-        */
+        
 	}
 
 
@@ -49,12 +54,11 @@ public class Unit : MonoBehaviour
     //マウスホバーで射程範囲を表示する
     void OnMouseEnter()
     {
-            hoverInstance = (GameObject)Instantiate(rangeCircle, transform.position, Quaternion.identity);
-            hoverInstance.transform.localScale = new Vector3(colliderRadius, colliderRadius);
+        rangeCirclePicture.SetActive(true);
     }
 
     void OnMouseExit()
     {
-        Destroy(hoverInstance);
+        rangeCirclePicture.SetActive(false);
     }
 }
