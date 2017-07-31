@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy
+  - Weapon
+  - Range
+  - Socket
   layers:
   - Default
   - TransparentFX
@@ -40,4 +44,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ground
+    uniqueID: 257706735
+    locked: 0
+  - name: Socket
+    uniqueID: 1697008739
+    locked: 0
+  - name: RangeCircle
+    uniqueID: 217640599
+    locked: 0
+  - name: Unit
+    uniqueID: 2971886527
     locked: 0

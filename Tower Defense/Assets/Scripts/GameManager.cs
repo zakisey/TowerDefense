@@ -35,7 +35,8 @@ public class GameManager : MonoBehaviour
     }
 
     private void Update()
-    {
+    {   
+
         GameObject clicked = GetClickedObject();
 
         if (clicked != null)
@@ -52,6 +53,14 @@ public class GameManager : MonoBehaviour
                     break;
             }
         }
+    }
+
+    // ユニットを設置するモードのとき、マウスカーソルの位置に設置するユニットを表示する
+    private void ShowUnitToPlaceOnCursor()
+    {
+        if (unitToPlace == null) return;
+
+
     }
 
     // 左クリックされたオブジェクトを取得
