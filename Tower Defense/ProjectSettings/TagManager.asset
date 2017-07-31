@@ -8,6 +8,8 @@ TagManager:
   - Weapon
   - Range
   - Socket
+  - Undefined
+  - Base
   layers:
   - Default
   - TransparentFX

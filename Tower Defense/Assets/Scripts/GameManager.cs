@@ -45,7 +45,6 @@ public class GameManager : MonoBehaviour
             switch (clicked.tag)
             {
                 case "Socket":
-                    print("socket clicked");
                     if (mode == GameMode.UnitPlacing)
                     {
                         BoardManager.instance.SetUnitOnSocket(unitToPlace);
@@ -58,7 +57,7 @@ public class GameManager : MonoBehaviour
 
     private void OnGUI()
     {
-        ShowUnitToPlaceOnCursor();
+        //ShowUnitToPlaceOnCursor();
     }
 
     // タイトル画面

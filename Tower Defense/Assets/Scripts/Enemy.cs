@@ -5,7 +5,6 @@ using System;
 
 public class Enemy : MonoBehaviour
 {
-
     private const int StageWidth = 12;
     private const int StageHeight = 8;
     private const float mas = 1f;
@@ -18,9 +17,8 @@ public class Enemy : MonoBehaviour
     private float goalX;
     private float goalY;
 
-
     public float damage = 1.0f;
-    private float speed = 0.05f;   
+    private float speed = 0.05f;
     private float hp;
 
     public float HP
@@ -39,22 +37,19 @@ public class Enemy : MonoBehaviour
         }
     }
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start()
     {
-        
         HP = 1.0f;
-        TransPosition(position[nowNum],out goalX,out goalY);
+        TransPosition(position[nowNum], out goalX, out goalY);
+    }
 
-	}
-	
-	// Update is called once per frame
-	void Update ()
+    // Update is called once per frame
+    void Update()
     {
         Move(position);
         //this.transform.position = new Vector2(transform.position.x + speed, transform.position.y);
-	}
-
+    }
 
     private void Move(List<int> pList)
     {
@@ -80,18 +75,9 @@ public class Enemy : MonoBehaviour
         py = p_numY * mas;
     }
 
-
     bool Arrive(float gx, float gy)
     {
-        if (gx == gameObject.transform.position.x)
-        {
-            if (gy == gameObject.transform.position.y)
-            {
-                print("Arrive (" + gx + "," + gy + ")");
-                return true;
-            }
-        }
-        return false;
+        return gx == gameObject.transform.position.x && gy == gameObject.transform.position.y;
     }
 
     /// <summary>
@@ -134,11 +120,9 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            if (distance > 0) { return speed; }
-            else { return -speed; }
+            return (distance > 0) ? speed : -speed;
         }
     }
-
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -146,7 +130,10 @@ public class Enemy : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
 
-       
+    public void TakeDamage(float damage)
+    {
+        this.HP -= damage;
     }
 }

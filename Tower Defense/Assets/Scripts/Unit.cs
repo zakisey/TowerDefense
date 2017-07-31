@@ -6,6 +6,8 @@ public class Unit : MonoBehaviour
 {
     private float range = 3.0f;
     private float atk = 1.0f;
+    public GameObject shot;
+    private bool shotFlag = false;
     /// <summary>
     /// 攻撃範囲用
     /// </summary>
@@ -49,13 +51,18 @@ public class Unit : MonoBehaviour
     {
         if (collision.tag == "Enemy")
         {
-            collision.GetComponent<Enemy>().HP -= this.atk;
+            Fire(collision.gameObject);
         }
     }
 
-    private void Shot()
+    private void Fire(GameObject target)
     {
-
+        if (shotFlag) return;
+        GameObject shot = Instantiate(this.shot, this.transform.position, Quaternion.identity);
+        Shot shotScript = shot.GetComponent<Shot>();
+        shotScript.target = target;
+        shotScript.atk = this.atk;
+        shotFlag = true;
     }
 
     //マウスホバーで射程範囲を表示する
