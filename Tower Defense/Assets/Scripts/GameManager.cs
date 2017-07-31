@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        // クリック処理
         GameObject clicked = GetClickedObject();
 
         if (clicked != null)
@@ -55,6 +56,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void OnGUI()
+    {
+        ShowUnitToPlaceOnCursor();
+    }
+
     // タイトル画面
     private void SetTitlePage()
     {
@@ -66,25 +72,16 @@ public class GameManager : MonoBehaviour
     {
         if (unitToPlace == null) return;
 
-
+        Texture texture = unitToPlace.GetComponent<Renderer>().GetComponent<Texture>();
+        GUI.DrawTexture(new Rect(10, 10, 64, 64), texture);
     }
 
     // 左クリックされたオブジェクトを取得
     private GameObject GetClickedObject()
     {
-        GameObject result = null;
-        
-        if (Input.GetMouseButtonDown(0))
-        {
-            Vector2 tapPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Collider2D collition2d = Physics2D.OverlapPoint(tapPoint);
-            if (collition2d)
-            {
-                result = collition2d.transform.gameObject;
-            }
-        }
-
-        return result;
+        Vector2 tapPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Collider2D collision = Physics2D.OverlapPoint(tapPoint);
+        return (Input.GetMouseButtonDown(0) && collision) ? collision.transform.gameObject : null;
     }
 
     public void InitGame()
