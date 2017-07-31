@@ -5,8 +5,15 @@ using UnityEngine;
 //コメント
 public class GameManager : MonoBehaviour
 {
+    public enum GameMode
+    {
+        Normal,
+        UnitPlacing
+    }
+
     public static GameManager instance = null;
-    private int mode = 0;
+    private GameMode mode = GameMode.Normal;
+    private GameObject unitToPlace = null;
 
     /*comment for testing conflicting pull request*/
 
@@ -29,7 +36,40 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        GameObject clicked = GetClickedObject();
 
+        if (clicked != null)
+        {
+            switch (clicked.tag)
+            {
+                case "Socket":
+                    print("socket clicked");
+                    if (mode == GameMode.UnitPlacing)
+                    {
+                        BoardManager.instance.SetUnitOnSocket(unitToPlace);
+                        ChangeGameMode(GameMode.Normal);
+                    }
+                    break;
+            }
+        }
+    }
+
+    // 左クリックされたオブジェクトを取得
+    private GameObject GetClickedObject()
+    {
+        GameObject result = null;
+        
+        if (Input.GetMouseButtonDown(0))
+        {
+            Vector2 tapPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Collider2D collition2d = Physics2D.OverlapPoint(tapPoint);
+            if (collition2d)
+            {
+                result = collition2d.transform.gameObject;
+            }
+        }
+
+        return result;
     }
 
     void InitGame()
@@ -42,9 +82,14 @@ public class GameManager : MonoBehaviour
         print("game over!");
     }
 
-    public void ChangeGameMode(int mode)
+    public void ChangeGameMode(GameMode mode)
     {
         this.mode = mode;
     }
 
+    public void ChangeGameModeToUnitPlacing(GameObject unitToPlace)
+    {
+        this.mode = GameMode.UnitPlacing;
+        this.unitToPlace = unitToPlace;
+    }
 }
