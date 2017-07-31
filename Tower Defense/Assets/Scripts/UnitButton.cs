@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnitButton : MonoBehaviour {
+public class UnitButton : MonoBehaviour
+{
 
     public GameObject unit;
 

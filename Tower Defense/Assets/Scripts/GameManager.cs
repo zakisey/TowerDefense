@@ -48,16 +48,21 @@ public class GameManager : MonoBehaviour
                     if (mode == GameMode.UnitPlacing)
                     {
                         BoardManager.instance.SetUnitOnSocket(unitToPlace);
-                        ChangeGameMode(GameMode.Normal);
                     }
                     break;
             }
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            unitToPlace = null;
+            ChangeGameMode(GameMode.Normal);
         }
     }
 
     private void OnGUI()
     {
-        //ShowUnitToPlaceOnCursor();
+        ShowUnitToPlaceOnCursor();
     }
 
     // タイトル画面
@@ -73,11 +78,9 @@ public class GameManager : MonoBehaviour
 
         Texture texture = unitToPlace.GetComponent<SpriteRenderer>().sprite.texture;
         
-
         // Vector3でマウス位置座標を取得する
         Vector3 position = Input.mousePosition;
         position = new Vector3(position.x,Screen.height - position.y,0f);
-        print("position(" +position.x+","+ position.y + ")");
         // マウス位置座標をスクリーン座標からワールド座標に変換する
         Vector3 screenToWorldPointPosition = Camera.main.ScreenToWorldPoint(position);
         
