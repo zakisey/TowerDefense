@@ -18,16 +18,16 @@ public class PlayersBase : MonoBehaviour
         }
     }
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         HP = 1;
-	}
-	
-	// Update is called once per frame
-	void Update ()
+    }
+
+    // Update is called once per frame
+    void Update()
     {
-		
-	}
+
+    }
 
 
     private void OnTriggerEnter2D(Collider2D collision)
