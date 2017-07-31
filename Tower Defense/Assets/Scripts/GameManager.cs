@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance = null;
     private GameMode mode = GameMode.Normal;
     private GameObject unitToPlace = null;
+    private GameObject title;
 
     /*comment for testing conflicting pull request*/
 
@@ -35,8 +36,7 @@ public class GameManager : MonoBehaviour
     }
 
     private void Update()
-    {   
-
+    {
         GameObject clicked = GetClickedObject();
 
         if (clicked != null)
@@ -53,6 +53,12 @@ public class GameManager : MonoBehaviour
                     break;
             }
         }
+    }
+
+    // タイトル画面
+    private void SetTitlePage()
+    {
+        title = GameObject.Find("Title");
     }
 
     // ユニットを設置するモードのとき、マウスカーソルの位置に設置するユニットを表示する
@@ -81,7 +87,7 @@ public class GameManager : MonoBehaviour
         return result;
     }
 
-    void InitGame()
+    public void InitGame()
     {
         BoardManager.instance.SetupScene();
     }
