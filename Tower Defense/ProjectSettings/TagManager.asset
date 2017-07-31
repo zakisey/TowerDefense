@@ -7,7 +7,11 @@ TagManager:
   - Base
   - Weapon
   - Enemy
+<<<<<<< HEAD
   - Socket
+=======
+  - Range
+>>>>>>> ShowRangeOnHover
   layers:
   - Default
   - TransparentFX
@@ -50,6 +54,9 @@ TagManager:
     locked: 0
   - name: Socket
     uniqueID: 3932841369
+    locked: 0
+  - name: RangeCircle
+    uniqueID: 146512313
     locked: 0
   - name: Unit
     uniqueID: 434239531

@@ -6,12 +6,17 @@ public class Unit : MonoBehaviour
 {
     private float range = 2.5f;//のち消去
     private float atk = 1.0f;
+    public GameObject rangeCircle;
+    private GameObject hoverInstance;
+    private CircleCollider2D myCollider;
+    private float colliderRadius;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
     {
-		
-	}
+        myCollider = transform.GetComponent<CircleCollider2D>();
+        colliderRadius = myCollider.radius;
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -39,7 +44,17 @@ public class Unit : MonoBehaviour
         {
             collision.GetComponent<Enemy>().HP -= this.atk;
         }
+    }
 
-        
+    //マウスホバーで射程範囲を表示する
+    void OnMouseEnter()
+    {
+            hoverInstance = (GameObject)Instantiate(rangeCircle, transform.position, Quaternion.identity);
+            hoverInstance.transform.localScale = new Vector3(colliderRadius, colliderRadius);
+    }
+
+    void OnMouseExit()
+    {
+        Destroy(hoverInstance);
     }
 }
