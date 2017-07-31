@@ -3,15 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Base
-  - Weapon
-  - Enemy
-<<<<<<< HEAD
-  - Socket
-=======
-  - Range
->>>>>>> ShowRangeOnHover
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -48,16 +40,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Ground
-    uniqueID: 1130624605
-    locked: 0
-  - name: Socket
-    uniqueID: 3932841369
-    locked: 0
-  - name: RangeCircle
-    uniqueID: 146512313
-    locked: 0
-  - name: Unit
-    uniqueID: 434239531
     locked: 0
