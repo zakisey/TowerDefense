@@ -33,6 +33,8 @@ public class Unit : MonoBehaviour
         rangeCirclePicture.transform.parent = this.gameObject.transform;
         rangeCirclePicture.transform.localScale = new Vector3(range, range);
         rangeCirclePicture.SetActive(false);
+
+        //弾
     }
 	
 	// Update is called once per frame
@@ -49,6 +51,11 @@ public class Unit : MonoBehaviour
         {
             collision.GetComponent<Enemy>().HP -= this.atk;
         }
+    }
+
+    private void Shot()
+    {
+
     }
 
     //マウスホバーで射程範囲を表示する
