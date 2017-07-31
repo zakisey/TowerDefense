@@ -17,6 +17,7 @@ public class BoardManager : MonoBehaviour
     private List<Vector3> gridPositions = new List<Vector3>();
     private Transform boardHolder;
     private Text lifeText;
+    private bool isGameOver = false;
 
     private void Awake()
     {
@@ -27,6 +28,14 @@ public class BoardManager : MonoBehaviour
         else if (instance != this)
         {
             Destroy(gameObject);
+        }
+    }
+
+    void Update()
+    {
+        if (isGameOver && Input.anyKey)
+        {
+            Application.LoadLevel("Start");
         }
     }
 
@@ -97,7 +106,20 @@ public class BoardManager : MonoBehaviour
     /// <param name="life">ベースのライフ</param>
     public void SetLifeText(int life)
     {
-        lifeText.text = "life:" + life;
+        if (life > 0)
+        {
+            lifeText.text = "life:" + life;
+        }
+        else
+        {
+            IsGameOver();
+        }
+    }
+
+    private void IsGameOver()
+    {
+        lifeText.text = "Game Over!!";
+        isGameOver = true;
     }
 
     //どのソケットに置くかを引数に入れる
