@@ -99,6 +99,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48a1a56078135a545bd0493302783350, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  range: 3
+  atk: 1
+  atkTime: 30
   shot: {fileID: 1401135235265064, guid: 623dfba1a0240474c9dfa707df8d607a, type: 2}
   rangeCircleCollider: {fileID: 1636938936203996, guid: 65ab254a09dcdf54db0de512ad61d94c,
     type: 2}
