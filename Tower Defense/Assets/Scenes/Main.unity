@@ -194,6 +194,11 @@ MonoBehaviour:
   - {fileID: 1263606032040650, guid: f27a108081c0c794597aa227e0403c02, type: 2}
   - {fileID: 1875287309634024, guid: 74571969e5bf17343ae61a12cc96ed11, type: 2}
   - {fileID: 1079718660220030, guid: 4a9182e65b7c6254db8a4adf2568377a, type: 2}
+  - {fileID: 1979846705770348, guid: b58638c02e461e8468555629544f94a7, type: 2}
+  - {fileID: 1063074580145008, guid: 4b19eb8692d40e548b8003557e8143f3, type: 2}
+  - {fileID: 1524874958882808, guid: 1dd09d22104a9fc4cad21ceb935289bd, type: 2}
+  - {fileID: 1605576128706512, guid: 3e55be9a5b950224bbf9b82c426df59d, type: 2}
+  - {fileID: 1713423411479278, guid: ec5af5184b3b2264ea84ef19d3cac19c, type: 2}
   waves: {fileID: 1860460660833144, guid: fce27fae8852dcd448b4afc8dc51173c, type: 2}
   boardHolder: {fileID: 0}
 --- !u!4 &69111213
@@ -981,7 +986,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1004,7 +1009,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2053317537}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.5, y: 3.5, z: -10}
+  m_LocalPosition: {x: 7, y: 5.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
