@@ -20,8 +20,8 @@ public class Enemy : MonoBehaviour
     private int destinationNumber = 0;
 
     public float damage = 1.0f;
-    private float speed = 0.05f;
-    private float hp;
+    public float speed = 0.05f;
+    public float hp;
 
     /// <summary>
     /// HPバー描画用
@@ -48,7 +48,7 @@ public class Enemy : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        HP = 1.0f;
+        //HP = 1.0f;
         HpBar = Instantiate(HpBar, transform.position, Quaternion.identity, GameObject.Find("Canvas").transform);
         HpBar.maxValue = HP;
         HpBar.value = HP;
