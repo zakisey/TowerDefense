@@ -13,7 +13,7 @@ public class Wave : MonoBehaviour
     public int numberOfWaves;
     public List<int> waveEnemyNumber;
 
-    private Transform enemyHolder;
+    public Transform enemyHolder;
     private GameObject instance;
 
     private int currentWave = 1;
@@ -25,21 +25,19 @@ public class Wave : MonoBehaviour
         StartCoroutine("CoGenerateEnemies");
     }
 
-    public void Update()
+    void Update()
     {
         if (currentWave > numberOfWaves)
         {
             StopCoroutine("CoGenerateEnemies");
             print("Generation Stopped");
             BoardManager.instance.SetWaveText(-1);
-            GameManager.instance.EndGame();
         }
     }
 
     /// <summary>
     /// 敵を生成するコルーチン
     /// </summary>
-    /// <returns></returns>
     private IEnumerator CoGenerateEnemies()
     {
         while (currentWave <= numberOfWaves)
@@ -48,8 +46,7 @@ public class Wave : MonoBehaviour
 
             while (enemiesPopped < waveEnemyNumber[currentWave - 1])
             {
-                ChooseEnemy();
-
+                InstantiateEnemyFromWave();
                 enemiesPopped++;
                 yield return new WaitForSeconds(enemyPopInterval);
             }
@@ -62,12 +59,15 @@ public class Wave : MonoBehaviour
             enemiesPopped = 0;
             currentWave++;
 
-            print("wait for 5 secs for another wave");
+            print("wait 5 secs for another wave");
             yield return new WaitForSeconds(5.0f);
         }
     }
 
-    private void ChooseEnemy()
+    /// <summary>
+    /// Wave数から出す敵とスポーン位置を変更する
+    /// </summary>
+    private void InstantiateEnemyFromWave()
     {
         switch (currentWave)
         {
@@ -84,5 +84,10 @@ public class Wave : MonoBehaviour
                 instance.transform.SetParent(enemyHolder);
                 break;
         }
+    }
+
+    public void DestroyEnemyHolder()
+    {
+        Destroy(enemyHolder.gameObject);
     }
 }

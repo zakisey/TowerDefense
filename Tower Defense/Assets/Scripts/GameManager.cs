@@ -106,8 +106,6 @@ public class GameManager : MonoBehaviour
     {
         print("game over!");
         isGameOver = true;
-
-        Destroy(BoardManager.instance.waves);
     }
 
     public void ChangeGameMode(GameMode mode)

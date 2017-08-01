@@ -57,4 +57,4 @@ MonoBehaviour:
   enemy2Origin: {x: 0, y: 0}
   enemyPopInterval: 1
   numberOfWaves: 3
-  waveEnemyNumber: 010000000100000001000000
+  waveEnemyNumber: 030000000200000002000000

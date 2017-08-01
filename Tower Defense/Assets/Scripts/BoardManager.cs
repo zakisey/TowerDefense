@@ -9,7 +9,6 @@ public class BoardManager : MonoBehaviour
     private int rows = 8;
     private int columns = 12;
     public GameObject playersBase;
-    public GameObject enemy1;
     private GameObject enemyOnBoard;
     public GameObject socket;
     private GameObject socketOnBoard;
@@ -114,6 +113,8 @@ public class BoardManager : MonoBehaviour
         else
         {
             lifeText.text = "Game Over!!";
+            waves.GetComponent<Wave>().DestroyEnemyHolder();
+            Destroy(waves);
             GameManager.instance.EndGame();
         }
     }
@@ -126,7 +127,9 @@ public class BoardManager : MonoBehaviour
         }
         else
         {
-            waveText.text = "Finished!";
+            waveText.text = "Cleared!!";
+            Destroy(waves);
+            GameManager.instance.EndGame();
         }
     }
 
