@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour
     private float goalX;
     private float goalY;
 
-    public float damage = 1.0f;
+    public float atk = 1.0f;
     private float speed = 0.05f;
     private float hp;
 
