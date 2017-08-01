@@ -48,7 +48,7 @@ public class Enemy : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        HP = 1.0f;
+        HP = 2.0f;
         HpBar = Instantiate(HpBar, transform.position, Quaternion.identity, GameObject.Find("Canvas").transform);
         HpBar.maxValue = HP;
         HpBar.value = HP;
