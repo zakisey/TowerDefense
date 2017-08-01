@@ -10,6 +10,11 @@ public class Unit : MonoBehaviour
     /// (atkTime)フレームごとに弾を1発撃つ
     /// </summary>
     public int atkTime = 60;
+    /// <summary>
+    /// これがatkTimeと同じ数になると攻撃
+    /// </summary>
+    private int chargeTime;
+
     public GameObject shot;
     private bool shotFlag = false;
     /// <summary>
@@ -42,14 +47,27 @@ public class Unit : MonoBehaviour
         rangeCirclePicture.SetActive(false);
 
         //弾
+        chargeTime = atkTime;
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        
+        Charge();
 	}
 
+    /// <summary>
+    /// chargeTimeを増やす
+    /// </summary>
+    void Charge()
+    {
+        if (chargeTime < atkTime)
+        {
+            chargeTime++;
+        }
+
+
+    }
 
     //コライダーの関数を入れる
     private void OnTriggerStay2D(Collider2D collision)
@@ -62,12 +80,12 @@ public class Unit : MonoBehaviour
 
     private void Fire(GameObject target)
     {
-        if (shotFlag) return;
+        if (chargeTime<atkTime) return;
         GameObject shot = Instantiate(this.shot, this.transform.position, Quaternion.identity);
         Shot shotScript = shot.GetComponent<Shot>();
         shotScript.target = target;
         shotScript.atk = this.atk;
-        shotFlag = true;
+        chargeTime = 0;
     }
 
     //マウスホバーで射程範囲を表示する
