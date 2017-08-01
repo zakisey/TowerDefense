@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
+
     private const int StageWidth = 12;
     private const int StageHeight = 8;
     private const float mas = 1f;
@@ -12,14 +13,20 @@ public class Enemy : MonoBehaviour
     /// <summary>
     /// 敵が進む目的地のリスト
     /// </summary>
-    public List<int> position;
-    private int nowNum = 0;
-    private float goalX;
-    private float goalY;
+    public List<Vector2> destinationList;
+    /// <summary>
+    /// 敵が向かっている目的地の場所のリスト番号
+    /// </summary>
+    private int destinationNumber = 0;
 
     public float damage = 1.0f;
     private float speed = 0.05f;
     private float hp;
+
+    /// <summary>
+    /// HPバー描画用
+    /// </summary>
+    public Slider HpBar;
 
     public float HP
     {
@@ -32,6 +39,7 @@ public class Enemy : MonoBehaviour
             hp = value;
             if (hp <= 0)
             {
+                Destroy(HpBar.gameObject);
                 Destroy(gameObject);
             }
         }
@@ -41,57 +49,46 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         HP = 1.0f;
-        TransPosition(position[nowNum], out goalX, out goalY);
+        HpBar = Instantiate(HpBar, transform.position, Quaternion.identity, GameObject.Find("Canvas").transform);
+        HpBar.maxValue = HP;
+        HpBar.value = HP;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Move(position);
-        //this.transform.position = new Vector2(transform.position.x + speed, transform.position.y);
+        Move(destinationList);
+        HpBar.transform.position = this.transform.position + new Vector3(0,-0.3f);
     }
 
-    private void Move(List<int> pList)
+    private void Move(List<Vector2> dList)
     {
-        if (Arrive(goalX, goalY) && nowNum < position.Count - 1)
+        if (Arrive(dList[destinationNumber]) && destinationNumber < destinationList.Count - 1)
         {
-            nowNum++;
-            TransPosition(position[nowNum], out goalX, out goalY);
+            destinationNumber++;
         }
-        Go(goalX, goalY);
+        Go(dList[destinationNumber]);
     }
 
     /// <summary>
-    /// positionの数字を(x,y)座標に変換する
+    /// 目的地に着いたかどうか
     /// </summary>
-    /// <param name="p_num">positionの数</param>
-    /// <param name="px">x座標</param>
-    /// <param name="py">y座標</param>
-    void TransPosition(int p_num, out float px, out float py)
+    /// <param name="goal"></param>
+    /// <returns></returns>
+    bool Arrive(Vector2 goal)
     {
-        int p_numY = p_num / StageWidth;
-        int p_numX = p_num - p_numY * StageWidth;
-        px = p_numX * mas;
-        py = p_numY * mas;
-    }
-
-    bool Arrive(float gx, float gy)
-    {
-        return gx == gameObject.transform.position.x && gy == gameObject.transform.position.y;
+        return goal == (Vector2)gameObject.transform.position;
     }
 
     /// <summary>
-    /// 速さspeedで目的地まで行く
+    /// 目的地に向かって敵を進ませる
     /// </summary>
-    /// <param name="gx">目的地のx座標</param>
-    /// <param name="gy">目的地のy座標</param>
-    void Go(float gx, float gy)
+    /// <param name="goal">目的地の座標</param>
+    void Go(Vector2 goal)
     {
-        float dx, dy;
-        Distance(gx, gy, out dx, out dy);
-        dx = CheckSpeed(dx);
-        dy = CheckSpeed(dy);
-        gameObject.transform.position += new Vector3(dx, dy);
+        Vector2 vec　= Distance(goal);
+        vec = CheckSpeed(vec);
+        gameObject.transform.position += (Vector3)vec;
     }
 
     /// <summary>
@@ -101,26 +98,25 @@ public class Enemy : MonoBehaviour
     /// <param name="gy">目的地のy座標</param>
     /// <param name="dx">目的地までのxの距離</param>
     /// <param name="dy">目的地までのyの距離</param>
-    void Distance(float gx, float gy, out float dx, out float dy)
+    Vector2 Distance(Vector2 goal)
     {
-        dx = gx - gameObject.transform.position.x;
-        dy = gy - gameObject.transform.position.y;
+        return goal - (Vector2)gameObject.transform.position;
     }
 
     /// <summary>
-    /// 距離から速さをいくらにするか決める
+    /// 距離をもとに移動距離をいくらにするか決める
     /// </summary>
     /// <param name="distance"></param>
     /// <returns></returns>
-    float CheckSpeed(float distance)
+    Vector2 CheckSpeed(Vector2 distance)
     {
-        if (speed >= Math.Abs(distance))
+        if (speed >= distance.magnitude)
         {
             return distance;
         }
         else
         {
-            return (distance > 0) ? speed : -speed;
+            return speed * distance.normalized;
         }
     }
 
@@ -128,12 +124,13 @@ public class Enemy : MonoBehaviour
     {
         if (collision.tag == "Base")
         {
-            Destroy(this.gameObject);
+            HP = 0;
         }
     }
 
     public void TakeDamage(float damage)
     {
         this.HP -= damage;
+        HpBar.value = HP;
     }
 }
