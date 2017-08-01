@@ -35,7 +35,7 @@ public class PlayersBase : MonoBehaviour
         Enemy enemy = collision.gameObject.GetComponent<Enemy>();
         if (collision.tag == "Enemy")
         {
-            HP -= enemy.damage;
+            HP -= enemy.atk;
         }
 
         if (HP <= 0)
