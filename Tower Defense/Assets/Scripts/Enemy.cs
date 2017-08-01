@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
     private int destinationNumber = 0;
 
 
-    public float damage = 1.0f;
+    public float atk = 1.0f;
     public float speed = 0.05f;
     public float hp;
 
