@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
-    private float range = 3.0f;
-    private float atk = 1.0f;
+    public float range = 3.0f;
+    public float atk = 1.0f;
     public GameObject shot;
     private bool shotFlag = false;
     /// <summary>
@@ -29,6 +29,7 @@ public class Unit : MonoBehaviour
         //範囲
         rangeCircleCollider = Instantiate(rangeCircleCollider, transform.position, Quaternion.identity);
         rangeCircleCollider.transform.parent = this.gameObject.transform;
+        rangeCircleCollider.GetComponent<CircleCollider2D>().radius = range;
 
         //画像
         rangeCirclePicture = Instantiate(rangeCirclePicture, transform.position, Quaternion.identity);
