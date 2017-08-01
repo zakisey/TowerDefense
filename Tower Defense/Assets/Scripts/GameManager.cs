@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     private GameObject unitToPlace = null;
     private GameObject title;
 
+    private bool isGameOver = false;
+
     /*comment for testing conflicting pull request*/
 
     private void Awake()
@@ -58,17 +60,16 @@ public class GameManager : MonoBehaviour
             unitToPlace = null;
             ChangeGameMode(GameMode.Normal);
         }
+
+        if (isGameOver && Input.anyKey)
+        {
+            Application.LoadLevel("Start");
+        }
     }
 
     private void OnGUI()
     {
         ShowUnitToPlaceOnCursor();
-    }
-
-    // タイトル画面
-    private void SetTitlePage()
-    {
-        title = GameObject.Find("Title");
     }
 
     // ユニットを設置するモードのとき、マウスカーソルの位置に設置するユニットを表示する
@@ -104,6 +105,7 @@ public class GameManager : MonoBehaviour
     public void EndGame()
     {
         print("game over!");
+        isGameOver = true;
     }
 
     public void ChangeGameMode(GameMode mode)
