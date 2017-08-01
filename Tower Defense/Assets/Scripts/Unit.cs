@@ -6,6 +6,10 @@ public class Unit : MonoBehaviour
 {
     public float range = 3.0f;
     public float atk = 1.0f;
+    /// <summary>
+    /// (atkTime)フレームごとに弾を1発撃つ
+    /// </summary>
+    public int atkTime = 60;
     public GameObject shot;
     private bool shotFlag = false;
     /// <summary>
