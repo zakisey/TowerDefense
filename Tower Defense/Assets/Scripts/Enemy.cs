@@ -19,9 +19,10 @@ public class Enemy : MonoBehaviour
     /// </summary>
     private int destinationNumber = 0;
 
-    public float atk = 1.0f;
-    private float speed = 0.05f;
-    private float hp;
+
+    public float damage = 1.0f;
+    public float speed = 0.05f;
+    public float hp;
 
     /// <summary>
     /// HPバー描画用
