@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class BoardManager : MonoBehaviour
 {
     public static BoardManager instance = null;
-    private int rows = 8;
-    private int columns = 12;
+    private int rows = 12;
+    private int columns = 15;
     public GameObject playersBase;
     public GameObject enemy1;
     private GameObject enemyOnBoard;
@@ -39,30 +39,32 @@ public class BoardManager : MonoBehaviour
         }
     }
 
-    //ボード(ステージ)ごとにプレハブを作って対処のほうがいいかも
+    private const string boardText =
+        "aaaaaaaaaaadeaa" +
+        "aaaaaaaaaaadeaa" +
+        "aahbbbbbbbbjeaa" +
+        "aadlcccklcccfaa" +
+        "aadeaaadeaaaaaa" +
+        "aadeaaadeaaaaaa" +
+        "bbjeaaadeaaaaaa" +
+        "cccfaaadeaahgaa" +
+        "aaaaaaadeaadeaa" +
+        "aaaaaaadmbbjeaa" +
+        "aaaaaaaiccccfaa" +
+        "aaaaaaaaaaaaaaa";
+
     /// <summary>
-    /// ボードの表示？ 
+    /// 文字列からボードのグラフィックを生成して配置する
     /// </summary>
     void BoardSetup()
     {
-        for (int x = 0; x < columns; x++)
+        for (int y = 0; y < rows; y++)
         {
-            for (int y = 0; y < rows; y++)
+            for (int x = 0; x < columns; x++)
             {
-                GameObject toInstantiate = groundTiles[7];
-                if (y == 2)
-                {
-                    toInstantiate = groundTiles[2];
-                }
-                if (y == 3)
-                {
-                    toInstantiate = groundTiles[1];
-                }
-                if (y == 4)
-                {
-                    toInstantiate = groundTiles[0];
-                }
-                GameObject instance = Instantiate(toInstantiate, new Vector3(x, y, 0f), Quaternion.identity) as GameObject;
+                char c = boardText[y * columns + x];
+                GameObject toInstantiate = groundTiles[c - 'a'];
+                GameObject instance = Instantiate(toInstantiate, new Vector3(x, rows - y - 1, 0f), Quaternion.identity) as GameObject;
                 instance.transform.SetParent(boardHolder);
             }
         }
@@ -73,7 +75,7 @@ public class BoardManager : MonoBehaviour
     /// </summary>
     void GeneratePlayersBase()
     {
-        GameObject instance = Instantiate(playersBase, new Vector3(11, 3, 0f), Quaternion.identity) as GameObject;
+        GameObject instance = Instantiate(playersBase, new Vector3(11.5f, 3.5f, 0f), Quaternion.identity) as GameObject;
         instance.transform.SetParent(boardHolder);
     }
 
@@ -95,7 +97,7 @@ public class BoardManager : MonoBehaviour
     /// </summary>
     void GenerateSocket()
     {
-        GameObject instance = Instantiate(socket, new Vector3(5, 1, 0f), Quaternion.identity) as GameObject;
+        GameObject instance = Instantiate(socket, new Vector3(6, 7, 0f), Quaternion.identity) as GameObject;
         socketOnBoard = instance;
         instance.transform.SetParent(boardHolder);
     }
