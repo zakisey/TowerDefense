@@ -9,15 +9,15 @@ public class BoardManager : MonoBehaviour
     private int rows = 12;
     private int columns = 15;
     public GameObject playersBase;
-    public GameObject enemy1;
     private GameObject enemyOnBoard;
     public GameObject socket;
     private GameObject socketOnBoard;
     public GameObject[] groundTiles;
+    public GameObject waves;
     private List<Vector3> gridPositions = new List<Vector3>();
-    private Transform boardHolder;
+    public Transform boardHolder;
     private Text lifeText;
-    private bool isGameOver = false;
+    private Text waveText;
 
     private void Awake()
     {
@@ -33,10 +33,7 @@ public class BoardManager : MonoBehaviour
 
     void Update()
     {
-        if (isGameOver && Input.anyKey)
-        {
-            Application.LoadLevel("Start");
-        }
+
     }
 
     private const string boardText =
@@ -83,13 +80,10 @@ public class BoardManager : MonoBehaviour
     /// <summary>
     /// 敵を作る
     /// </summary>
-    void GenerateEnemy()
-    {
-        GameObject instance = Instantiate(enemy1, new Vector3(-1, 3, 0f), Quaternion.identity) as GameObject;
-        enemyOnBoard = instance;
-        instance.transform.SetParent(boardHolder);
-    }
-
+    //void GenerateEnemy()
+    //{
+    //    StartCoroutine("CreateEnemy");
+    //}
 
     //ボード(ステージ)ごとにプレハブを作って対処のほうがいいかも
     /// <summary>
@@ -102,6 +96,12 @@ public class BoardManager : MonoBehaviour
         instance.transform.SetParent(boardHolder);
     }
 
+    void GenerateEnemy()
+    {
+        waves = Instantiate(waves);
+        waves.GetComponent<Wave>().StartGeneration();
+    }
+
     /// <summary>
     /// ベースのライフを表示するためのテキスト表示
     /// </summary>
@@ -110,18 +110,29 @@ public class BoardManager : MonoBehaviour
     {
         if (life > 0)
         {
-            lifeText.text = "life:" + life;
+            lifeText.text = "Life: " + life;
         }
         else
         {
-            IsGameOver();
+            lifeText.text = "Game Over!!";
+            waves.GetComponent<Wave>().DestroyEnemyHolder();
+            Destroy(waves);
+            GameManager.instance.EndGame();
         }
     }
 
-    private void IsGameOver()
+    public void SetWaveText(int wavenumber)
     {
-        lifeText.text = "Game Over!!";
-        isGameOver = true;
+        if (wavenumber != -1)
+        {
+            waveText.text = "Wave: " + wavenumber;
+        }
+        else
+        {
+            waveText.text = "Cleared!!";
+            Destroy(waves);
+            GameManager.instance.EndGame();
+        }
     }
 
     //どのソケットに置くかを引数に入れる
@@ -140,6 +151,7 @@ public class BoardManager : MonoBehaviour
     {
         boardHolder = new GameObject("Board").transform;
         lifeText = GameObject.Find("LifeText").GetComponent<Text>();
+        waveText = GameObject.Find("WaveText").GetComponent<Text>();
         BoardSetup();
         GeneratePlayersBase();
         GenerateSocket();
