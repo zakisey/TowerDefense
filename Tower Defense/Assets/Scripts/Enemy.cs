@@ -40,7 +40,6 @@ public class Enemy : MonoBehaviour
             hp = value;
             if (hp <= 0)
             {
-                Destroy(HpBar.gameObject);
                 Destroy(gameObject);
             }
         }
@@ -134,5 +133,9 @@ public class Enemy : MonoBehaviour
     {
         this.HP -= damage;
         HpBar.value = HP;
+    }
+    private void OnDestroy()
+    {
+        Destroy(HpBar.gameObject);
     }
 }
