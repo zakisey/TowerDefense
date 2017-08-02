@@ -31,6 +31,9 @@ public class Unit : MonoBehaviour
 
 
     private float colliderRadius;
+    private GameObject target;
+    private Transform canon;
+    private Vector2 canonVector;
 
     // Use this for initialization
     void Start()
@@ -48,12 +51,28 @@ public class Unit : MonoBehaviour
 
         //弾
         chargeTime = atkTime;
+
+        canon = this.transform.Find("Canon");
+        canonVector = new Vector2(0, 1);
     }
 
     // Update is called once per frame
     void Update()
     {
         Charge();
+        RotateCanon();  
+    }
+
+    private void RotateCanon()
+    {
+        if (target == null) return;
+        Vector2 newCanonVector = target.transform.position - this.transform.position;
+        float angle = Vector2.Angle(canonVector, newCanonVector);
+        // 直積を使って角度の正負を判定する
+        var cross = Vector3.Cross(canonVector, newCanonVector);
+        if (cross.z < 0) angle = -angle;
+        canonVector = newCanonVector;
+        canon.RotateAround(this.transform.position, new Vector3(0, 0, 1), angle);
     }
 
     /// <summary>
@@ -72,7 +91,8 @@ public class Unit : MonoBehaviour
     {
         if (collision.tag == "Enemy")
         {
-            Fire(collision.gameObject);
+            target = collision.gameObject;
+            Fire(target);
         }
         yield break;
     }
