@@ -29,11 +29,11 @@ public class Unit : MonoBehaviour
     //private GameObject hoverInstance;
     //private CircleCollider2D myCollider;
 
-   
+
     private float colliderRadius;
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         //範囲
         rangeCircleCollider = Instantiate(rangeCircleCollider, transform.position, Quaternion.identity);
@@ -49,12 +49,12 @@ public class Unit : MonoBehaviour
         //弾
         chargeTime = atkTime;
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update()
     {
         Charge();
-	}
+    }
 
     /// <summary>
     /// chargeTimeを増やす
@@ -65,22 +65,21 @@ public class Unit : MonoBehaviour
         {
             chargeTime++;
         }
-
-
     }
 
     //コライダーの関数を入れる
-    private void OnTriggerStay2D(Collider2D collision)
+    private IEnumerator OnTriggerStay2D(Collider2D collision)
     {
         if (collision.tag == "Enemy")
         {
             Fire(collision.gameObject);
         }
+        yield break;
     }
 
     private void Fire(GameObject target)
     {
-        if (chargeTime<atkTime) return;
+        if (chargeTime < atkTime) return;
         GameObject shot = Instantiate(this.shot, this.transform.position, Quaternion.identity);
         Shot shotScript = shot.GetComponent<Shot>();
         shotScript.target = target;
