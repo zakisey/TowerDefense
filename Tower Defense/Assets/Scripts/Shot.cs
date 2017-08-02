@@ -11,7 +11,11 @@ public class Shot : MonoBehaviour
     private void Update()
     {
         // targetの座標に向かって移動
-        if (target == null) Destroy(this.gameObject);
+        if (target == null)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
         transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
         if (transform.position == target.transform.position)
         {

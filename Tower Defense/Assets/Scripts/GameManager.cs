@@ -78,15 +78,15 @@ public class GameManager : MonoBehaviour
         if (unitToPlace == null) return;
 
         Texture texture = unitToPlace.GetComponent<SpriteRenderer>().sprite.texture;
-        
+        Texture textureCanon = unitToPlace.transform.Find("Canon").GetComponent<SpriteRenderer>().sprite.texture;
         // Vector3でマウス位置座標を取得する
         Vector3 position = Input.mousePosition;
         position = new Vector3(position.x,Screen.height - position.y,0f);
         // マウス位置座標をスクリーン座標からワールド座標に変換する
         Vector3 screenToWorldPointPosition = Camera.main.ScreenToWorldPoint(position);
         
-        GUI.DrawTexture(new Rect(position.x -32 , position.y - 32, 64, 64), texture);
-        
+        GUI.DrawTexture(new Rect(position.x - 32, position.y - 32, 64, 64), texture);
+        GUI.DrawTexture(new Rect(position.x - 32, position.y - 32 - 10, 64, 64), textureCanon);
     }
 
     // 左クリックされたオブジェクトを取得
