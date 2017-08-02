@@ -4,82 +4,90 @@ using UnityEngine;
 
 public class Wave : MonoBehaviour
 {
-    public int enemyNumber;
-
     public GameObject enemy1;
+    public Vector2 enemy1Origin;
     public GameObject enemy2;
+    public Vector2 enemy2Origin;
 
-    private GameObject enemyToPop;
-    private Vector2 originToPop;
+    public float enemyPopInterval;
+    public int numberOfWaves;
+    public List<int> waveEnemyNumber;
 
-    private Transform enemyHolder;
+    public Transform enemyHolder;
+    private GameObject instance;
 
+    private int currentWave = 1;
     private int enemiesPopped = 0;
-    private float enemyPopInterval = 1.0f;
-    
-    private GameObject enemyinstance;
 
-    /*　最終的にDBからWaveを生成するに向けて保留
-    public Wave(string monsterID)
+    public void StartGeneration()
     {
-        enemy1 = GameObject.Find(monsterID);
-        enemyHolder = WaveManager.instance.enemyHolder;
-    }*/
-
-    public void StartWave()
-    {
-        enemyHolder = WaveManager.instance.enemyHolder;
-        StartCoroutine(CoStartWave());
+        enemyHolder = new GameObject("Enemies").transform;
+        StartCoroutine("CoGenerateEnemies");
     }
 
-    /// <summary>
-    /// Waveのインスタンスの動きを制御する
-    /// </summary>
-    /// <returns></returns>
-    private IEnumerator CoStartWave()
+    void Update()
     {
-        while (enemiesPopped < enemyNumber)
+        if (currentWave > numberOfWaves)
         {
-            RandomChoice();
-            InstantiateEnemy();
-            yield return new WaitForSeconds(enemyPopInterval);
+            StopCoroutine("CoGenerateEnemies");
+            print("Generation Stopped");
+            BoardManager.instance.SetWaveText(-1);
         }
-
-        KillSelf();
     }
 
     /// <summary>
-    /// 次に沸かす敵を選ぶ
+    /// 敵を生成するコルーチン
     /// </summary>
-    private void RandomChoice()
+    private IEnumerator CoGenerateEnemies()
     {
-        int temp = (int)Random.Range(1.0f, 3.0f);
+        while (currentWave <= numberOfWaves)
+        {
+            BoardManager.instance.SetWaveText(currentWave);
 
-        switch (temp)
+            while (enemiesPopped < waveEnemyNumber[currentWave - 1])
+            {
+                InstantiateEnemyFromWave();
+                enemiesPopped++;
+                yield return new WaitForSeconds(enemyPopInterval);
+            }
+
+            while (enemyHolder.transform.childCount != 0)
+            {
+                yield return new WaitForEndOfFrame();
+            }
+
+            enemiesPopped = 0;
+            currentWave++;
+
+            print("wait 5 secs for another wave");
+            yield return new WaitForSeconds(5.0f);
+        }
+    }
+
+    /// <summary>
+    /// Wave数から出す敵とスポーン位置を変更する
+    /// </summary>
+    private void InstantiateEnemyFromWave()
+    {
+        switch (currentWave)
         {
             case 1:
-                enemyToPop = enemy1;
-                originToPop = WaveManager.instance.origin1;
+                instance = Instantiate(enemy1, enemy1Origin, Quaternion.identity);
+                instance.transform.SetParent(enemyHolder);
                 break;
             case 2:
-                enemyToPop = enemy2;
-                originToPop = WaveManager.instance.origin2;
+                instance = Instantiate(enemy1, enemy1Origin, Quaternion.identity);
+                instance.transform.SetParent(enemyHolder);
+                break;
+            default:
+                instance = Instantiate(enemy1, enemy1Origin, Quaternion.identity);
+                instance.transform.SetParent(enemyHolder);
                 break;
         }
     }
 
-    /// <summary>
-    /// 敵の沸かす
-    /// </summary>
-    private void InstantiateEnemy()
+    public void DestroyEnemyHolder()
     {
-        enemyinstance = Instantiate(enemyToPop, originToPop, Quaternion.identity);
-        enemyinstance.transform.SetParent(enemyHolder);
-        enemiesPopped++;
-    }
-
-    public void KillSelf()
-    {
-        Destroy(this.gameObject);
+        Destroy(enemyHolder.gameObject);
     }
 }
