@@ -194,6 +194,7 @@ MonoBehaviour:
   - {fileID: 1263606032040650, guid: f27a108081c0c794597aa227e0403c02, type: 2}
   - {fileID: 1875287309634024, guid: 74571969e5bf17343ae61a12cc96ed11, type: 2}
   - {fileID: 1079718660220030, guid: 4a9182e65b7c6254db8a4adf2568377a, type: 2}
+
   waveManager: {fileID: 1253503065692462, guid: d700fc8e0604ec44aaac3c5a612a80c6,
     type: 2}
   boardHolder: {fileID: 0}
@@ -982,7 +983,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1005,7 +1006,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2053317537}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.5, y: 3.5, z: -10}
+  m_LocalPosition: {x: 7, y: 5.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
