@@ -107,7 +107,7 @@ public class BoardManager : MonoBehaviour
     public void SetWaveText(int wavenumber)
     {
         waveText.text = "Wave: " + wavenumber;
-        if(wavenumber == -1 && !GameManager.instance.isGameOver)
+        if(wavenumber == -1 && GameManager.instance.isGameOver)
         {
             waveText.text = "Cleared!!";
         }

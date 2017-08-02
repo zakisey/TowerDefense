@@ -34,8 +34,8 @@ public class WaveManager : MonoBehaviour
         }
         else if (enemyHolder.transform.childCount == 0)
         {
-            BoardManager.instance.SetWaveText(-1);
             GameManager.instance.EndGame();
+            BoardManager.instance.SetWaveText(-1);
         }
     }
 

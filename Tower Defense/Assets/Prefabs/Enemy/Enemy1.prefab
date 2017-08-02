@@ -98,7 +98,7 @@ MonoBehaviour:
   - {x: 12, y: 2}
   - {x: 12, y: 4}
   atk: 1
-  speed: 0.05
+  speed: 0.035
   hp: 2
   HpBar: {fileID: 114788674809986812, guid: 0c34e6ef1666216499d662295260bfa6, type: 2}
 --- !u!212 &212324691823768526

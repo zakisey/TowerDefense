@@ -26,7 +26,7 @@ public class PlayersBase : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        HP = 20;
+        HP = 10;
         HpBar = Instantiate(HpBar, transform.position + new Vector3(0, -0.53f), Quaternion.identity, GameObject.Find("Canvas").transform);
         HpBar.maxValue = HP;
         HpBar.value = HP;
