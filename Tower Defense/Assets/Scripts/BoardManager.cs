@@ -61,7 +61,7 @@ public class BoardManager : MonoBehaviour
             {
                 char c = boardText[y * columns + x];
                 GameObject toInstantiate = groundTiles[c - 'a'];
-                GameObject instance = Instantiate(toInstantiate, new Vector3(x, rows - y - 1, 0f), Quaternion.identity) as GameObject;
+                GameObject instance = Instantiate(toInstantiate, new Vector3(x+0.5f, rows - y - 1+0.5f, 0f), Quaternion.identity) as GameObject;
                 instance.transform.SetParent(boardHolder);
             }
         }

@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class Enemy : MonoBehaviour
 {
 
-    private const int StageWidth = 12;
-    private const int StageHeight = 8;
+    private const int StageWidth = 15;
+    private const int StageHeight = 12;
     private const float mas = 1f;
 
     /// <summary>
@@ -90,6 +90,7 @@ public class Enemy : MonoBehaviour
         Vector2 vec　= Distance(goal);
         vec = CheckSpeed(vec);
         gameObject.transform.position += (Vector3)vec;
+        
     }
 
     /// <summary>

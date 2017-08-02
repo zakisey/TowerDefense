@@ -199,7 +199,6 @@ MonoBehaviour:
   - {fileID: 1524874958882808, guid: 1dd09d22104a9fc4cad21ceb935289bd, type: 2}
   - {fileID: 1605576128706512, guid: 3e55be9a5b950224bbf9b82c426df59d, type: 2}
   - {fileID: 1713423411479278, guid: ec5af5184b3b2264ea84ef19d3cac19c, type: 2}
-  waves: {fileID: 1860460660833144, guid: fce27fae8852dcd448b4afc8dc51173c, type: 2}
   waveManager: {fileID: 1253503065692462, guid: d700fc8e0604ec44aaac3c5a612a80c6,
     type: 2}
   boardHolder: {fileID: 0}
@@ -1011,7 +1010,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2053317537}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7, y: 5.5, z: -10}
+  m_LocalPosition: {x: 7.5, y: 6, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
