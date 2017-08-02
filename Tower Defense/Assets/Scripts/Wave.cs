@@ -10,7 +10,6 @@ public class Wave : MonoBehaviour
     public GameObject enemy2;
 
     private GameObject enemyToPop;
-    private Vector2 originToPop;
 
     private Transform enemyHolder;
 
@@ -59,11 +58,9 @@ public class Wave : MonoBehaviour
         {
             case 1:
                 enemyToPop = enemy1;
-                originToPop = WaveManager.instance.origin1;
                 break;
             case 2:
                 enemyToPop = enemy2;
-                originToPop = WaveManager.instance.origin2;
                 break;
         }
     }
@@ -73,7 +70,7 @@ public class Wave : MonoBehaviour
     /// </summary>
     private void InstantiateEnemy()
     {
-        enemyinstance = Instantiate(enemyToPop, originToPop, Quaternion.identity);
+        enemyinstance = Instantiate(enemyToPop);
         enemyinstance.transform.SetParent(enemyHolder);
         enemiesPopped++;
     }
