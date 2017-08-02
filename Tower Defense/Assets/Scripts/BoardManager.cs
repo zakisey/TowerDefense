@@ -104,13 +104,9 @@ public class BoardManager : MonoBehaviour
         }
     }
 
-    public void SetWaveText(int wavenumber)
+    public void SetWaveText(string text)
     {
-        waveText.text = "Wave: " + wavenumber;
-        if(wavenumber == -1 && !GameManager.instance.isGameOver)
-        {
-            waveText.text = "Cleared!!";
-        }
+        waveText.text = text;
     }
 
     //どのソケットに置くかを引数に入れる
