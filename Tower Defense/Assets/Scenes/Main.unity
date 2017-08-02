@@ -199,7 +199,7 @@ MonoBehaviour:
   - {fileID: 1524874958882808, guid: 1dd09d22104a9fc4cad21ceb935289bd, type: 2}
   - {fileID: 1605576128706512, guid: 3e55be9a5b950224bbf9b82c426df59d, type: 2}
   - {fileID: 1713423411479278, guid: ec5af5184b3b2264ea84ef19d3cac19c, type: 2}
-  waveManager: {fileID: 1253503065692462, guid: d700fc8e0604ec44aaac3c5a612a80c6,
+  waveManagerPrefab: {fileID: 1253503065692462, guid: d700fc8e0604ec44aaac3c5a612a80c6,
     type: 2}
   boardHolder: {fileID: 0}
 --- !u!4 &69111213
