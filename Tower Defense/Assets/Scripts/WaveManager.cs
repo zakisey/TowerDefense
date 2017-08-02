@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class WaveManager : MonoBehaviour
 {
-    public Vector2 origin1;
-    public Vector2 origin2;
     public List<Wave> waveList;
     public Transform enemyHolder;
 
