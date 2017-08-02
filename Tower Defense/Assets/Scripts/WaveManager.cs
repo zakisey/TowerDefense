@@ -23,7 +23,7 @@ public class WaveManager : MonoBehaviour
         {
             if (updateTimer >= waveInterval)
             {
-                BoardManager.instance.SetWaveText(currentWave + 1);
+                BoardManager.instance.SetWaveText("Wave: " + (currentWave + 1).ToString());
                 thisWave = Instantiate(waveList[currentWave]);
                 thisWave.enemyHolder = this.enemyHolder.transform;
                 currentWave++;
@@ -32,10 +32,10 @@ public class WaveManager : MonoBehaviour
             }
             updateTimer += Time.deltaTime;
         }
-        else if (enemyHolder.transform.childCount == 0)
+        else if (enemyHolder.transform.childCount == 0 && !GameManager.instance.isGameOver)
         {
+            BoardManager.instance.SetWaveText("Cleared!!");
             GameManager.instance.EndGame();
-            BoardManager.instance.SetWaveText(-1);
         }
     }
 
