@@ -72,7 +72,7 @@ public class BoardManager : MonoBehaviour
     /// </summary>
     void GeneratePlayersBase()
     {
-        GameObject instance = Instantiate(playersBase, new Vector3(11.5f, 3.5f, 0f), Quaternion.identity) as GameObject;
+        GameObject instance = Instantiate(playersBase, new Vector3(12f, 4f, 0f), Quaternion.identity) as GameObject;
         instance.transform.SetParent(boardHolder);
     }
 
@@ -91,7 +91,7 @@ public class BoardManager : MonoBehaviour
     /// </summary>
     void GenerateSocket()
     {
-        GameObject instance = Instantiate(socket, new Vector3(6, 7, 0f), Quaternion.identity) as GameObject;
+        GameObject instance = Instantiate(socket, new Vector3(6.5f, 7.5f, 0f), Quaternion.identity) as GameObject;
         socketOnBoard = instance;
         instance.transform.SetParent(boardHolder);
     }
