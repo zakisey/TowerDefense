@@ -102,6 +102,7 @@ public class Unit : MonoBehaviour
         if (chargeTime < atkTime) return;
         GameObject shot = Instantiate(this.shot, this.transform.position, Quaternion.identity);
         Shot shotScript = shot.GetComponent<Shot>();
+        GetComponent<AudioSource>().Play();
         shotScript.target = target;
         shotScript.atk = this.atk;
         chargeTime = 0;
