@@ -13,7 +13,7 @@ public class BoardManager : MonoBehaviour
     public GameObject socket;
     private GameObject socketOnBoard;
     public GameObject[] groundTiles;
-    public GameObject waves;
+    public GameObject waveManager;
     private List<Vector3> gridPositions = new List<Vector3>();
     public Transform boardHolder;
     private Text lifeText;
@@ -96,8 +96,8 @@ public class BoardManager : MonoBehaviour
 
     void GenerateEnemy()
     {
-        waves = Instantiate(waves);
-        waves.GetComponent<Wave>().StartGeneration();
+        waveManager = Instantiate(waveManager);
+        waveManager.GetComponent<WaveManager>().StartGeneration();
     }
 
     /// <summary>
@@ -113,8 +113,8 @@ public class BoardManager : MonoBehaviour
         else
         {
             lifeText.text = "Game Over!!";
-            waves.GetComponent<Wave>().DestroyEnemyHolder();
-            Destroy(waves);
+            waveManager.GetComponent<WaveManager>().Terminate();
+            Destroy(waveManager);
             GameManager.instance.EndGame();
         }
     }
@@ -128,7 +128,8 @@ public class BoardManager : MonoBehaviour
         else
         {
             waveText.text = "Cleared!!";
-            Destroy(waves);
+            waveManager.GetComponent<WaveManager>().Terminate();
+            Destroy(waveManager);
             GameManager.instance.EndGame();
         }
     }

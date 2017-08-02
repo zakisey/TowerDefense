@@ -194,7 +194,8 @@ MonoBehaviour:
   - {fileID: 1263606032040650, guid: f27a108081c0c794597aa227e0403c02, type: 2}
   - {fileID: 1875287309634024, guid: 74571969e5bf17343ae61a12cc96ed11, type: 2}
   - {fileID: 1079718660220030, guid: 4a9182e65b7c6254db8a4adf2568377a, type: 2}
-  waves: {fileID: 1860460660833144, guid: fce27fae8852dcd448b4afc8dc51173c, type: 2}
+  waveManager: {fileID: 1253503065692462, guid: d700fc8e0604ec44aaac3c5a612a80c6,
+    type: 2}
   boardHolder: {fileID: 0}
 --- !u!4 &69111213
 Transform:
