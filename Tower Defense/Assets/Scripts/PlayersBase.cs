@@ -1,9 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayersBase : MonoBehaviour
 {
+    /// <summary>
+    /// HPバー描画用
+    /// </summary>
+    public Slider HpBar;
     private float hp;
     public float HP
     {
@@ -20,7 +25,10 @@ public class PlayersBase : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        HP = 1;
+        HP = 2;
+        HpBar = Instantiate(HpBar, transform.position + new Vector3(0, -0.53f), Quaternion.identity, GameObject.Find("Canvas").transform);
+        HpBar.maxValue = HP;
+        HpBar.value = HP;
     }
 
     // Update is called once per frame
@@ -36,11 +44,17 @@ public class PlayersBase : MonoBehaviour
         if (collision.tag == "Enemy")
         {
             HP -= enemy.atk;
+            HpBar.value = HP;
         }
 
         if (HP <= 0)
         {
             GameManager.instance.EndGame();
         }
+    }
+
+    private void OnDestroy()
+    {
+        Destroy(HpBar.gameObject);
     }
 }
