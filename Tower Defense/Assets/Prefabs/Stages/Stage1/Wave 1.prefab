@@ -52,5 +52,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyNumber: 10
-  enemy1: {fileID: 1694742892598982, guid: 81ac10ae2ee5c30458071f81af90a643, type: 2}
-  enemy2: {fileID: 1322155926546746, guid: 04fa0bcbb06c890459564850571dbdf7, type: 2}
+  enemy: {fileID: 1694742892598982, guid: 81ac10ae2ee5c30458071f81af90a643, type: 2}

@@ -5,59 +5,39 @@ using UnityEngine;
 public class WaveManager : MonoBehaviour
 {
     public List<Wave> waveList;
-    public Transform enemyHolder;
-
-    public static WaveManager instance = null;
-
+    private GameObject enemyHolder;
     private Wave thisWave;
     private int currentWave = 0;
     private float waveInterval = 15.0f;
+    private float updateTimer = 0.0f;
 
-    private void Awake()
+    void Start()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else if (instance != this)
-        {
-            Destroy(gameObject);
-        }
+        enemyHolder = new GameObject("Enemies");
+        updateTimer = waveInterval;
+        print(enemyHolder);
     }
 
     void Update()
     {
-        if (currentWave >= waveList.Count && enemyHolder.childCount == 0)
+        if (currentWave < waveList.Count)
         {
-            StopCoroutine("CoGenerateEnemies");
+            if (updateTimer >= waveInterval)
+            {
+                BoardManager.instance.SetWaveText(currentWave + 1);
+                thisWave = Instantiate(waveList[currentWave]);
+                thisWave.enemyHolder = this.enemyHolder.transform;
+                currentWave++;
+
+                updateTimer = 0;
+            }
+            updateTimer += Time.deltaTime;
+        }
+        else if (enemyHolder.transform.childCount == 0)
+        {
             print("Cleared");
             BoardManager.instance.SetWaveText(-1);
         }
-    }
-
-    public void StartGeneration()
-    {
-        enemyHolder = new GameObject("Enemies").transform;
-        StartCoroutine("CoGenerateEnemies");
-    }
-
-    /// <summary>
-    /// WaveListから順次にWaveを呼び出す
-    /// </summary>
-    private IEnumerator CoGenerateEnemies()
-    {
-        while (currentWave < waveList.Count)
-        {
-            BoardManager.instance.SetWaveText(currentWave + 1);
-            thisWave = Instantiate(waveList[currentWave]);
-            thisWave.StartWave();
-
-            yield return new WaitForSeconds(waveInterval);
-
-            currentWave++;
-        }
-
-        yield break;
     }
 
     /// <summary>
@@ -65,8 +45,8 @@ public class WaveManager : MonoBehaviour
     /// </summary>
     public void Terminate()
     {
-        Destroy(enemyHolder.gameObject);
-        if(thisWave != null) thisWave.KillSelf();
-        Destroy(thisWave);
+        Destroy(thisWave.gameObject);
+        Destroy(enemyHolder);
+        Destroy(this.gameObject);
     }
 }

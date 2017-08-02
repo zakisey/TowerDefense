@@ -51,9 +51,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f35432173f520d499a0cfce4cd6521d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  origin1: {x: -1, y: 4}
-  origin2: {x: -1, y: 2}
   waveList:
   - {fileID: 114233637960983494, guid: 8bd0d17a95e05ea4fb1c10dac3c52793, type: 2}
   - {fileID: 114858956765650436, guid: e50face52a4608c469fcedcfdfd73ba7, type: 2}
-  enemyHolder: {fileID: 0}
