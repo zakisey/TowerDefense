@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4910402052288632}
   - component: {fileID: 114464385640634992}
   - component: {fileID: 212442236040006964}
+  - component: {fileID: 58414694942066214}
   m_Layer: 0
   m_Name: Shot
   m_TagString: Untagged
@@ -41,6 +42,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &58414694942066214
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1401135235265064}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.1
 --- !u!114 &114464385640634992
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -83,8 +99,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 217640599
-  m_SortingLayer: 3
+  m_SortingLayerID: -1323080769
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9e8f4b77c5ebbeb40bc2795d4f6b1a0e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
