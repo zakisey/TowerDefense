@@ -56,6 +56,9 @@ TagManager:
   - name: RangeCircle
     uniqueID: 217640599
     locked: 0
+  - name: Enemy
+    uniqueID: 440797679
+    locked: 0
   - name: Unit
     uniqueID: 2971886527
     locked: 0
