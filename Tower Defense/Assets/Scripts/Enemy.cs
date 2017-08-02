@@ -66,6 +66,8 @@ public class Enemy : MonoBehaviour
         if (Arrive(dList[destinationNumber]) && destinationNumber < destinationList.Count - 1)
         {
             destinationNumber++;
+            //方向転換
+            transform.rotation = Quaternion.FromToRotation(new Vector3(1,0,0) , (Vector3)dList[destinationNumber]- transform.position);
         }
         Go(dList[destinationNumber]);
     }
@@ -89,7 +91,6 @@ public class Enemy : MonoBehaviour
         Vector2 vec　= Distance(goal);
         vec = CheckSpeed(vec);
         gameObject.transform.position += (Vector3)vec;
-        
     }
 
     /// <summary>
