@@ -20,15 +20,18 @@ public class PlayersBase : MonoBehaviour
         {
             this.hp = value;
             BoardManager.instance.SetLifeText((int)hp);
+            if (hp <= 0) GameManager.instance.EndGame();
         }
     }
     // Use this for initialization
     void Start()
     {
-        HP = 2;
+        HP = 20;
         HpBar = Instantiate(HpBar, transform.position + new Vector3(0, -0.53f), Quaternion.identity, GameObject.Find("Canvas").transform);
         HpBar.maxValue = HP;
         HpBar.value = HP;
+        RectTransform hpBarRect = HpBar.GetComponent<RectTransform>();
+        hpBarRect.sizeDelta = new Vector2(80, hpBarRect.sizeDelta.y);
     }
 
     // Update is called once per frame
@@ -55,6 +58,6 @@ public class PlayersBase : MonoBehaviour
 
     private void OnDestroy()
     {
-        Destroy(HpBar.gameObject);
+        if (HpBar != null) Destroy(HpBar.gameObject);
     }
 }

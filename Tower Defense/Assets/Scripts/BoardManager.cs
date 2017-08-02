@@ -11,7 +11,6 @@ public class BoardManager : MonoBehaviour
     public GameObject playersBase;
     private GameObject enemyOnBoard;
     public GameObject socket;
-    private GameObject socketOnBoard;
     public GameObject[] groundTiles;
     public GameObject waveManagerPrefab;
     private GameObject waveManager;
@@ -77,24 +76,10 @@ public class BoardManager : MonoBehaviour
         instance.transform.SetParent(boardHolder);
     }
 
-    //Waveで対処
-    /// <summary>
-    /// 敵を作る
-    /// </summary>
-    //void GenerateEnemy()
-    //{
-    //    StartCoroutine("CreateEnemy");
-    //}
-
-    //ボード(ステージ)ごとにプレハブを作って対処のほうがいいかも
-    /// <summary>
-    /// ユニットを置く場所を生成
-    /// </summary>
     void GenerateSocket()
     {
-        GameObject instance = Instantiate(socket, new Vector3(6.5f, 7.5f, 0f), Quaternion.identity) as GameObject;
-        socketOnBoard = instance;
-        instance.transform.SetParent(boardHolder);
+        Instantiate(socket, new Vector3(6.5f, 7.5f, 0f), Quaternion.identity, boardHolder);
+        Instantiate(socket, new Vector3(9.5f, 3.5f, 0f), Quaternion.identity, boardHolder);
     }
 
     void GenerateEnemy()
@@ -116,20 +101,15 @@ public class BoardManager : MonoBehaviour
         {
             lifeText.text = "Game Over!!";
             waveManager.GetComponent<WaveManager>().Terminate();
-            GameManager.instance.EndGame();
         }
     }
 
     public void SetWaveText(int wavenumber)
     {
-        if (wavenumber != -1)
-        {
-            waveText.text = "Wave: " + wavenumber;
-        }
-        else
+        waveText.text = "Wave: " + wavenumber;
+        if(wavenumber == -1 && !GameManager.instance.isGameOver)
         {
             waveText.text = "Cleared!!";
-            GameManager.instance.EndGame();
         }
     }
 
@@ -138,10 +118,10 @@ public class BoardManager : MonoBehaviour
     /// ユニットをソケットに置く
     /// </summary>
     /// <param name="unit">置くユニット</param>
-    public void SetUnitOnSocket(GameObject unit)
+    public void SetUnitOnSocket(GameObject unit, GameObject socket)
     {
-        GameObject instance = Instantiate(unit, socketOnBoard.transform.position, Quaternion.identity) as GameObject;
-        instance.transform.SetParent(socketOnBoard.transform);
+        GameObject instance = Instantiate(unit, socket.transform.position, Quaternion.identity) as GameObject;
+        instance.transform.SetParent(socket.transform);
     }
 
 

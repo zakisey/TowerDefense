@@ -15,7 +15,6 @@ public class WaveManager : MonoBehaviour
     {
         enemyHolder = new GameObject("Enemies");
         updateTimer = waveInterval;
-        print(enemyHolder);
     }
 
     void Update()
@@ -35,8 +34,8 @@ public class WaveManager : MonoBehaviour
         }
         else if (enemyHolder.transform.childCount == 0)
         {
-            print("Cleared");
             BoardManager.instance.SetWaveText(-1);
+            GameManager.instance.EndGame();
         }
     }
 
@@ -45,7 +44,7 @@ public class WaveManager : MonoBehaviour
     /// </summary>
     public void Terminate()
     {
-        Destroy(thisWave.gameObject);
+        if (thisWave != null) Destroy(thisWave.gameObject);
         Destroy(enemyHolder);
         Destroy(this.gameObject);
     }

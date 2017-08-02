@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 //コメント
 public class GameManager : MonoBehaviour
@@ -16,7 +17,7 @@ public class GameManager : MonoBehaviour
     private GameObject unitToPlace = null;
     private GameObject title;
 
-    private bool isGameOver = false;
+    public bool isGameOver = false;
 
     /*comment for testing conflicting pull request*/
 
@@ -49,7 +50,7 @@ public class GameManager : MonoBehaviour
                 case "Socket":
                     if (mode == GameMode.UnitPlacing)
                     {
-                        BoardManager.instance.SetUnitOnSocket(unitToPlace);
+                        BoardManager.instance.SetUnitOnSocket(unitToPlace, clicked.gameObject);
                     }
                     break;
             }
@@ -63,7 +64,7 @@ public class GameManager : MonoBehaviour
 
         if (isGameOver && Input.anyKey)
         {
-            Application.LoadLevel("Start");
+            SceneManager.LoadScene("Start");
         }
     }
 
@@ -104,7 +105,6 @@ public class GameManager : MonoBehaviour
 
     public void EndGame()
     {
-        print("game over!");
         isGameOver = true;
     }
 
