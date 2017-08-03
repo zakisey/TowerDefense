@@ -8,6 +8,7 @@ public class BoardManager : MonoBehaviour
     public static BoardManager instance = null;
     private int rows = 12;
     private int columns = 15;
+    private int money = 10;
     public GameObject playersBase;
     private GameObject enemyOnBoard;
     public GameObject socket;
@@ -18,6 +19,7 @@ public class BoardManager : MonoBehaviour
     public Transform boardHolder;
     private Text lifeText;
     private Text waveText;
+    private Text moneyText;
 
     private void Awake()
     {
@@ -109,7 +111,16 @@ public class BoardManager : MonoBehaviour
         waveText.text = text;
     }
 
-    //どのソケットに置くかを引数に入れる
+    /// <summary>
+    /// プレイヤーが使えるお金を変化させてから表示
+    /// </summary>
+    /// <param name="addMoney">追加するお金</param>
+    public void SetMoneyText(int addMoney)
+    {
+        money += addMoney;
+        moneyText.text = "Money: " + money;
+    }
+
     /// <summary>
     /// ユニットをソケットに置く
     /// </summary>
@@ -118,6 +129,7 @@ public class BoardManager : MonoBehaviour
     {
         GameObject instance = Instantiate(unit, socket.transform.position, Quaternion.identity) as GameObject;
         instance.transform.SetParent(socket.transform);
+        SetMoneyText(-unit.GetComponent<Unit>().cost);//お金を払う
     }
 
 
@@ -126,10 +138,22 @@ public class BoardManager : MonoBehaviour
         boardHolder = new GameObject("Board").transform;
         lifeText = GameObject.Find("LifeText").GetComponent<Text>();
         waveText = GameObject.Find("WaveText").GetComponent<Text>();
+        moneyText = GameObject.Find("MoneyText").GetComponent<Text>();
+        SetMoneyText(0);
         BoardSetup();
         GeneratePlayersBase();
         GenerateSocket();
         GenerateEnemy();
+    }
+   
+    /// <summary>
+    /// ユニットがお金の面で配置可能かを判断
+    /// </summary>
+    /// <param name="unit">配置するユニット</param>
+    /// <returns></returns>
+    public bool UsableUnit(GameObject unit)
+    {
+        return unit.GetComponent<Unit>().cost <= money;
     }
 
     //使わないかも
