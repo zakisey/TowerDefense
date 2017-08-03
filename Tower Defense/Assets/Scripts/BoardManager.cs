@@ -8,7 +8,7 @@ public class BoardManager : MonoBehaviour
     public static BoardManager instance = null;
     private int rows = 12;
     private int columns = 15;
-    private int money = 100;
+    private int money = 10;
     public GameObject playersBase;
     private GameObject enemyOnBoard;
     public GameObject socket;
@@ -121,7 +121,6 @@ public class BoardManager : MonoBehaviour
         moneyText.text = "Money: " + money;
     }
 
-    //どのソケットに置くかを引数に入れる
     /// <summary>
     /// ユニットをソケットに置く
     /// </summary>
@@ -130,6 +129,7 @@ public class BoardManager : MonoBehaviour
     {
         GameObject instance = Instantiate(unit, socket.transform.position, Quaternion.identity) as GameObject;
         instance.transform.SetParent(socket.transform);
+        SetMoneyText(-unit.GetComponent<Unit>().cost);//お金を払う
     }
 
 
@@ -144,6 +144,16 @@ public class BoardManager : MonoBehaviour
         GeneratePlayersBase();
         GenerateSocket();
         GenerateEnemy();
+    }
+   
+    /// <summary>
+    /// ユニットがお金の面で配置可能かを判断
+    /// </summary>
+    /// <param name="unit">配置するユニット</param>
+    /// <returns></returns>
+    public bool UsableUnit(GameObject unit)
+    {
+        return unit.GetComponent<Unit>().cost <= money;
     }
 
     //使わないかも

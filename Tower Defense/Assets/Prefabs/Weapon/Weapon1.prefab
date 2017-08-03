@@ -212,6 +212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 3
   atk: 1
+  cost: 10
   atkTime: 45
   shot: {fileID: 1401135235265064, guid: 623dfba1a0240474c9dfa707df8d607a, type: 2}
   rangeCircleCollider: {fileID: 1636938936203996, guid: 65ab254a09dcdf54db0de512ad61d94c,

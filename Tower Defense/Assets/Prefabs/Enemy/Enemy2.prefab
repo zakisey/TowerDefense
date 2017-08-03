@@ -99,7 +99,7 @@ MonoBehaviour:
   atk: 1
   speed: 0.015
   hp: 5
-  money: 100
+  money: 20
   HpBar: {fileID: 114788674809986812, guid: 0c34e6ef1666216499d662295260bfa6, type: 2}
 --- !u!212 &212003013556076428
 SpriteRenderer:
