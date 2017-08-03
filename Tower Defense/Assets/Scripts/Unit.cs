@@ -27,6 +27,11 @@ public class Unit : MonoBehaviour
     /// </summary>
     public GameObject rangeCirclePicture;
 
+    /// <summary>
+    /// 効果音用
+    /// </summary>
+    public AudioSource cannonAudio;
+
     //private GameObject hoverInstance;
     //private CircleCollider2D myCollider;
 
@@ -101,12 +106,21 @@ public class Unit : MonoBehaviour
     private void Fire(GameObject target)
     {
         if (chargeTime < atkTime) return;
+        StartCoroutine(PlaySound(cannonAudio));
         GameObject shot = Instantiate(this.shot, this.transform.position, Quaternion.identity);
         Shot shotScript = shot.GetComponent<Shot>();
-        GetComponent<AudioSource>().Play();
         shotScript.target = target;
         shotScript.atk = this.atk;
         chargeTime = 0;
+    }
+
+    private IEnumerator PlaySound(AudioSource audioSource)
+    {
+        AudioSource cannonAu = Instantiate(audioSource, this.transform);
+        cannonAu.Play();
+
+        yield return new WaitWhile(() => cannonAu.isPlaying);
+        Destroy(cannonAu.gameObject);
     }
 
     //マウスホバーで射程範囲を表示する
