@@ -10,6 +10,7 @@ public class WaveManager : MonoBehaviour
     private int currentWave = 0;
     private float waveInterval = 15.0f;
     private float updateTimer = 0.0f;
+    public bool isPopping = true;
 
     void Start()
     {
@@ -26,13 +27,14 @@ public class WaveManager : MonoBehaviour
                 BoardManager.instance.SetWaveText("Wave: " + (currentWave + 1).ToString());
                 thisWave = Instantiate(waveList[currentWave]);
                 thisWave.enemyHolder = this.enemyHolder.transform;
+                thisWave.waveManager = this;
                 currentWave++;
 
                 updateTimer = 0;
             }
             updateTimer += Time.deltaTime;
         }
-        else if (enemyHolder.transform.childCount == 0 && !GameManager.instance.isGameOver)
+        else if (!isPopping && enemyHolder.transform.childCount == 0 && !GameManager.instance.isGameOver)
         {
             BoardManager.instance.SetWaveText("Cleared!!");
             GameManager.instance.EndGame();
