@@ -41,7 +41,7 @@ public class Enemy : MonoBehaviour
             hp = value;
             if (hp <= 0)
             {
-                BoardManager.instance.SetMoneyText(money);
+                BoardManager.instance.Money += money;
                 Destroy(gameObject);
             }
         }

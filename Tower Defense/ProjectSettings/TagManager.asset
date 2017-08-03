@@ -10,6 +10,7 @@ TagManager:
   - Socket
   - Undefined
   - Base
+  - UnitButton
   layers:
   - Default
   - TransparentFX
