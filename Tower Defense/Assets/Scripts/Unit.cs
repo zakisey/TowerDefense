@@ -114,21 +114,21 @@ public class Unit : MonoBehaviour
     private void Fire()
     {
         if (chargeTime++ < atkTime) return;
-        StartCoroutine(PlaySound(cannonAudio));
         GameObject shot = Instantiate(this.shot, this.transform.position, Quaternion.identity);
         Shot shotScript = shot.GetComponent<Shot>();
         shotScript.target = target;
         shotScript.atk = this.atk;
+        StartCoroutine(PlaySound(cannonAudio));
         chargeTime = 0;
     }
 
     private IEnumerator PlaySound(AudioSource audioSource)
     {
-        AudioSource cannonAu = Instantiate(audioSource, this.transform);
-        cannonAu.Play();
+        AudioSource audio = Instantiate(audioSource, this.transform);
+        audio.Play();
 
-        yield return new WaitWhile(() => cannonAu.isPlaying);
-        Destroy(cannonAu.gameObject);
+        yield return new WaitWhile(() => audio.isPlaying);
+        Destroy(audio.gameObject);
     }
 
     //マウスホバーで射程範囲を表示する
