@@ -58,6 +58,7 @@ public class Unit : MonoBehaviour
         //弾
         chargeTime = atkTime;
 
+        target = null;
         canon = this.transform.Find("Canon");
         canonVector = new Vector2(0, 1);
     }
@@ -65,8 +66,29 @@ public class Unit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Charge();
-        RotateCanon();  
+        if (target == null)
+        {
+            target = GetNearestTarget();
+        }
+        RotateCanon();
+        Fire();
+    }
+
+    private GameObject GetNearestTarget()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject nearestEnemy = null;
+        float minimumDistance = float.MaxValue;
+        foreach (GameObject enemy in enemies)
+        {
+            float distance = Vector2.Distance(this.transform.position, enemy.transform.position);
+            if (distance < minimumDistance)
+            {
+                nearestEnemy = enemy;
+                minimumDistance = distance;
+            }
+        }
+        return (minimumDistance <= this.range) ? nearestEnemy : null;
     }
 
     private void RotateCanon()
@@ -81,31 +103,17 @@ public class Unit : MonoBehaviour
         canon.RotateAround(this.transform.position, new Vector3(0, 0, 1), angle);
     }
 
-    /// <summary>
-    /// chargeTimeを増やす
-    /// </summary>
-    void Charge()
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if (chargeTime < atkTime)
+        if (collision.gameObject == target)
         {
-            chargeTime++;
+            target = null;
         }
     }
 
-    //コライダーの関数を入れる
-    private IEnumerator OnTriggerStay2D(Collider2D collision)
+    private void Fire()
     {
-        if (collision.tag == "Enemy")
-        {
-            target = collision.gameObject;
-            Fire(target);
-        }
-        yield break;
-    }
-
-    private void Fire(GameObject target)
-    {
-        if (chargeTime < atkTime) return;
+        if (chargeTime++ < atkTime) return;
         StartCoroutine(PlaySound(cannonAudio));
         GameObject shot = Instantiate(this.shot, this.transform.position, Quaternion.identity);
         Shot shotScript = shot.GetComponent<Shot>();
