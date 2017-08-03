@@ -113,7 +113,7 @@ public class Unit : MonoBehaviour
 
     private void Fire()
     {
-        if (chargeTime++ < atkTime) return;
+        if (chargeTime++ < atkTime || target == null) return;
         GameObject shot = Instantiate(this.shot, this.transform.position, Quaternion.identity);
         Shot shotScript = shot.GetComponent<Shot>();
         shotScript.target = target;

@@ -37,7 +37,7 @@ public class BoardManager : MonoBehaviour
 
     private void SetMoneyText()
     {
-        moneyText.text = "Money: " + Money + "$";
+        moneyText.text = "Money: $" + Money;
     }
 
     private void SetUnitButtonsSate()
