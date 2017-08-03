@@ -8,6 +8,7 @@ public class BoardManager : MonoBehaviour
     public static BoardManager instance = null;
     private int rows = 12;
     private int columns = 15;
+    private int money = 100;
     public GameObject playersBase;
     private GameObject enemyOnBoard;
     public GameObject socket;
@@ -18,6 +19,7 @@ public class BoardManager : MonoBehaviour
     public Transform boardHolder;
     private Text lifeText;
     private Text waveText;
+    private Text moneyText;
 
     private void Awake()
     {
@@ -109,6 +111,16 @@ public class BoardManager : MonoBehaviour
         waveText.text = text;
     }
 
+    /// <summary>
+    /// プレイヤーが使えるお金を変化させてから表示
+    /// </summary>
+    /// <param name="addMoney">追加するお金</param>
+    public void SetMoneyText(int addMoney)
+    {
+        money += addMoney;
+        moneyText.text = "Money: " + money;
+    }
+
     //どのソケットに置くかを引数に入れる
     /// <summary>
     /// ユニットをソケットに置く
@@ -126,6 +138,8 @@ public class BoardManager : MonoBehaviour
         boardHolder = new GameObject("Board").transform;
         lifeText = GameObject.Find("LifeText").GetComponent<Text>();
         waveText = GameObject.Find("WaveText").GetComponent<Text>();
+        moneyText = GameObject.Find("MoneyText").GetComponent<Text>();
+        SetMoneyText(0);
         BoardSetup();
         GeneratePlayersBase();
         GenerateSocket();

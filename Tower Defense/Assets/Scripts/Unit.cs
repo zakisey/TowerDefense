@@ -6,6 +6,7 @@ public class Unit : MonoBehaviour
 {
     public float range = 3.0f;
     public float atk = 1.0f;
+    public int cost;
     /// <summary>
     /// (atkTime)フレームごとに弾を1発撃つ
     /// </summary>

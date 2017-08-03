@@ -23,6 +23,7 @@ public class Enemy : MonoBehaviour
     public float atk = 1.0f;
     public float speed = 0.05f;
     public float hp;
+    public int money;
 
     /// <summary>
     /// HPバー描画用
@@ -40,6 +41,7 @@ public class Enemy : MonoBehaviour
             hp = value;
             if (hp <= 0)
             {
+                BoardManager.instance.SetMoneyText(money);
                 Destroy(gameObject);
             }
         }
@@ -125,7 +127,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.tag == "Base")
         {
-            HP = 0;
+            Destroy(gameObject);
         }
     }
 
