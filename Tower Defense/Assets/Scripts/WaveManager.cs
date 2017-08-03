@@ -24,7 +24,7 @@ public class WaveManager : MonoBehaviour
         {
             if (updateTimer >= waveInterval)
             {
-                BoardManager.instance.SetWaveText("Wave: " + (currentWave + 1).ToString());
+                BoardManager.instance.SetWaveText("Wave: " + (currentWave + 1) + " / " + waveList.Count);
                 thisWave = Instantiate(waveList[currentWave]);
                 thisWave.enemyHolder = this.enemyHolder.transform;
                 thisWave.waveManager = this;
