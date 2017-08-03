@@ -10,6 +10,8 @@ public class Wave : MonoBehaviour
     private int enemiesPopped = 0;
     private float enemyPopInterval = 1.0f;
     private float updateTimer = 0.0f;
+    public WaveManager waveManager;
+
 
     /*　最終的にDBからWaveを生成するに向けて保留
     public Wave(string monsterID)
@@ -29,10 +31,12 @@ public class Wave : MonoBehaviour
         {
             if (enemiesPopped < enemyNumber)
             {
+                waveManager.isPopping = true;
                 InstantiateEnemy();
             }
             else
             {
+                waveManager.isPopping = false;
                 Destroy(this.gameObject);
             }
             updateTimer = 0;
