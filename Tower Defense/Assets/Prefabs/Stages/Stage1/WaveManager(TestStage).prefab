@@ -53,4 +53,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveList:
   - {fileID: 114233637960983494, guid: 8bd0d17a95e05ea4fb1c10dac3c52793, type: 2}
+  - {fileID: 114858956765650436, guid: e50face52a4608c469fcedcfdfd73ba7, type: 2}
+  - {fileID: 114233637960983494, guid: 8bd0d17a95e05ea4fb1c10dac3c52793, type: 2}
+  - {fileID: 114858956765650436, guid: e50face52a4608c469fcedcfdfd73ba7, type: 2}
+  - {fileID: 114858956765650436, guid: e50face52a4608c469fcedcfdfd73ba7, type: 2}
   isPopping: 1
