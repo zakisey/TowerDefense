@@ -73,6 +73,21 @@ public class GameManager : MonoBehaviour
         ShowUnitToPlaceOnCursor();
     }
 
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1.0f;
+    }
+
+    public void FastForwardGame()
+    {
+        // TODO: 早送り機能の実装
+    }
+
     // ユニットを設置するモードのとき、マウスカーソルの位置に設置するユニットを表示する
     private void ShowUnitToPlaceOnCursor()
     {

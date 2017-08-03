@@ -56,7 +56,7 @@ public class Enemy : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Move(destinationList);
         HpBar.transform.position = this.transform.position + new Vector3(0,-0.3f);
