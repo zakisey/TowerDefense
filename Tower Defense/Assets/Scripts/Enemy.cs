@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
     public float atk = 1.0f;
     public float speed = 0.05f;
     public float hp;
-    public int money;
+    public int money = 10;
 
     /// <summary>
     /// HPバー描画用
