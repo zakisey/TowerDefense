@@ -64,7 +64,7 @@ public class Unit : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (target == null)
         {
