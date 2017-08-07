@@ -11,6 +11,7 @@ TagManager:
   - Undefined
   - Base
   - UnitButton
+  - Canvas
   layers:
   - Default
   - TransparentFX

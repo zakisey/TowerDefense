@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class BoardManager : MonoBehaviour
 {
     public static BoardManager instance = null;
+    public GameObject unitButtonTooltip;
     private int rows = 12;
     private int columns = 15;
     private int money;
@@ -93,9 +94,6 @@ public class BoardManager : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// ツールバー(？)にいるユニットの表示
-    /// </summary>
     void GeneratePlayersBase()
     {
         GameObject instance = Instantiate(playersBase, new Vector3(12f, 4f, 0f), Quaternion.identity) as GameObject;

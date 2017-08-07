@@ -50,7 +50,8 @@ public class Enemy : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        HpBar = Instantiate(HpBar, transform.position, Quaternion.identity, GameObject.Find("Canvas").transform);
+        HpBar = Instantiate(HpBar, new Vector3(0, 0, 0), Quaternion.identity, GameObject.Find("Canvas").transform);
+        SetHpBarPos();
         HpBar.maxValue = HP;
         HpBar.value = HP;
     }
@@ -59,7 +60,12 @@ public class Enemy : MonoBehaviour
     void FixedUpdate()
     {
         Move(destinationList);
-        HpBar.transform.position = this.transform.position + new Vector3(0,-0.3f);
+        SetHpBarPos();
+    }
+
+    private void SetHpBarPos()
+    {
+        HpBar.transform.position = Camera.main.WorldToScreenPoint(this.transform.position + new Vector3(0, -0.3f, 0));
     }
 
     private void Move(List<Vector2> dList)

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 //コメント
 public class GameManager : MonoBehaviour
@@ -13,6 +14,9 @@ public class GameManager : MonoBehaviour
     }
 
     public static GameManager instance = null;
+    public Button pauseButton;
+    public Button resumeButton;
+    public Button fastButton;
     private GameMode mode = GameMode.Normal;
     private GameObject unitToPlace = null;
     private GameObject title;
@@ -77,11 +81,15 @@ public class GameManager : MonoBehaviour
     public void PauseGame()
     {
         Time.timeScale = 0;
+        pauseButton.interactable = false;
+        resumeButton.interactable = true;
     }
 
     public void ResumeGame()
     {
         Time.timeScale = 1.0f;
+        resumeButton.interactable = false;
+        pauseButton.interactable = true;
     }
 
     public void FastForwardGame()
@@ -98,7 +106,7 @@ public class GameManager : MonoBehaviour
         Texture textureCanon = unitToPlace.transform.Find("Canon").GetComponent<SpriteRenderer>().sprite.texture;
         // Vector3でマウス位置座標を取得する
         Vector3 position = Input.mousePosition;
-        position = new Vector3(position.x,Screen.height - position.y,0f);
+        position = new Vector3(position.x, Screen.height - position.y, 0f);
         // マウス位置座標をスクリーン座標からワールド座標に変換する
         Vector3 screenToWorldPointPosition = Camera.main.ScreenToWorldPoint(position);
         

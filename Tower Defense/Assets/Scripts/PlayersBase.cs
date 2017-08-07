@@ -27,7 +27,8 @@ public class PlayersBase : MonoBehaviour
     void Start()
     {
         HP = 10;
-        HpBar = Instantiate(HpBar, transform.position + new Vector3(0, -0.53f), Quaternion.identity, GameObject.Find("Canvas").transform);
+        Vector3 hpBarPos = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, -0.6f));
+        HpBar = Instantiate(HpBar, hpBarPos, Quaternion.identity, GameObject.Find("Canvas").transform);
         HpBar.maxValue = HP;
         HpBar.value = HP;
         RectTransform hpBarRect = HpBar.GetComponent<RectTransform>();
