@@ -216,7 +216,7 @@ MonoBehaviour:
     atk: 1
     speed: 1
     hp: 2
-    money: 3
+    money: 5
     pathNum: 0
     enemyCount: 10
     durationSec: 10
@@ -225,7 +225,7 @@ MonoBehaviour:
     atk: 2
     speed: 0.5
     hp: 4
-    money: 7
+    money: 8
     pathNum: 1
     enemyCount: 4
     durationSec: 3

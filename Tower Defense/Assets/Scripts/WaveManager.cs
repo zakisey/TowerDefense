@@ -44,6 +44,7 @@ public class WaveManager : MonoBehaviour
             // waveの中の敵を一体ずつ涌かせる
             for (int ei = 0; ei < waves[wi].enemyCount; ei++)
             {
+                // メソッドの呼び出しが冗長なのでなんとかしたい…
                 BoardManager.instance.GenerateEnemy(waves[wi].enemy, waves[wi].atk, waves[wi].speed, waves[wi].hp, waves[wi].money, pathList[waves[wi].pathNum].list);
                 float interval = waves[wi].durationSec / waves[wi].enemyCount;
                 yield return new WaitForSeconds(interval);
@@ -51,6 +52,7 @@ public class WaveManager : MonoBehaviour
         }
     }
 
+    // 敵が湧くのを止める
     public void Stop()
     {
         StopCoroutine("PopWaves");

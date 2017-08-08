@@ -39,6 +39,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    // 攻撃力などの数値を受け取って初期化する
     public void Init(float atk, float speed, float hp, int money, List<Vector2> path)
     {
         HP = hp;
@@ -83,6 +84,7 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // 基地に衝突したらダメージを与えて消滅する
         if (collision.tag == "Base")
         {
             collision.gameObject.GetComponent<PlayersBase>().TakeDamage(atk);
