@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Unitが発射する弾丸のクラス
 public class Shot : MonoBehaviour
 {
     public GameObject target;
@@ -10,13 +11,15 @@ public class Shot : MonoBehaviour
 
     private void Update()
     {
-        // targetの座標に向かって移動
+        // targetが存在しなければ消滅
         if (target == null)
         {
             Destroy(this.gameObject);
             return;
         }
+        // targetの方へ移動
         transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
+        // targetにぶつかったらダメージを与えて消滅
         if (transform.position == target.transform.position)
         {
             Enemy enemyScript = target.GetComponent<Enemy>();

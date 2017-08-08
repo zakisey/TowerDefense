@@ -89,16 +89,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f0526d81e43979429e00069be66bf6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destinationList:
-  - {x: -1, y: 5}
-  - {x: 3, y: 5}
-  - {x: 3, y: 9}
-  - {x: 8, y: 9}
-  - {x: 8, y: 2}
-  - {x: 12, y: 2}
-  - {x: 12, y: 4}
+  path: []
   atk: 1
-  speed: 0.035
+  speed: 3
   hp: 2
   money: 10
   HpBar: {fileID: 114788674809986812, guid: 0c34e6ef1666216499d662295260bfa6, type: 2}

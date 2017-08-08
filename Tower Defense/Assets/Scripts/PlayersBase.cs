@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// プレイヤーの基地のクラス
 public class PlayersBase : MonoBehaviour
 {
     /// <summary>
@@ -18,12 +19,17 @@ public class PlayersBase : MonoBehaviour
         }
         set
         {
-            this.hp = value;
+            hp = value;
+            HpBar.value = hp;
             BoardManager.instance.SetLifeText((int)hp);
-            if (hp <= 0) GameManager.instance.EndGame();
+            if (hp <= 0)
+            {
+                Destroy(HpBar.gameObject);
+                GameManager.instance.EndGame();
+            }
         }
     }
-    // Use this for initialization
+
     void Start()
     {
         HP = 10;
@@ -35,30 +41,9 @@ public class PlayersBase : MonoBehaviour
         hpBarRect.sizeDelta = new Vector2(80, hpBarRect.sizeDelta.y);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void TakeDamage(float damage)
     {
-
+        HP -= damage;
     }
 
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Enemy enemy = collision.gameObject.GetComponent<Enemy>();
-        if (collision.tag == "Enemy")
-        {
-            HP -= enemy.atk;
-            HpBar.value = HP;
-        }
-
-        if (HP <= 0)
-        {
-            GameManager.instance.EndGame();
-        }
-    }
-
-    private void OnDestroy()
-    {
-        if (HpBar != null) Destroy(HpBar.gameObject);
-    }
 }

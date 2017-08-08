@@ -17,7 +17,6 @@ public class Unit : MonoBehaviour
     private int chargeTime;
 
     public GameObject shot;
-    private bool shotFlag = false;
     /// <summary>
     /// 攻撃範囲用
     /// </summary>

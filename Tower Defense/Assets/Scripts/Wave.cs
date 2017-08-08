@@ -2,8 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Wave : MonoBehaviour
+[System.Serializable]
+public class Wave : System.Object
 {
+    // このWaveで出現する敵のPrefab
+    public GameObject enemy;
+    // このWaveで出現する敵のデータ
+    public float atk;
+    public float speed;
+    public float hp;
+    public int money;
+    public int pathNum;
+    // このWaveで出現する敵の数
+    public int enemyCount;
+    // このWaveにかかる秒数
+    public float durationSec;
+    // 前のWaveが始まってからこのWaveが始まるまでの待ち時間の秒数
+    public float waitSec;
+
+    /*
     public int enemyNumber;
     public GameObject enemy;
     public Transform enemyHolder;
@@ -18,7 +35,7 @@ public class Wave : MonoBehaviour
     {
         enemy1 = GameObject.Find(monsterID);
         enemyHolder = WaveManager.instance.enemyHolder;
-    }*/
+    }
 
     void Start()
     {
@@ -53,4 +70,5 @@ public class Wave : MonoBehaviour
         enemyinstance.transform.SetParent(enemyHolder);
         enemiesPopped++;
     }
+    */
 }

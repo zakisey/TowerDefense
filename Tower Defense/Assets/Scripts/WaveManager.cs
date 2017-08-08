@@ -2,8 +2,55 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class WaveManager : MonoBehaviour
 {
+    public static WaveManager instance = null;
+    // List<Vector2>をシリアライズするためのラッパークラス
+    [System.Serializable]
+    public class Path
+    {
+        public List<Vector2> list;
+    }
+    public List<Path> pathList;
+    public List<Wave> waves;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void Start()
+    {
+        StartCoroutine("PopWaves");
+    }
+
+    // wavesからひとつずつWaveを取り出し、敵を涌かせる
+    IEnumerator PopWaves()
+    {
+        for (int wi = 0; wi < waves.Count; wi++)
+        {
+            // waveを涌かせる前の待ち時間
+            BoardManager.instance.SetWaveText(wi, waves.Count);
+            yield return new WaitForSeconds(waves[wi].waitSec);
+            BoardManager.instance.SetWaveText(wi + 1, waves.Count);
+            for (int ei = 0; ei < waves[wi].enemyCount; ei++)
+            {
+                BoardManager.instance.GenerateEnemy(waves[wi].enemy, waves[wi].atk, waves[wi].speed, waves[wi].hp, waves[wi].money, pathList[waves[wi].pathNum].list);
+                float interval = waves[wi].durationSec / waves[wi].enemyCount;
+                yield return new WaitForSeconds(interval);
+            }
+        }
+    }
+
+    /*
     public List<Wave> waveList;
     private GameObject enemyHolder;
     private Wave thisWave;
@@ -50,4 +97,5 @@ public class WaveManager : MonoBehaviour
         Destroy(enemyHolder);
         Destroy(this.gameObject);
     }
+    */
 }
