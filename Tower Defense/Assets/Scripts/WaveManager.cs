@@ -41,6 +41,7 @@ public class WaveManager : MonoBehaviour
             BoardManager.instance.SetWaveText(wi, waves.Count);
             yield return new WaitForSeconds(waves[wi].waitSec);
             BoardManager.instance.SetWaveText(wi + 1, waves.Count);
+            // waveの中の敵を一体ずつ涌かせる
             for (int ei = 0; ei < waves[wi].enemyCount; ei++)
             {
                 BoardManager.instance.GenerateEnemy(waves[wi].enemy, waves[wi].atk, waves[wi].speed, waves[wi].hp, waves[wi].money, pathList[waves[wi].pathNum].list);
@@ -48,6 +49,11 @@ public class WaveManager : MonoBehaviour
                 yield return new WaitForSeconds(interval);
             }
         }
+    }
+
+    public void Stop()
+    {
+        StopCoroutine("PopWaves");
     }
 
     /*

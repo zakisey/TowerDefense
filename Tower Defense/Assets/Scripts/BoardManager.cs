@@ -97,6 +97,15 @@ public class BoardManager : MonoBehaviour
         instance.transform.SetParent(socket.transform);
     }
 
+    // 盤面の敵を全て削除する
+    public void DestroyAllEnemies()
+    {
+        foreach (Enemy enemy in boardHolder.transform.GetComponentsInChildren<Enemy>())
+        {
+            Destroy(enemy.gameObject);
+        }
+    }
+
     /// <summary>
     /// 文字列からボードのグラフィックを生成して配置する
     /// </summary>
@@ -125,5 +134,4 @@ public class BoardManager : MonoBehaviour
         Instantiate(socket, new Vector3(6.5f, 7.5f, 0f), Quaternion.identity, boardHolder);
         Instantiate(socket, new Vector3(9.5f, 3.5f, 0f), Quaternion.identity, boardHolder);
     }
-
 }

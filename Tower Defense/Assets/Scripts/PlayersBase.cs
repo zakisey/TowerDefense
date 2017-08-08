@@ -24,7 +24,6 @@ public class PlayersBase : MonoBehaviour
             BoardManager.instance.SetLifeText((int)hp);
             if (hp <= 0)
             {
-                Destroy(HpBar.gameObject);
                 GameManager.instance.EndGame();
             }
         }
@@ -45,5 +44,4 @@ public class PlayersBase : MonoBehaviour
     {
         HP -= damage;
     }
-
 }

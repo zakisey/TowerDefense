@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        Time.timeScale = 0.0f;
+        PauseGame();
     }
 
     private void Start()
@@ -143,7 +143,8 @@ public class GameManager : MonoBehaviour
 
     public void EndGame()
     {
-        // TODO: ゲーム終了時の処理
+        WaveManager.instance.Stop();
+        BoardManager.instance.DestroyAllEnemies();
     }
 
     public void ChangeGameMode(GameMode mode)
