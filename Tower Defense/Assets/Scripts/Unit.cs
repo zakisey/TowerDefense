@@ -17,7 +17,6 @@ public class Unit : MonoBehaviour
     private int chargeTime;
 
     public GameObject shot;
-    private bool shotFlag = false;
     /// <summary>
     /// 攻撃範囲用
     /// </summary>
@@ -74,6 +73,7 @@ public class Unit : MonoBehaviour
         Fire();
     }
 
+    // 射程距離内の一番近い敵を見つける
     private GameObject GetNearestTarget()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -91,6 +91,7 @@ public class Unit : MonoBehaviour
         return (minimumDistance <= this.range) ? nearestEnemy : null;
     }
 
+    // 砲身がターゲットしている敵の方へ向くように回転する
     private void RotateCanon()
     {
         if (target == null) return;
@@ -111,6 +112,7 @@ public class Unit : MonoBehaviour
         }
     }
 
+    // ターゲットしている敵を砲撃する
     private void Fire()
     {
         if (chargeTime++ < atkTime || target == null) return;

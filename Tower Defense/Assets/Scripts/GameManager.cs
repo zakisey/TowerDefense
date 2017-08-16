@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-//コメント
 public class GameManager : MonoBehaviour
 {
     public enum GameMode
@@ -17,13 +16,23 @@ public class GameManager : MonoBehaviour
     public Button pauseButton;
     public Button resumeButton;
     public Button fastButton;
+    private int money;
     private GameMode mode = GameMode.Normal;
     private GameObject unitToPlace = null;
-    private GameObject title;
 
-    public bool isGameOver = false;
-
-    /*comment for testing conflicting pull request*/
+    public int Money
+    {
+        get
+        {
+            return money;
+        }
+        set
+        {
+            money = value;
+            BoardManager.instance.SetUnitButtonsState();
+            BoardManager.instance.SetMoneyText(money);
+        }
+    }
 
     private void Awake()
     {
@@ -35,7 +44,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        Time.timeScale = 0.0f;
+        PauseGame();
     }
 
     private void Start()
@@ -55,6 +64,7 @@ public class GameManager : MonoBehaviour
                 case "Socket":
                     if (mode == GameMode.UnitPlacing)
                     {
+                        Money -= unitToPlace.GetComponent<Unit>().cost;
                         BoardManager.instance.SetUnitOnSocket(unitToPlace, clicked.gameObject);
                     }
                     break;
@@ -66,16 +76,21 @@ public class GameManager : MonoBehaviour
             unitToPlace = null;
             ChangeGameMode(GameMode.Normal);
         }
-
-        if (isGameOver && Input.anyKey)
-        {
-            SceneManager.LoadScene("Start");
-        }
     }
 
     private void OnGUI()
     {
         ShowUnitToPlaceOnCursor();
+    }
+
+    /// <summary>
+    /// ユニットがお金の面で配置可能かを判断
+    /// </summary>
+    /// <param name="unit">配置するユニット</param>
+    /// <returns></returns>
+    public bool IsUsableUnit(GameObject unit)
+    {
+        return unit.GetComponent<Unit>().cost <= Money;
     }
 
     public void PauseGame()
@@ -107,8 +122,6 @@ public class GameManager : MonoBehaviour
         // Vector3でマウス位置座標を取得する
         Vector3 position = Input.mousePosition;
         position = new Vector3(position.x, Screen.height - position.y, 0f);
-        // マウス位置座標をスクリーン座標からワールド座標に変換する
-        Vector3 screenToWorldPointPosition = Camera.main.ScreenToWorldPoint(position);
         
         GUI.DrawTexture(new Rect(position.x - 32, position.y - 32, 64, 64), texture);
         GUI.DrawTexture(new Rect(position.x - 32, position.y - 32 - 10, 64, 64), textureCanon);
@@ -125,11 +138,13 @@ public class GameManager : MonoBehaviour
     public void InitGame()
     {
         BoardManager.instance.SetupScene();
+        Money = 10;
     }
 
     public void EndGame()
     {
-        isGameOver = true;
+        WaveManager.instance.Stop();
+        BoardManager.instance.DestroyAllEnemies();
     }
 
     public void ChangeGameMode(GameMode mode)

@@ -118,6 +118,7 @@ GameObject:
   - component: {fileID: 69111213}
   - component: {fileID: 69111212}
   - component: {fileID: 69111211}
+  - component: {fileID: 69111214}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -139,7 +140,6 @@ MonoBehaviour:
   pauseButton: {fileID: 2062967114}
   resumeButton: {fileID: 629167806}
   fastButton: {fileID: 1223906910}
-  isGameOver: 0
 --- !u!114 &69111212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,8 +151,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8d53f76853c32b4cb42a0bf529556eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitButtonTooltip: {fileID: 1863715889971144, guid: 0746626eb4158bc46b9ce5d0d2407691,
-    type: 2}
   playersBase: {fileID: 1170406876124560, guid: 64f07e10729e291449f8aad5d10770e5,
     type: 2}
   socket: {fileID: 1198618732342650, guid: 8a34829ae9dd26344bd9f2c9f7d78084, type: 2}
@@ -170,9 +168,9 @@ MonoBehaviour:
   - {fileID: 1524874958882808, guid: 1dd09d22104a9fc4cad21ceb935289bd, type: 2}
   - {fileID: 1605576128706512, guid: 3e55be9a5b950224bbf9b82c426df59d, type: 2}
   - {fileID: 1713423411479278, guid: ec5af5184b3b2264ea84ef19d3cac19c, type: 2}
-  waveManagerPrefab: {fileID: 1253503065692462, guid: d700fc8e0604ec44aaac3c5a612a80c6,
-    type: 2}
-  boardHolder: {fileID: 0}
+  lifeText: {fileID: 628048356}
+  waveText: {fileID: 1326933190}
+  moneyText: {fileID: 1653629023}
 --- !u!4 &69111213
 Transform:
   m_ObjectHideFlags: 0
@@ -186,6 +184,61 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &69111214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 69111210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f35432173f520d499a0cfce4cd6521d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pathList:
+  - list:
+    - {x: 0, y: 5}
+    - {x: 3, y: 5}
+    - {x: 3, y: 9}
+    - {x: 8, y: 9}
+    - {x: 8, y: 2}
+    - {x: 12, y: 2}
+    - {x: 12, y: 4}
+  - list:
+    - {x: 12, y: 12}
+    - {x: 12, y: 9}
+    - {x: 8, y: 9}
+    - {x: 8, y: 2}
+    - {x: 12, y: 2}
+    - {x: 12, y: 4}
+  waves:
+  - enemy: {fileID: 1694742892598982, guid: 81ac10ae2ee5c30458071f81af90a643, type: 2}
+    atk: 1
+    speed: 1
+    hp: 2
+    money: 5
+    pathNum: 0
+    enemyCount: 10
+    durationSec: 10
+    waitSec: 1
+  - enemy: {fileID: 1322155926546746, guid: 04fa0bcbb06c890459564850571dbdf7, type: 2}
+    atk: 2
+    speed: 0.5
+    hp: 4
+    money: 8
+    pathNum: 1
+    enemyCount: 4
+    durationSec: 3
+    waitSec: 5
+  - enemy: {fileID: 1975567479264546, guid: c0076d5886282c84fb8897827deb688a, type: 2}
+    atk: 10
+    speed: 0.5
+    hp: 20
+    money: 100
+    pathNum: 0
+    enemyCount: 1
+    durationSec: 1
+    waitSec: 5
 --- !u!1 &286672000
 GameObject:
   m_ObjectHideFlags: 0

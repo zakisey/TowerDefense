@@ -2,52 +2,59 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class WaveManager : MonoBehaviour
 {
-    public List<Wave> waveList;
-    private GameObject enemyHolder;
-    private Wave thisWave;
-    private int currentWave = 0;
-    private float waveInterval = 15.0f;
-    private float updateTimer = 0.0f;
-    public bool isPopping = true;
-
-    void Start()
+    public static WaveManager instance = null;
+    // List<Vector2>をシリアライズするためのラッパークラス
+    [System.Serializable]
+    public class Path
     {
-        enemyHolder = new GameObject("Enemies");
-        updateTimer = waveInterval;
+        public List<Vector2> list;
+    }
+    public List<Path> pathList;
+    public List<Wave> waves;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
     }
 
-    void Update()
+    private void Start()
     {
-        if (currentWave < waveList.Count)
+        StartCoroutine("PopWaves");
+    }
+
+    // wavesからひとつずつWaveを取り出し、敵を涌かせる
+    IEnumerator PopWaves()
+    {
+        for (int wi = 0; wi < waves.Count; wi++)
         {
-            if (updateTimer >= waveInterval)
+            // waveを涌かせる前の待ち時間
+            BoardManager.instance.SetWaveText(wi, waves.Count);
+            yield return new WaitForSeconds(waves[wi].waitSec);
+            BoardManager.instance.SetWaveText(wi + 1, waves.Count);
+            // waveの中の敵を一体ずつ涌かせる
+            for (int ei = 0; ei < waves[wi].enemyCount; ei++)
             {
-                BoardManager.instance.SetWaveText("Wave: " + (currentWave + 1) + " / " + waveList.Count);
-                thisWave = Instantiate(waveList[currentWave]);
-                thisWave.enemyHolder = this.enemyHolder.transform;
-                thisWave.waveManager = this;
-                currentWave++;
-
-                updateTimer = 0;
+                // メソッドの呼び出しが冗長なのでなんとかしたい…
+                BoardManager.instance.GenerateEnemy(waves[wi].enemy, waves[wi].atk, waves[wi].speed, waves[wi].hp, waves[wi].money, pathList[waves[wi].pathNum].list);
+                float interval = waves[wi].durationSec / waves[wi].enemyCount;
+                yield return new WaitForSeconds(interval);
             }
-            updateTimer += Time.deltaTime;
-        }
-        else if (!isPopping && enemyHolder.transform.childCount == 0 && !GameManager.instance.isGameOver)
-        {
-            BoardManager.instance.SetWaveText("Cleared!!");
-            GameManager.instance.EndGame();
         }
     }
 
-    /// <summary>
-    /// 失敗時全ての敵を消去用
-    /// </summary>
-    public void Terminate()
+    // 敵が湧くのを止める
+    public void Stop()
     {
-        if (thisWave != null) Destroy(thisWave.gameObject);
-        Destroy(enemyHolder);
-        Destroy(this.gameObject);
+        StopCoroutine("PopWaves");
     }
 }

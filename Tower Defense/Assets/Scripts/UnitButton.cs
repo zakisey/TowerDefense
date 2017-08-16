@@ -11,7 +11,7 @@ public class UnitButton : MonoBehaviour
 
     public void OnClick()
     {
-        if (BoardManager.instance.IsUsableUnit(unit))
+        if (GameManager.instance.IsUsableUnit(unit))
         {
             GameManager.instance.ChangeGameModeToUnitPlacing(unit);
         }

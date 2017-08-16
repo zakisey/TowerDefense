@@ -1,32 +1,23 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
-
-    private const int StageWidth = 15;
-    private const int StageHeight = 12;
-    private const float mas = 1f;
-
+    private float hp;
+    private float atk;
+    private float speed;
+    private int money;
     /// <summary>
-    /// 敵が進む目的地のリスト
+    /// 敵が進む目的地の座標のリスト。最初の要素がスポーン位置で最後の要素が基地の位置
     /// </summary>
-    public List<Vector2> destinationList;
+    private List<Vector2> path = null;
     /// <summary>
     /// 敵が向かっている目的地の場所のリスト番号
     /// </summary>
     private int destinationNumber = 0;
-
-
-    public float atk = 1.0f;
-    public float speed = 0.05f;
-    public float hp;
-    public int money = 10;
-
     /// <summary>
-    /// HPバー描画用
+    /// HPバーのPrefab
     /// </summary>
     public Slider HpBar;
 
@@ -39,17 +30,23 @@ public class Enemy : MonoBehaviour
         set
         {
             hp = value;
+            HpBar.value = hp;
             if (hp <= 0)
             {
-                BoardManager.instance.Money += money;
+                GameManager.instance.Money += money;
                 Destroy(gameObject);
             }
         }
     }
 
-    // Use this for initialization
-    void Start()
+    // 攻撃力などの数値を受け取って初期化する
+    public void Init(float atk, float speed, float hp, int money, List<Vector2> path)
     {
+        HP = hp;
+        this.atk = atk;
+        this.speed = speed;
+        this.money = money;
+        this.path = path;
         HpBar = Instantiate(HpBar, new Vector3(0, 0, 0), Quaternion.identity, GameObject.Find("Canvas").transform);
         SetHpBarPos();
         HpBar.maxValue = HP;
@@ -59,80 +56,38 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Move(destinationList);
-        SetHpBarPos();
+        if (path != null)
+        {
+            Move();
+            SetHpBarPos();
+        }
     }
 
+    // 自分(敵ユニット)の位置にあわせてHPバーの位置を移動させる
     private void SetHpBarPos()
     {
+        // HPバーはUI要素なのでWorld座標からScreen座標に変換する
         HpBar.transform.position = Camera.main.WorldToScreenPoint(this.transform.position + new Vector3(0, -0.3f, 0));
     }
 
-    private void Move(List<Vector2> dList)
+    private void Move()
     {
-        if (Arrive(dList[destinationNumber]) && destinationNumber < destinationList.Count - 1)
+        // 次の目的地(曲がり角)に到着したら、目的地の番号を更新して方向転換
+        if (transform.position == (Vector3)path[destinationNumber] && destinationNumber < path.Count - 1)
         {
             destinationNumber++;
-            //方向転換
-            transform.rotation = Quaternion.FromToRotation(new Vector3(1,0,0) , (Vector3)dList[destinationNumber]- transform.position);
+            transform.rotation = Quaternion.FromToRotation(new Vector3(1, 0, 0), (Vector3)path[destinationNumber] - transform.position);
         }
-        Go(dList[destinationNumber]);
-    }
-
-    /// <summary>
-    /// 目的地に着いたかどうか
-    /// </summary>
-    /// <param name="goal"></param>
-    /// <returns></returns>
-    bool Arrive(Vector2 goal)
-    {
-        return goal == (Vector2)gameObject.transform.position;
-    }
-
-    /// <summary>
-    /// 目的地に向かって敵を進ませる
-    /// </summary>
-    /// <param name="goal">目的地の座標</param>
-    void Go(Vector2 goal)
-    {
-        Vector2 vec　= Distance(goal);
-        vec = CheckSpeed(vec);
-        gameObject.transform.position += (Vector3)vec;
-    }
-
-    /// <summary>
-    /// 目的地とthis.gameObjectまでの距離を出す
-    /// </summary>
-    /// <param name="gx">目的地のx座標</param>
-    /// <param name="gy">目的地のy座標</param>
-    /// <param name="dx">目的地までのxの距離</param>
-    /// <param name="dy">目的地までのyの距離</param>
-    Vector2 Distance(Vector2 goal)
-    {
-        return goal - (Vector2)gameObject.transform.position;
-    }
-
-    /// <summary>
-    /// 距離をもとに移動距離をいくらにするか決める
-    /// </summary>
-    /// <param name="distance"></param>
-    /// <returns></returns>
-    Vector2 CheckSpeed(Vector2 distance)
-    {
-        if (speed >= distance.magnitude)
-        {
-            return distance;
-        }
-        else
-        {
-            return speed * distance.normalized;
-        }
+        // 目的地の方向へ進む
+        transform.position = Vector3.MoveTowards(transform.position, path[destinationNumber], speed * Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // 基地に衝突したらダメージを与えて消滅する
         if (collision.tag == "Base")
         {
+            collision.gameObject.GetComponent<PlayersBase>().TakeDamage(atk);
             Destroy(gameObject);
         }
     }
@@ -140,8 +95,8 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(float damage)
     {
         this.HP -= damage;
-        HpBar.value = HP;
     }
+
     private void OnDestroy()
     {
         if (HpBar != null) Destroy(HpBar.gameObject);
