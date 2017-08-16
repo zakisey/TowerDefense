@@ -8,7 +8,7 @@ public class BoardManager : MonoBehaviour
     public static BoardManager instance = null;
     // Prefabs
     public GameObject playersBasePrefab;
-    public GameObject socket;
+    public GameObject socketPrefab;
     public GameObject[] groundTiles;
     // シーン内のオブジェクトへの参照
     public GameObject lifeText;
@@ -16,22 +16,9 @@ public class BoardManager : MonoBehaviour
     public GameObject moneyText;
     private GameObject playersBase;
 
-    public const string boardText =
-    "aaaaaaaaaaadeaa" +
-    "aaaaaaaaaaadeaa" +
-    "aahbbbbbbbbjeaa" +
-    "aadlcccklcccfaa" +
-    "aadeaaadeaaaaaa" +
-    "aadeaaadeaaaaaa" +
-    "bbjeaaadeaaaaaa" +
-    "cccfaaadeaahgaa" +
-    "aaaaaaadeaadeaa" +
-    "aaaaaaadmbbjeaa" +
-    "aaaaaaaiccccfaa" +
-    "aaaaaaaaaaaaaaa";
-    
-    private int rows = 12;
-    private int columns = 15;
+    public List<string> boardData;
+    public List<Vector2> socketPosList;
+
     // ボード上の要素を入れておくholder
     private Transform boardHolder;
 
@@ -119,18 +106,17 @@ public class BoardManager : MonoBehaviour
         return boardHolder.transform.GetComponentInChildren<Enemy>() == null;
     }
 
-    /// <summary>
-    /// 文字列からボードのグラフィックを生成して配置する
-    /// </summary>
+    // 文字列のリストからタイルを生成して配置する
     private void BoardSetup()
     {
-        for (int y = 0; y < rows; y++)
+        for (int y = 0; y < boardData.Count; y++)
         {
-            for (int x = 0; x < columns; x++)
+            string s = boardData[y];
+            for (int x = 0; x < s.Length; x++)
             {
-                char c = boardText[y * columns + x];
+                char c = s[x];
                 GameObject toInstantiate = groundTiles[c - 'a'];
-                GameObject instance = Instantiate(toInstantiate, new Vector3(x + 0.5f, rows - y - 1 + 0.5f, 0f), Quaternion.identity) as GameObject;
+                GameObject instance = Instantiate(toInstantiate, new Vector3(x + 0.5f, boardData.Count - y - 1 + 0.5f, 0f), Quaternion.identity) as GameObject;
                 instance.transform.SetParent(boardHolder);
             }
         }
@@ -144,7 +130,9 @@ public class BoardManager : MonoBehaviour
 
     private void GenerateSocket()
     {
-        Instantiate(socket, new Vector3(6.5f, 7.5f, 0f), Quaternion.identity, boardHolder);
-        Instantiate(socket, new Vector3(9.5f, 3.5f, 0f), Quaternion.identity, boardHolder);
+        foreach (Vector2 pos in socketPosList)
+        {
+            Instantiate(socketPrefab, pos, Quaternion.identity, boardHolder);
+        }
     }
 }

@@ -14,6 +14,7 @@ public class WaveManager : MonoBehaviour
     }
     public List<Path> pathList;
     public List<Wave> waves;
+    [System.NonSerialized]
     public bool isCleared = false;
 
     private void Awake()

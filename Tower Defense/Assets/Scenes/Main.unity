@@ -153,7 +153,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playersBasePrefab: {fileID: 1170406876124560, guid: 64f07e10729e291449f8aad5d10770e5,
     type: 2}
-  socket: {fileID: 1198618732342650, guid: 8a34829ae9dd26344bd9f2c9f7d78084, type: 2}
+  socketPrefab: {fileID: 1198618732342650, guid: 8a34829ae9dd26344bd9f2c9f7d78084,
+    type: 2}
   groundTiles:
   - {fileID: 1568990279150270, guid: b48981306437b00428890d862abe936c, type: 2}
   - {fileID: 1306167708367590, guid: 54ede012ff48b3a4da5a4e91dc795e32, type: 2}
@@ -171,6 +172,22 @@ MonoBehaviour:
   lifeText: {fileID: 628048356}
   waveText: {fileID: 1326933190}
   moneyText: {fileID: 1653629023}
+  boardData:
+  - aaaaaaaaaaadeaa
+  - aaaaaaaaaaadeaa
+  - aahbbbbbbbbjeaa
+  - aadlcccklcccfaa
+  - aadeaaadeaaaaaa
+  - aadeaaadeaaaaaa
+  - bbjeaaadeaaaaaa
+  - cccfaaadeaahgaa
+  - aaaaaaadeaadeaa
+  - aaaaaaadmbbjeaa
+  - aaaaaaaiccccfaa
+  - aaaaaaaaaaaaaaa
+  socketPosList:
+  - {x: 6.5, y: 7.5}
+  - {x: 9.5, y: 3.5}
 --- !u!4 &69111213
 Transform:
   m_ObjectHideFlags: 0
@@ -239,6 +256,7 @@ MonoBehaviour:
     enemyCount: 1
     durationSec: 1
     waitSec: 5
+
   isCleared: 0
 --- !u!1 &115693143
 GameObject:
