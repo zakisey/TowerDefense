@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     private int money;
     private GameMode mode = GameMode.Normal;
     private GameObject unitToPlace = null;
+    private bool isCleared = false;
 
     public int Money
     {
@@ -75,6 +76,16 @@ public class GameManager : MonoBehaviour
         {
             unitToPlace = null;
             ChangeGameMode(GameMode.Normal);
+        }
+
+        // クリア判定
+        if (WaveManager.instance.isCleared && BoardManager.instance.IsCleared())
+        {
+            if (!isCleared)
+            {
+                isCleared = true;
+                ClearGame();
+            }
         }
     }
 
@@ -141,6 +152,7 @@ public class GameManager : MonoBehaviour
         Money = 10;
     }
 
+    // ゲームオーバー(HPが0)になったときに呼ばれる
     public void EndGame()
     {
         WaveManager.instance.Stop();
@@ -156,5 +168,11 @@ public class GameManager : MonoBehaviour
     {
         this.mode = GameMode.UnitPlacing;
         this.unitToPlace = unitToPlace;
+    }
+
+    // ゲームをクリア(Waveが全て終わり、敵が盤面におらず、HPが1以上)したときに呼ばれる
+    private void ClearGame()
+    {
+        print("clear");
     }
 }

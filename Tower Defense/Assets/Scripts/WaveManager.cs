@@ -14,6 +14,7 @@ public class WaveManager : MonoBehaviour
     }
     public List<Path> pathList;
     public List<Wave> waves;
+    public bool isCleared = false;
 
     private void Awake()
     {
@@ -50,6 +51,7 @@ public class WaveManager : MonoBehaviour
                 yield return new WaitForSeconds(interval);
             }
         }
+        isCleared = true;
     }
 
     // 敵が湧くのを止める

@@ -7,13 +7,14 @@ public class BoardManager : MonoBehaviour
 {
     public static BoardManager instance = null;
     // Prefabs
-    public GameObject playersBase;
+    public GameObject playersBasePrefab;
     public GameObject socket;
     public GameObject[] groundTiles;
     // シーン内のオブジェクトへの参照
     public GameObject lifeText;
     public GameObject waveText;
     public GameObject moneyText;
+    private GameObject playersBase;
 
     public const string boardText =
     "aaaaaaaaaaadeaa" +
@@ -72,6 +73,12 @@ public class BoardManager : MonoBehaviour
         }
     }
 
+    // クリア判定(HPが0より大きくて敵が残っていないときクリア)
+    public bool IsCleared()
+    {
+        return playersBase.GetComponent<PlayersBase>().HP > 0 && HasNoEnemy();
+    }
+
     public void SetupScene()
     {
         boardHolder = new GameObject("Board").transform;
@@ -106,6 +113,12 @@ public class BoardManager : MonoBehaviour
         }
     }
 
+    // 盤面に敵がまだ残っているかどうか
+    private bool HasNoEnemy()
+    {
+        return boardHolder.transform.GetComponentInChildren<Enemy>() == null;
+    }
+
     /// <summary>
     /// 文字列からボードのグラフィックを生成して配置する
     /// </summary>
@@ -125,8 +138,8 @@ public class BoardManager : MonoBehaviour
 
     private void GeneratePlayersBase()
     {
-        GameObject instance = Instantiate(playersBase, new Vector3(12f, 4f, 0f), Quaternion.identity) as GameObject;
-        instance.transform.SetParent(boardHolder);
+        playersBase = Instantiate(playersBasePrefab, new Vector3(12f, 4f, 0f), Quaternion.identity) as GameObject;
+        playersBase.transform.SetParent(boardHolder);
     }
 
     private void GenerateSocket()
