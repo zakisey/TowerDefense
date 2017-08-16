@@ -188,6 +188,7 @@ MonoBehaviour:
   socketPosList:
   - {x: 6.5, y: 7.5}
   - {x: 9.5, y: 3.5}
+  playersBasePos: {x: 12, y: 4}
 --- !u!4 &69111213
 Transform:
   m_ObjectHideFlags: 0

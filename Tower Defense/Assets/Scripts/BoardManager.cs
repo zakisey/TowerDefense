@@ -18,6 +18,7 @@ public class BoardManager : MonoBehaviour
 
     public List<string> boardData;
     public List<Vector2> socketPosList;
+    public Vector2 playersBasePos;
 
     // ボード上の要素を入れておくholder
     private Transform boardHolder;
@@ -124,7 +125,7 @@ public class BoardManager : MonoBehaviour
 
     private void GeneratePlayersBase()
     {
-        playersBase = Instantiate(playersBasePrefab, new Vector3(12f, 4f, 0f), Quaternion.identity) as GameObject;
+        playersBase = Instantiate(playersBasePrefab, playersBasePos, Quaternion.identity) as GameObject;
         playersBase.transform.SetParent(boardHolder);
     }
 
