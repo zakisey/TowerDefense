@@ -20,6 +20,10 @@ public class GameManager : MonoBehaviour
     private GameMode mode = GameMode.Normal;
     private GameObject unitToPlace = null;
     private bool isCleared = false;
+    /// <summary>
+    /// 結果表示のためのオブジェクト
+    /// </summary>
+    private GameObject GameOverScreen, ClearScreen;
 
     public int Money
     {
@@ -150,6 +154,12 @@ public class GameManager : MonoBehaviour
     {
         BoardManager.instance.SetupScene();
         Money = 10;
+        GameOverScreen = GameObject.Find("GameOver");
+        ClearScreen = GameObject.Find("Clear");
+        //結果は非表示にしておく
+        GameOverScreen.SetActive(false);
+        ClearScreen.SetActive(false);
+
     }
 
     // ゲームオーバー(HPが0)になったときに呼ばれる
@@ -157,6 +167,7 @@ public class GameManager : MonoBehaviour
     {
         WaveManager.instance.Stop();
         BoardManager.instance.DestroyAllEnemies();
+        DisplayGameOverScreen();
     }
 
     public void ChangeGameMode(GameMode mode)
@@ -174,5 +185,18 @@ public class GameManager : MonoBehaviour
     private void ClearGame()
     {
         print("clear");
+        DisplayClearScreen();
     }
+
+    private void DisplayGameOverScreen()
+    {
+        GameOverScreen.SetActive(true);
+    }
+
+    private void DisplayClearScreen()
+    {
+        ClearScreen.SetActive(true);
+    }
+
+
 }
