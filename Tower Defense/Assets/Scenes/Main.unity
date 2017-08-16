@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8d53f76853c32b4cb42a0bf529556eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playersBase: {fileID: 1170406876124560, guid: 64f07e10729e291449f8aad5d10770e5,
+  playersBasePrefab: {fileID: 1170406876124560, guid: 64f07e10729e291449f8aad5d10770e5,
     type: 2}
   socket: {fileID: 1198618732342650, guid: 8a34829ae9dd26344bd9f2c9f7d78084, type: 2}
   groundTiles:
@@ -239,6 +239,7 @@ MonoBehaviour:
     enemyCount: 1
     durationSec: 1
     waitSec: 5
+  isCleared: 0
 --- !u!1 &286672000
 GameObject:
   m_ObjectHideFlags: 0
