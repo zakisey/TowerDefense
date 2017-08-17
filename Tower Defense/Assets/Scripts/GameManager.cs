@@ -221,8 +221,7 @@ public class GameManager : MonoBehaviour
     public void OnClickToReturn()
     {
         print("return");
-        //後でStartからステージセレクトシーンに変更
-        SceneManager.LoadScene("Start");
+        SceneManager.LoadScene("StageSelection");
 
     }
     public void OnClickToRetry()
