@@ -16,14 +16,20 @@ public class GameManager : MonoBehaviour
     public Button pauseButton;
     public Button resumeButton;
     public Button fastButton;
+    /// <summary>
+    /// ゲームスコア表示用
+    /// </summary>
+    public GameObject Star;
     private int money;
     private GameMode mode = GameMode.Normal;
     private GameObject unitToPlace = null;
     private bool isCleared = false;
     /// <summary>
-    /// 結果表示用
+    /// ゲーム結果表示用
     /// </summary>
     private GameObject GameOverScreen, ClearScreen;
+   
+
     public int Money
     {
         get
@@ -154,9 +160,10 @@ public class GameManager : MonoBehaviour
         BoardManager.instance.SetupScene();
         Money = 10;
 
+        //表示用のオブジェクトを取得し、非表示にする
         GameOverScreen = GameObject.Find("GameOver");
         ClearScreen = GameObject.Find("Clear");
-
+        
         GameOverScreen.SetActive(false);
         ClearScreen.SetActive(false);
     }
@@ -183,7 +190,6 @@ public class GameManager : MonoBehaviour
     // ゲームをクリア(Waveが全て終わり、敵が盤面におらず、HPが1以上)したときに呼ばれる
     private void ClearGame()
     {
-        print("clear");
         DisplayClearScreen();
     }
 
@@ -191,9 +197,38 @@ public class GameManager : MonoBehaviour
     {
         GameOverScreen.SetActive(true);
     }
-
     private void DisplayClearScreen()
     {
+        if (ClearScreen.activeInHierarchy) return;
         ClearScreen.SetActive(true);
+
+        //ベースのライフをもとに星を表示
+        //ベースは1つしかないことを前提としてbaseLifeを取得している
+        float baseLife = FindObjectOfType<PlayersBase>().HP, MaxLife = 10f;
+        //配置の際はキャンバスのscaleを考慮して場所を決める(デザインが楽なので)
+        Vector3 canvasScale = GameObject.Find("Canvas").transform.localScale;
+        //生成した星の情報を変えるためだけのオブジェクト
+        GameObject starObject;
+        //1つ目の星には何もしない
+        Instantiate(Star, ClearScreen.transform.position + new Vector3(-100 * canvasScale.x, 5 * canvasScale.y, 0), Quaternion.identity, ClearScreen.transform);
+        //2つ目以降はスコアによって色を変える
+        starObject = Instantiate(Star, ClearScreen.transform.position + new Vector3(  0 * canvasScale.x, 5 * canvasScale.y, 0), Quaternion.identity, ClearScreen.transform);
+        if (baseLife / MaxLife < 0.5) starObject.GetComponent<Image>().color = new Color(0, 0, 0);
+        starObject = Instantiate(Star, ClearScreen.transform.position + new Vector3(100 * canvasScale.x, 5 * canvasScale.y, 0), Quaternion.identity, ClearScreen.transform);
+        if (baseLife / MaxLife <  1 ) starObject.GetComponent<Image>().color = new Color(0, 0, 0);
     }
+
+    public void OnClickToReturn()
+    {
+        print("return");
+        //後でStartからステージセレクトシーンに変更
+        SceneManager.LoadScene("Start");
+
+    }
+    public void OnClickToRetry()
+    {
+        print("retry");
+        SceneManager.LoadScene(0);
+    }
+
 }
