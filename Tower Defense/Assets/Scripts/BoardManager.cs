@@ -9,14 +9,13 @@ public class BoardManager : MonoBehaviour
     // Prefabs
     public GameObject playersBasePrefab;
     public GameObject socketPrefab;
-    public GameObject[] groundTiles;
     // シーン内のオブジェクトへの参照
     public GameObject lifeText;
     public GameObject waveText;
     public GameObject moneyText;
     private GameObject playersBase;
 
-    public List<string> boardData;
+    // 配置するオブジェクトの位置情報
     public List<Vector2> socketPosList;
     public Vector2 playersBasePos;
 
@@ -70,7 +69,6 @@ public class BoardManager : MonoBehaviour
     public void SetupScene()
     {
         boardHolder = new GameObject("Board").transform;
-        BoardSetup();
         GeneratePlayersBase();
         GenerateSocket();
     }
@@ -105,22 +103,6 @@ public class BoardManager : MonoBehaviour
     private bool HasNoEnemy()
     {
         return boardHolder.transform.GetComponentInChildren<Enemy>() == null;
-    }
-
-    // 文字列のリストからタイルを生成して配置する
-    private void BoardSetup()
-    {
-        for (int y = 0; y < boardData.Count; y++)
-        {
-            string s = boardData[y];
-            for (int x = 0; x < s.Length; x++)
-            {
-                char c = s[x];
-                GameObject toInstantiate = groundTiles[c - 'a'];
-                GameObject instance = Instantiate(toInstantiate, new Vector3(x + 0.5f, boardData.Count - y - 1 + 0.5f, 0f), Quaternion.identity) as GameObject;
-                instance.transform.SetParent(boardHolder);
-            }
-        }
     }
 
     private void GeneratePlayersBase()
