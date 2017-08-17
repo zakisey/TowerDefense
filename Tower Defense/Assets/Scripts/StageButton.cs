@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-<<<<<<< HEAD
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
@@ -38,24 +37,4 @@ public class StageButton : MonoBehaviour
     {
         SceneManager.LoadScene(stage);
     }
-=======
-
-public class StageButton : MonoBehaviour {
-
-    public bool locked = false;
-    public 
-
-	// Use this for initialization
-	void Start () {
-		if (locked)
-        {
-
-        }
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
->>>>>>> ac5519d8547680660f88567074bac46f257aa9de
 }
