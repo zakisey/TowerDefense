@@ -886,7 +886,7 @@ MonoBehaviour:
   - Stage12
   starList: 030000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   imageList:
-  - {fileID: 21300000, guid: d7bdf2b114920d64988501fa8f556faa, type: 3}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -1247,7 +1247,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: d7bdf2b114920d64988501fa8f556faa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 15fb45f9838523843b79a6143ba93060, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1326,7 +1326,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lockPicture: {fileID: 1455380090328936, guid: 6b49120e5d7bae646bd34267e52b1233,
     type: 2}
-  starPicture: {fileID: 1618408250809120, guid: a764aafc55f53ff4c8bd77070b7096b0,
+  starPicture: {fileID: 1697099628069082, guid: bfa422e8b55e1724fa647e793e170b93,
     type: 2}
   locked: 0
   stage: Stage1
@@ -2094,9 +2094,9 @@ MonoBehaviour:
     type: 2}
   starPicture: {fileID: 1697099628069082, guid: bfa422e8b55e1724fa647e793e170b93,
     type: 2}
-  locked: 1
+  locked: 0
   stage: Stage3
-  starNumber: 3
+  starNumber: 0
 --- !u!114 &1930545216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2168,7 +2168,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 2eb08ab05a8ce474485e18aac0f231c5, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
