@@ -1326,10 +1326,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lockPicture: {fileID: 1455380090328936, guid: 6b49120e5d7bae646bd34267e52b1233,
     type: 2}
-  starPicture: {fileID: 1697099628069082, guid: bfa422e8b55e1724fa647e793e170b93,
+  starPicture: {fileID: 1618408250809120, guid: a764aafc55f53ff4c8bd77070b7096b0,
     type: 2}
   locked: 0
-  stage: Main
+  stage: Stage1
   starNumber: 2
 --- !u!1 &1289627790
 GameObject:
