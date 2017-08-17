@@ -8,7 +8,7 @@ public class StageButton : MonoBehaviour
 {
     public GameObject lockPicture;
     public GameObject starPicture;
-
+    
     public bool locked;
     public string stage;
     public int starNumber;
