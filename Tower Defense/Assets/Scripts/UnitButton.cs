@@ -7,6 +7,7 @@ public class UnitButton : MonoBehaviour
 {
     public GameObject unit;
     public GameObject unitButtonTooltip;
+    [Multiline]public string tooltipText;
     private GameObject tooltip;
 
     public void OnClick()
@@ -32,9 +33,8 @@ public class UnitButton : MonoBehaviour
 
     private void SetTooltipText()
     {
-        Unit unitScript = unit.GetComponent<Unit>();
         Text text = tooltip.GetComponentInChildren<Text>();
-        text.text = "Cost: " + unitScript.cost;
+        text.text = tooltipText;
     }
 
     private void SetTooltipPos()

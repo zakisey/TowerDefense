@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
-    public float range = 3.0f;
-    public float atk = 1.0f;
-    public int cost = 10;
+    // 各レベルでの射程距離や攻撃力などのスタッツ
+    public float[] ranges;
+    public float[] atks;
+    public int initialCost;
+    public int[] upgradeCosts;
+    public int[] sellPrices;
     /// <summary>
-    /// (atkTime)フレームごとに弾を1発撃つ
+    /// (coolTimeSec)秒ごとに弾を1発撃つ
     /// </summary>
-    public int atkTime = 60;
-    /// <summary>
-    /// これがatkTimeと同じ数になると攻撃
-    /// </summary>
-    private int chargeTime;
+    public float[] coolTimeSecs;
+    public int maxLevel;
 
+    // Prefabs
     public GameObject shot;
     /// <summary>
     /// 攻撃範囲用
@@ -25,17 +26,28 @@ public class Unit : MonoBehaviour
     /// 画像用
     /// </summary>
     public GameObject rangeCirclePicture;
-
     /// <summary>
     /// 効果音用
     /// </summary>
     public AudioSource cannonAudio;
 
-    //private GameObject hoverInstance;
-    //private CircleCollider2D myCollider;
+    public GameObject NumberSprite;
 
-
-    private float colliderRadius;
+    [System.NonSerialized]
+    public float range;
+    [System.NonSerialized]
+    public float atk;
+    [System.NonSerialized]
+    public int upgradeCost;
+    [System.NonSerialized]
+    public int sellPrice;
+    [System.NonSerialized]
+    public float coolTimeSec;
+    /// <summary>
+    /// これがcoolTimeSec以上になると攻撃
+    /// </summary>
+    private float coolTimeChargedSec;
+    private int level;
     private GameObject target;
     private Transform canon;
     private Vector2 canonVector;
@@ -43,19 +55,17 @@ public class Unit : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        level = 0;
+        UpdateStats();
+
         //範囲
         rangeCircleCollider = Instantiate(rangeCircleCollider, transform.position, Quaternion.identity);
         rangeCircleCollider.transform.parent = this.gameObject.transform;
-        rangeCircleCollider.GetComponent<CircleCollider2D>().radius = range;
 
         //画像
         rangeCirclePicture = Instantiate(rangeCirclePicture, transform.position, Quaternion.identity);
         rangeCirclePicture.transform.parent = this.gameObject.transform;
-        rangeCirclePicture.transform.localScale = new Vector3(range, range);
         rangeCirclePicture.SetActive(false);
-
-        //弾
-        chargeTime = atkTime;
 
         target = null;
         canon = this.transform.Find("Canon");
@@ -71,6 +81,34 @@ public class Unit : MonoBehaviour
         }
         RotateCanon();
         Fire();
+    }
+
+    public bool IsUpgradable()
+    {
+        return level <= maxLevel && upgradeCosts[level] <= GameManager.instance.Money;
+    }
+
+    public void Upgrade()
+    {
+        GameManager.instance.Money -= upgradeCosts[level];
+        level++;
+        UpdateStats();
+    }
+
+    // atkなどのスタッツをレベルにあわせて変更する。レベルをセットしたあとに呼ぶ
+    private void UpdateStats()
+    {
+        range = ranges[level];
+        atk = atks[level];
+        // レベルが最大のときはアップグレードのコストは存在しない
+        if (level < maxLevel) upgradeCost = upgradeCosts[level];
+        sellPrice = sellPrices[level];
+        coolTimeSec = coolTimeSecs[level];
+
+        rangeCircleCollider.GetComponent<CircleCollider2D>().radius = range;
+        coolTimeChargedSec = 0;
+
+        NumberSprite.GetComponent<NumberSprite>().Number = level + 1;
     }
 
     // 射程距離内の一番近い敵を見つける
@@ -115,13 +153,14 @@ public class Unit : MonoBehaviour
     // ターゲットしている敵を砲撃する
     private void Fire()
     {
-        if (chargeTime++ < atkTime || target == null) return;
+        coolTimeChargedSec += Time.deltaTime;
+        if (coolTimeChargedSec < coolTimeSec || target == null) return;
         GameObject shot = Instantiate(this.shot, this.transform.position, Quaternion.identity);
         Shot shotScript = shot.GetComponent<Shot>();
         shotScript.target = target;
         shotScript.atk = this.atk;
         StartCoroutine(PlaySound(cannonAudio));
-        chargeTime = 0;
+        coolTimeChargedSec = 0f;
     }
 
     private IEnumerator PlaySound(AudioSource audioSource)
@@ -133,10 +172,16 @@ public class Unit : MonoBehaviour
         Destroy(audio.gameObject);
     }
 
+    private void OnMouseDown()
+    {
+        GameManager.instance.ShowUnitUpgradeMenu(gameObject);
+    }
+
     //マウスホバーで射程範囲を表示する
     void OnMouseEnter()
     {
         rangeCirclePicture.SetActive(true);
+        rangeCirclePicture.transform.localScale = new Vector3(range, range);
     }
 
     void OnMouseExit()

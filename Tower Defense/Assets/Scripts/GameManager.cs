@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
     /// ゲーム結果表示用
     /// </summary>
     private GameObject GameOverScreen, ClearScreen;
-   
+    private GameObject unitUpgradeMenu;
 
     public int Money
     {
@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
                 case "Socket":
                     if (mode == GameMode.UnitPlacing)
                     {
-                        Money -= unitToPlace.GetComponent<Unit>().cost;
+                        Money -= unitToPlace.GetComponent<Unit>().initialCost;
                         BoardManager.instance.SetUnitOnSocket(unitToPlace, clicked.gameObject);
                     }
                     break;
@@ -110,7 +110,7 @@ public class GameManager : MonoBehaviour
     /// <returns></returns>
     public bool IsUsableUnit(GameObject unit)
     {
-        return unit.GetComponent<Unit>().cost <= Money;
+        return unit.GetComponent<Unit>().initialCost <= Money;
     }
 
     public void PauseGame()
@@ -158,14 +158,23 @@ public class GameManager : MonoBehaviour
     public void InitGame()
     {
         BoardManager.instance.SetupScene();
-        Money = 10;
+        Money = 100;
 
         //表示用のオブジェクトを取得し、非表示にする
         GameOverScreen = GameObject.Find("GameOver");
         ClearScreen = GameObject.Find("Clear");
+        unitUpgradeMenu = GameObject.Find("UnitUpgradeMenu");
         
         GameOverScreen.SetActive(false);
         ClearScreen.SetActive(false);
+        unitUpgradeMenu.SetActive(false);
+    }
+
+    public void ShowUnitUpgradeMenu(GameObject unitToUpgrade)
+    {
+        UnitUpgradeMenu menu = unitUpgradeMenu.GetComponent<UnitUpgradeMenu>();
+        menu.SetUnitToUpgrade(unitToUpgrade);
+        unitUpgradeMenu.SetActive(true);
     }
 
     // ゲームオーバー(HPが0)になったときに呼ばれる
