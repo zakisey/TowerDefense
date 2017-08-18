@@ -227,7 +227,7 @@ public class GameManager : MonoBehaviour
     public void OnClickToRetry()
     {
         print("retry");
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
 }
