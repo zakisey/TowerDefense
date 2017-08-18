@@ -11,10 +11,16 @@ public class UnitUpgradeMenu : MonoBehaviour
 
     public void SetUnitToUpgrade(GameObject unit)
     {
+        gameObject.SetActive(true);
         unitToUpgrade = unit;
         SetPricesText();
         SetButtonState();
         SetPosition();
+    }
+
+    private void Update()
+    {
+        transform.position = transform.position;    
     }
 
     private void SetButtonState()
@@ -35,6 +41,11 @@ public class UnitUpgradeMenu : MonoBehaviour
         transform.position = Camera.main.WorldToScreenPoint(unitToUpgrade.transform.position + new Vector3(3, 0));
     }
 
+    private void Reset()
+    {
+        unitToUpgrade = null;        
+    }
+
     public void OnClickUpgrade()
     {
         Unit unitScript = unitToUpgrade.GetComponent<Unit>();
@@ -50,11 +61,13 @@ public class UnitUpgradeMenu : MonoBehaviour
     {
         GameManager.instance.Money += unitToUpgrade.GetComponent<Unit>().sellPrice;
         Destroy(unitToUpgrade);
+        Reset();
         gameObject.SetActive(false);
     }
 
     public void OnClickClose()
     {
+        Reset();
         gameObject.SetActive(false);
     }
 }

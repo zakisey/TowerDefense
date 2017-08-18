@@ -174,7 +174,6 @@ public class GameManager : MonoBehaviour
     {
         UnitUpgradeMenu menu = unitUpgradeMenu.GetComponent<UnitUpgradeMenu>();
         menu.SetUnitToUpgrade(unitToUpgrade);
-        unitUpgradeMenu.SetActive(true);
     }
 
     // ゲームオーバー(HPが0)になったときに呼ばれる
