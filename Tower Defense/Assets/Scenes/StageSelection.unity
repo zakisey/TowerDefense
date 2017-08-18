@@ -1103,7 +1103,7 @@ MonoBehaviour:
     type: 2}
   starPicture: {fileID: 1697099628069082, guid: bfa422e8b55e1724fa647e793e170b93,
     type: 2}
-  locked: 1
+  locked: 0
   stage: Stage2
   starNumber: 3
 --- !u!114 &1038386834
@@ -1177,7 +1177,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: aa886f9d8c02d9746b07e7a55b268476, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
