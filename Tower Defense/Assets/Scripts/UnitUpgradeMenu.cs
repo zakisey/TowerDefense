@@ -18,6 +18,7 @@ public class UnitUpgradeMenu : MonoBehaviour
         SetPosition();
     }
 
+    // 実際の表示位置と違う位置に表示されるバグがあったので、これを書いたら直った…
     private void Update()
     {
         transform.position = transform.position;    
@@ -41,11 +42,6 @@ public class UnitUpgradeMenu : MonoBehaviour
         transform.position = Camera.main.WorldToScreenPoint(unitToUpgrade.transform.position + new Vector3(3, 0));
     }
 
-    private void Reset()
-    {
-        unitToUpgrade = null;        
-    }
-
     public void OnClickUpgrade()
     {
         Unit unitScript = unitToUpgrade.GetComponent<Unit>();
@@ -61,13 +57,11 @@ public class UnitUpgradeMenu : MonoBehaviour
     {
         GameManager.instance.Money += unitToUpgrade.GetComponent<Unit>().sellPrice;
         Destroy(unitToUpgrade);
-        Reset();
         gameObject.SetActive(false);
     }
 
     public void OnClickClose()
     {
-        Reset();
         gameObject.SetActive(false);
     }
 }

@@ -228,13 +228,11 @@ public class GameManager : MonoBehaviour
 
     public void OnClickToReturn()
     {
-        print("return");
         SceneManager.LoadScene("StageSelection");
 
     }
     public void OnClickToRetry()
     {
-        print("retry");
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
