@@ -240,7 +240,7 @@ public class GameManager : MonoBehaviour
         else
             thisScore = 1;
 
-        if (PlayerPrefs.HasKey(stageName) && thisScore > PlayerPrefs.GetInt(stageName))
+        if (!PlayerPrefs.HasKey(stageName) || thisScore > PlayerPrefs.GetInt(stageName))
             PlayerPrefs.SetInt(stageName, thisScore);
     }
 
