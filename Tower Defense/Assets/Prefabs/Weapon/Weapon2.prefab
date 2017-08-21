@@ -143,9 +143,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ranges:
-  - 2
-  - 2.5
   - 3
+  - 3.5
+  - 3.5
   - 4
   atks:
   - 3
