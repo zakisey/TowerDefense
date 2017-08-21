@@ -199,6 +199,7 @@ public class GameManager : MonoBehaviour
     private void ClearGame()
     {
         DisplayClearScreen();
+        SaveScore();
     }
 
     private void DisplayGameOverScreen()
@@ -224,6 +225,19 @@ public class GameManager : MonoBehaviour
         if (baseLife / MaxLife < 0.5) starObject.GetComponent<Image>().color = new Color(0, 0, 0);
         starObject = Instantiate(Star, ClearScreen.transform.position + new Vector3(100 * canvasScale.x, 5 * canvasScale.y, 0), Quaternion.identity, ClearScreen.transform);
         if (baseLife / MaxLife <  1 ) starObject.GetComponent<Image>().color = new Color(0, 0, 0);
+    }
+
+    private void SaveScore()
+    {
+        float baseLife = FindObjectOfType<PlayersBase>().HP, MaxLife = 10f;
+        string stageName = SceneManager.GetActiveScene().name;
+
+        if (baseLife == MaxLife)
+            PlayerPrefs.SetInt(stageName, 3);
+        else if (baseLife / MaxLife >= 0.5)
+            PlayerPrefs.SetInt(stageName, 2);
+        else
+            PlayerPrefs.SetInt(stageName, 1);
     }
 
     public void OnClickToReturn()
