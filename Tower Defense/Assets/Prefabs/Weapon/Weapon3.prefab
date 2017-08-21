@@ -161,10 +161,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ranges:
-  - 10
-  - 11
-  - 13
-  - 15
+  - 7
+  - 7
+  - 8
+  - 8
   atks:
   - 10
   - 20
@@ -179,6 +179,8 @@ MonoBehaviour:
   - 4.5
   - 4
   maxLevel: 3
+  canAttackGround: 1
+  canAttackFloat: 1
   shot: {fileID: 1401135235265064, guid: 8e706c5992ee1c345bad0b1357bd7e11, type: 2}
   rangeCircleCollider: {fileID: 1636938936203996, guid: 65ab254a09dcdf54db0de512ad61d94c,
     type: 2}

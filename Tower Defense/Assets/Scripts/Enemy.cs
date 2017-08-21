@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     private float atk;
     private float speed;
     private int money;
+    private bool isFloat;
     /// <summary>
     /// 敵が進む目的地の座標のリスト。最初の要素がスポーン位置で最後の要素が基地の位置
     /// </summary>
@@ -39,13 +40,22 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public bool IsFloat
+    {
+        get
+        {
+            return this.isFloat;
+        }
+    }
+
     // 攻撃力などの数値を受け取って初期化する
-    public void Init(float atk, float speed, float hp, int money, List<Vector2> path)
+    public void Init(float atk, float speed, float hp, int money, bool isFloat, List<Vector2> path)
     {
         HP = hp;
         this.atk = atk;
         this.speed = speed;
         this.money = money;
+        this.isFloat = isFloat;
         this.path = path;
         HpBar = Instantiate(HpBar, new Vector3(0, 0, 0), Quaternion.identity, GameObject.Find("Canvas").transform);
         SetHpBarPos();

@@ -218,10 +218,11 @@ MonoBehaviour:
     - {x: 8, y: 6}
     - {x: 8, y: 8}
   waves:
-  - enemy: {fileID: 1694742892598982, guid: 81ac10ae2ee5c30458071f81af90a643, type: 2}
-    atk: 1
+  - enemy: {fileID: 1694742892598982, guid: 19ecc32b754e9634aa9515f582adc954, type: 2}
+    atk: 3
     speed: 1.5
-    hp: 2
+    hp: 5
+    isFloat: 1
     money: 10
     pathNum: 0
     enemyCount: 10
@@ -231,24 +232,27 @@ MonoBehaviour:
     atk: 2
     speed: 1
     hp: 6
+    isFloat: 1
     money: 20
     pathNum: 1
-    enemyCount: 10
+    enemyCount: 5
     durationSec: 10
-    waitSec: 1
+    waitSec: 8
   - enemy: {fileID: 1694742892598982, guid: 81ac10ae2ee5c30458071f81af90a643, type: 2}
     atk: 1
     speed: 2
     hp: 2
+    isFloat: 1
     money: 10
-    pathNum: 1
-    enemyCount: 10
-    durationSec: 10
-    waitSec: 0
+    pathNum: 0
+    enemyCount: 5
+    durationSec: 5
+    waitSec: 8
   - enemy: {fileID: 1975567479264546, guid: c0076d5886282c84fb8897827deb688a, type: 2}
     atk: 10
     speed: 0.5
     hp: 100
+    isFloat: 1
     money: 100
     pathNum: 0
     enemyCount: 1
@@ -258,6 +262,7 @@ MonoBehaviour:
     atk: 1
     speed: 3
     hp: 2
+    isFloat: 1
     money: 15
     pathNum: 0
     enemyCount: 15
@@ -267,6 +272,7 @@ MonoBehaviour:
     atk: 10
     speed: 0.5
     hp: 100
+    isFloat: 1
     money: 100
     pathNum: 1
     enemyCount: 1

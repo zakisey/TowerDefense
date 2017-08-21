@@ -15,6 +15,8 @@ public class Unit : MonoBehaviour
     /// </summary>
     public float[] coolTimeSecs;
     public int maxLevel;
+    public bool canAttackGround;
+    public bool canAttackFloat;
 
     // Prefabs
     public GameObject shot;
@@ -119,6 +121,11 @@ public class Unit : MonoBehaviour
         float minimumDistance = float.MaxValue;
         foreach (GameObject enemy in enemies)
         {
+            bool isFloat = enemy.GetComponent<Enemy>().IsFloat;
+            // 敵が飛行で、このユニットが飛行を攻撃できない
+            if (isFloat && !canAttackFloat) continue;
+            // 敵が地上で、このユニットが地上を攻撃できない
+            if (!isFloat && !canAttackGround) continue;
             float distance = Vector2.Distance(this.transform.position, enemy.transform.position);
             if (distance < minimumDistance)
             {

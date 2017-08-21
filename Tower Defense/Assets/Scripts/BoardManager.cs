@@ -74,10 +74,10 @@ public class BoardManager : MonoBehaviour
     }
 
     // EnemyのPrefabと移動経路を受け取って、敵を盤面に配置する
-    public void GenerateEnemy(GameObject enemyPrefab, float atk, float speed, float hp, int money, List<Vector2> path)
+    public void GenerateEnemy(GameObject enemyPrefab, float atk, float speed, float hp, int money, bool isFloat, List<Vector2> path)
     {
         GameObject enemy = Instantiate(enemyPrefab, path[0], Quaternion.identity, boardHolder);
-        enemy.GetComponent<Enemy>().Init(atk, speed, hp, money, path);
+        enemy.GetComponent<Enemy>().Init(atk, speed, hp, money, isFloat, path);
     }
 
     /// <summary>

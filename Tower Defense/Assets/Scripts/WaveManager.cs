@@ -47,7 +47,7 @@ public class WaveManager : MonoBehaviour
             for (int ei = 0; ei < waves[wi].enemyCount; ei++)
             {
                 // メソッドの呼び出しが冗長なのでなんとかしたい…
-                BoardManager.instance.GenerateEnemy(waves[wi].enemy, waves[wi].atk, waves[wi].speed, waves[wi].hp, waves[wi].money, pathList[waves[wi].pathNum].list);
+                BoardManager.instance.GenerateEnemy(waves[wi].enemy, waves[wi].atk, waves[wi].speed, waves[wi].hp, waves[wi].money, waves[wi].isFloat, pathList[waves[wi].pathNum].list);
                 float interval = waves[wi].durationSec / waves[wi].enemyCount;
                 yield return new WaitForSeconds(interval);
             }

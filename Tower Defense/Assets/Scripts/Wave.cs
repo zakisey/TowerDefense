@@ -11,6 +11,7 @@ public class Wave : System.Object
     public float atk;
     public float speed;
     public float hp;
+    public bool isFloat;
     public int money;
     public int pathNum;
     // このWaveで出現する敵の数
