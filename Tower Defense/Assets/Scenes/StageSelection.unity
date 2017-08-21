@@ -863,7 +863,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageList:
-  - stageImage: {fileID: 21300000, guid: 15fb45f9838523843b79a6143ba93060, type: 3}
+  - stageImage: {fileID: 21300000, guid: f62e61d41b35028498b38e3fe6802cb8, type: 3}
     stageName: Stage1
     locked: 0
     starNumber: 0
@@ -879,7 +879,7 @@ MonoBehaviour:
     stageName: Stage4
     locked: 1
     starNumber: 0
-  - stageImage: {fileID: 21300000, guid: f62e61d41b35028498b38e3fe6802cb8, type: 3}
+  - stageImage: {fileID: 21300000, guid: 4b6ecda629ea6a547a562e454eff7b4e, type: 3}
     stageName: Stage5
     locked: 1
     starNumber: 0
