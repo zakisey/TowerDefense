@@ -92,7 +92,7 @@ public class Enemy : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, path[destinationNumber], speed * Time.deltaTime);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter(Collider collision)
     {
         // 基地に衝突したらダメージを与えて消滅する
         if (collision.tag == "Base")

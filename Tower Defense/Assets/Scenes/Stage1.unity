@@ -223,7 +223,7 @@ MonoBehaviour:
     speed: 1.5
     hp: 2
     isFloat: 0
-    money: 5
+    money: 10
     pathNum: 0
     enemyCount: 10
     durationSec: 10
@@ -233,7 +233,7 @@ MonoBehaviour:
     speed: 1
     hp: 6
     isFloat: 0
-    money: 10
+    money: 13
     pathNum: 1
     enemyCount: 5
     durationSec: 10
@@ -243,38 +243,48 @@ MonoBehaviour:
     speed: 2
     hp: 5
     isFloat: 0
-    money: 10
+    money: 15
     pathNum: 0
     enemyCount: 5
     durationSec: 5
     waitSec: 8
   - enemy: {fileID: 1694742892598982, guid: 19ecc32b754e9634aa9515f582adc954, type: 2}
     atk: 3
-    speed: 0.9
-    hp: 100
+    speed: 1.25
+    hp: 10
     isFloat: 1
-    money: 100
+    money: 20
     pathNum: 0
-    enemyCount: 1
-    durationSec: 1
+    enemyCount: 5
+    durationSec: 10
     waitSec: 1
   - enemy: {fileID: 1694742892598982, guid: 81ac10ae2ee5c30458071f81af90a643, type: 2}
     atk: 1
     speed: 3
-    hp: 2
+    hp: 4
     isFloat: 0
-    money: 15
+    money: 30
     pathNum: 0
     enemyCount: 15
     durationSec: 10
     waitSec: 5
+  - enemy: {fileID: 1694742892598982, guid: 19ecc32b754e9634aa9515f582adc954, type: 2}
+    atk: 3
+    speed: 1.5
+    hp: 20
+    isFloat: 1
+    money: 35
+    pathNum: 1
+    enemyCount: 5
+    durationSec: 10
+    waitSec: 0
   - enemy: {fileID: 1975567479264546, guid: c0076d5886282c84fb8897827deb688a, type: 2}
     atk: 10
     speed: 0.5
-    hp: 100
+    hp: 500
     isFloat: 0
     money: 100
-    pathNum: 1
+    pathNum: 0
     enemyCount: 1
     durationSec: 1
     waitSec: 0
