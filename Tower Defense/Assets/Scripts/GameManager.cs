@@ -142,7 +142,7 @@ public class GameManager : MonoBehaviour
         // Vector3でマウス位置座標を取得する
         Vector3 position = Input.mousePosition;
         position = new Vector3(position.x, Screen.height - position.y, 0f);
-        
+
         GUI.DrawTexture(new Rect(position.x - 32, position.y - 32, 64, 64), texture);
         GUI.DrawTexture(new Rect(position.x - 32, position.y - 32 - 10, 64, 64), textureCanon);
     }
@@ -164,7 +164,7 @@ public class GameManager : MonoBehaviour
         GameOverScreen = GameObject.Find("GameOver");
         ClearScreen = GameObject.Find("Clear");
         unitUpgradeMenu = GameObject.Find("UnitUpgradeMenu");
-        
+
         GameOverScreen.SetActive(false);
         ClearScreen.SetActive(false);
         unitUpgradeMenu.SetActive(false);
@@ -221,23 +221,27 @@ public class GameManager : MonoBehaviour
         //1つ目の星には何もしない
         Instantiate(Star, ClearScreen.transform.position + new Vector3(-100 * canvasScale.x, 5 * canvasScale.y, 0), Quaternion.identity, ClearScreen.transform);
         //2つ目以降はスコアによって色を変える
-        starObject = Instantiate(Star, ClearScreen.transform.position + new Vector3(  0 * canvasScale.x, 5 * canvasScale.y, 0), Quaternion.identity, ClearScreen.transform);
+        starObject = Instantiate(Star, ClearScreen.transform.position + new Vector3(0 * canvasScale.x, 5 * canvasScale.y, 0), Quaternion.identity, ClearScreen.transform);
         if (baseLife / MaxLife < 0.5) starObject.GetComponent<Image>().color = new Color(0, 0, 0);
         starObject = Instantiate(Star, ClearScreen.transform.position + new Vector3(100 * canvasScale.x, 5 * canvasScale.y, 0), Quaternion.identity, ClearScreen.transform);
-        if (baseLife / MaxLife <  1 ) starObject.GetComponent<Image>().color = new Color(0, 0, 0);
+        if (baseLife / MaxLife < 1) starObject.GetComponent<Image>().color = new Color(0, 0, 0);
     }
 
     private void SaveScore()
     {
         float baseLife = FindObjectOfType<PlayersBase>().HP, MaxLife = 10f;
         string stageName = SceneManager.GetActiveScene().name;
+        int thisScore;
 
         if (baseLife == MaxLife)
-            PlayerPrefs.SetInt(stageName, 3);
+            thisScore = 3;
         else if (baseLife / MaxLife >= 0.5)
-            PlayerPrefs.SetInt(stageName, 2);
+            thisScore = 2;
         else
-            PlayerPrefs.SetInt(stageName, 1);
+            thisScore = 1;
+
+        if (PlayerPrefs.HasKey(stageName) && thisScore > PlayerPrefs.GetInt(stageName))
+            PlayerPrefs.SetInt(stageName, thisScore);
     }
 
     public void OnClickToReturn()
