@@ -160,29 +160,55 @@ MonoBehaviour:
   waveText: {fileID: 1326933190}
   moneyText: {fileID: 1653629023}
   socketPosList:
-  - {x: 1.5, y: 7.5}
-  - {x: 1.5, y: 10.5}
-  - {x: 1.5, y: 14.5}
-  - {x: 4.5, y: 7.5}
-  - {x: 4.5, y: 10.5}
-  - {x: 6.5, y: 3.5}
-  - {x: 6.5, y: 14.5}
+  - {x: 3.5, y: 4.5}
+  - {x: 3.5, y: 7.5}
+  - {x: 3.5, y: 10.5}
+  - {x: 3.5, y: 13.5}
+  - {x: 3.5, y: 16.5}
+  - {x: 3.5, y: 19.5}
+  - {x: 6.5, y: 4.5}
+  - {x: 6.5, y: 7.5}
+  - {x: 6.5, y: 10.5}
+  - {x: 6.5, y: 13.5}
+  - {x: 6.5, y: 16.5}
+  - {x: 6.5, y: 19.5}
+  - {x: 9.5, y: 4.5}
   - {x: 9.5, y: 7.5}
   - {x: 9.5, y: 10.5}
-  - {x: 11.5, y: 3.5}
-  - {x: 11.5, y: 14.5}
-  - {x: 14.5, y: 7.5}
-  - {x: 14.5, y: 10.5}
-  - {x: 16.5, y: 3.5}
-  - {x: 16.5, y: 14.5}
-  - {x: 19.5, y: 7.5}
-  - {x: 19.5, y: 10.5}
-  - {x: 21.5, y: 3.5}
-  - {x: 21.5, y: 14.5}
+  - {x: 9.5, y: 13.5}
+  - {x: 9.5, y: 16.5}
+  - {x: 9.5, y: 19.5}
+  - {x: 12.5, y: 4.5}
+  - {x: 12.5, y: 7.5}
+  - {x: 12.5, y: 10.5}
+  - {x: 12.5, y: 13.5}
+  - {x: 12.5, y: 16.5}
+  - {x: 12.5, y: 19.5}
+  - {x: 15.5, y: 4.5}
+  - {x: 15.5, y: 7.5}
+  - {x: 15.5, y: 10.5}
+  - {x: 15.5, y: 13.5}
+  - {x: 15.5, y: 16.5}
+  - {x: 15.5, y: 19.5}
+  - {x: 18.5, y: 4.5}
+  - {x: 18.5, y: 7.5}
+  - {x: 18.5, y: 10.5}
+  - {x: 18.5, y: 13.5}
+  - {x: 18.5, y: 16.5}
+  - {x: 18.5, y: 19.5}
+  - {x: 21.5, y: 4.5}
+  - {x: 21.5, y: 7.5}
+  - {x: 21.5, y: 10.5}
+  - {x: 21.5, y: 13.5}
+  - {x: 21.5, y: 16.5}
+  - {x: 21.5, y: 19.5}
+  - {x: 24.5, y: 4.5}
   - {x: 24.5, y: 7.5}
   - {x: 24.5, y: 10.5}
-  - {x: 26.5, y: 3.5}
-  playersBasePos: {x: 28, y: 9}
+  - {x: 24.5, y: 13.5}
+  - {x: 24.5, y: 16.5}
+  - {x: 24.5, y: 19.5}
+  playersBasePos: {x: 14, y: 1}
 --- !u!4 &69111213
 Transform:
   m_ObjectHideFlags: 0
@@ -209,21 +235,64 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pathList:
   - list:
-    - {x: 0, y: 9}
-    - {x: 28, y: 9}
+    - {x: 2, y: 23}
+    - {x: 2, y: 21}
+    - {x: 8, y: 21}
+    - {x: 8, y: 18}
+    - {x: 14, y: 18}
+    - {x: 14, y: 15}
+    - {x: 20, y: 15}
+    - {x: 20, y: 9}
+    - {x: 14, y: 9}
+    - {x: 14, y: 1}
   - list:
-    - {x: 3, y: 19}
-    - {x: 3, y: 2}
-    - {x: 8, y: 2}
-    - {x: 8, y: 16}
-    - {x: 13, y: 16}
-    - {x: 13, y: 2}
-    - {x: 18, y: 2}
-    - {x: 18, y: 16}
-    - {x: 23, y: 16}
-    - {x: 23, y: 2}
-    - {x: 28, y: 2}
-    - {x: 28, y: 9}
+    - {x: 8, y: 23}
+    - {x: 8, y: 21}
+    - {x: 2, y: 21}
+    - {x: 2, y: 15}
+    - {x: 8, y: 15}
+    - {x: 8, y: 12}
+    - {x: 14, y: 12}
+    - {x: 14, y: 9}
+    - {x: 20, y: 9}
+    - {x: 20, y: 6}
+    - {x: 26, y: 6}
+    - {x: 26, y: 3}
+    - {x: 14, y: 3}
+    - {x: 14, y: 1}
+  - list:
+    - {x: 14, y: 23}
+    - {x: 14, y: 18}
+    - {x: 8, y: 18}
+    - {x: 8, y: 15}
+    - {x: 2, y: 15}
+    - {x: 2, y: 9}
+    - {x: 8, y: 9}
+    - {x: 8, y: 3}
+    - {x: 14, y: 3}
+    - {x: 14, y: 1}
+  - list:
+    - {x: 20, y: 23}
+    - {x: 20, y: 20}
+    - {x: 26, y: 20}
+    - {x: 26, y: 6}
+    - {x: 20, y: 6}
+    - {x: 20, y: 3}
+    - {x: 14, y: 3}
+    - {x: 14, y: 1}
+  - list:
+    - {x: 26, y: 23}
+    - {x: 26, y: 20}
+    - {x: 20, y: 20}
+    - {x: 20, y: 15}
+    - {x: 14, y: 15}
+    - {x: 14, y: 12}
+    - {x: 8, y: 12}
+    - {x: 8, y: 9}
+    - {x: 2, y: 9}
+    - {x: 2, y: 3}
+    - {x: 14, y: 3}
+    - {x: 14, y: 1}
   waves:
   - enemy: {fileID: 1694742892598982, guid: 81ac10ae2ee5c30458071f81af90a643, type: 2}
     atk: 1
@@ -231,20 +300,10 @@ MonoBehaviour:
     hp: 2
     isFloat: 0
     money: 5
-    pathNum: 0
+    pathNum: 4
     enemyCount: 15
     durationSec: 10
     waitSec: 1
-  - enemy: {fileID: 1322155926546746, guid: 04fa0bcbb06c890459564850571dbdf7, type: 2}
-    atk: 2
-    speed: 1.5
-    hp: 4
-    isFloat: 0
-    money: 8
-    pathNum: 1
-    enemyCount: 10
-    durationSec: 10
-    waitSec: 2
 --- !u!1 &87163655
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,7 +314,7 @@ GameObject:
   - component: {fileID: 87163657}
   - component: {fileID: 87163656}
   m_Layer: 0
-  m_Name: stage6
+  m_Name: stage7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -293,12 +352,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bbbc06d1a6e347d4381e39d1777f42f1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2d28c93ba44bbe4488d71b5324aeadef, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 15.36, y: 12.8}
+  m_Size: {x: 17.92, y: 14.72}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -310,7 +369,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 87163655}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15, y: 9.5, z: 0}
+  m_LocalPosition: {x: 14, y: 11.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -713,7 +772,7 @@ RectTransform:
   - {fileID: 629167805}
   - {fileID: 1223906909}
   m_Father: {fileID: 573902377}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -1132,8 +1191,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 286672001}
   - {fileID: 1420638827}
+  - {fileID: 286672001}
   - {fileID: 539934042}
   - {fileID: 222009282}
   m_Father: {fileID: 0}
@@ -2385,7 +2444,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 573902377}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3216,7 +3275,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 12
+  orthographic size: 13.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -3239,7 +3298,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2053317537}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15, y: 11.5, z: -10}
+  m_LocalPosition: {x: 14, y: 13.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
