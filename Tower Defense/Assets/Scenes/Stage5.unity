@@ -160,18 +160,18 @@ MonoBehaviour:
   waveText: {fileID: 1326933190}
   moneyText: {fileID: 1653629023}
   socketPosList:
-  - {x: 2.5, y: 0.5}
-  - {x: 2.5, y: 3.5}
-  - {x: 2.5, y: 6.5}
+  - {x: 2.5, y: 1.5}
+  - {x: 2.5, y: 5.5}
   - {x: 2.5, y: 9.5}
   - {x: 5.5, y: 9.5}
   - {x: 8.5, y: 9.5}
   - {x: 11.5, y: 9.5}
-  - {x: 11.5, y: 6.5}
-  - {x: 11.5, y: 3.5}
-  - {x: 9.5, y: 1.5}
-  - {x: 7.5, y: 1.5}
-  - {x: 7.5, y: 1.5}
+  - {x: 11.5, y: 5.5}
+  - {x: 11.5, y: 1.5}
+  - {x: 8.5, y: 1.5}
+  - {x: 5.5, y: 1.5}
+  - {x: 5.5, y: 5.5}
+  - {x: 8.5, y: 5.5}
   playersBasePos: {x: 7, y: 5}
 --- !u!4 &69111213
 Transform:
@@ -199,56 +199,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pathList:
   - list:
-    - {x: -3, y: 17}
-    - {x: -3, y: 11}
-    - {x: 7, y: 11}
+    - {x: 1, y: -4}
+    - {x: 1, y: 11}
+    - {x: 13, y: 11}
+    - {x: 13, y: 0}
+    - {x: 4, y: 0}
+    - {x: 4, y: 8}
+    - {x: 10, y: 8}
+    - {x: 10, y: 3}
+    - {x: 7, y: 3}
     - {x: 7, y: 5}
   - list:
-    - {x: -3, y: 17}
-    - {x: -3, y: 11}
-    - {x: 0, y: 11}
-    - {x: 0, y: 5}
-    - {x: 7, y: 5}
-  - list:
-    - {x: 17, y: 17}
-    - {x: 17, y: 11}
-    - {x: 7, y: 11}
-    - {x: 7, y: 5}
-  - list:
-    - {x: 17, y: 17}
-    - {x: 17, y: 11}
-    - {x: 14, y: 11}
-    - {x: 14, y: 5}
-    - {x: 7, y: 5}
-  - list:
-    - {x: 7, y: -7}
-    - {x: 7, y: -1}
-    - {x: 0, y: -1}
-    - {x: 0, y: 5}
-    - {x: 7, y: 5}
-  - list:
-    - {x: 7, y: -7}
-    - {x: 7, y: -1}
-    - {x: 14, y: -1}
-    - {x: 14, y: 5}
-    - {x: 7, y: 5}
-  - list:
-    - {x: -3, y: 17}
-    - {x: -3, y: 11}
-    - {x: 0, y: 11}
-    - {x: 0, y: -1}
-    - {x: 14, y: -1}
-    - {x: 14, y: 11}
-    - {x: 7, y: 11}
-    - {x: 7, y: 5}
-  - list:
-    - {x: 17, y: 17}
-    - {x: 17, y: 11}
-    - {x: 14, y: 11}
-    - {x: 14, y: -1}
-    - {x: 0, y: -1}
-    - {x: 0, y: 11}
-    - {x: 7, y: 11}
+    - {x: 15, y: 0}
+    - {x: 4, y: 0}
+    - {x: 4, y: 8}
+    - {x: 10, y: 8}
+    - {x: 10, y: 3}
+    - {x: 7, y: 3}
     - {x: 7, y: 5}
   waves:
   - enemy: {fileID: 1694742892598982, guid: 81ac10ae2ee5c30458071f81af90a643, type: 2}
@@ -257,17 +224,8 @@ MonoBehaviour:
     hp: 2
     money: 10
     pathNum: 0
-    enemyCount: 5
-    durationSec: 5
-    waitSec: 1
-  - enemy: {fileID: 1694742892598982, guid: 81ac10ae2ee5c30458071f81af90a643, type: 2}
-    atk: 1
-    speed: 1.5
-    hp: 2
-    money: 10
-    pathNum: 3
-    enemyCount: 5
-    durationSec: 5
+    enemyCount: 10
+    durationSec: 10
     waitSec: 1
   - enemy: {fileID: 1322155926546746, guid: 04fa0bcbb06c890459564850571dbdf7, type: 2}
     atk: 2
@@ -275,60 +233,42 @@ MonoBehaviour:
     hp: 6
     money: 20
     pathNum: 1
-    enemyCount: 4
-    durationSec: 3
+    enemyCount: 10
+    durationSec: 10
     waitSec: 1
-  - enemy: {fileID: 1322155926546746, guid: 04fa0bcbb06c890459564850571dbdf7, type: 2}
-    atk: 2
-    speed: 1
-    hp: 6
-    money: 20
-    pathNum: 2
-    enemyCount: 4
-    durationSec: 4
-    waitSec: 1
+  - enemy: {fileID: 1694742892598982, guid: 81ac10ae2ee5c30458071f81af90a643, type: 2}
+    atk: 1
+    speed: 2
+    hp: 2
+    money: 10
+    pathNum: 1
+    enemyCount: 10
+    durationSec: 10
+    waitSec: 0
   - enemy: {fileID: 1975567479264546, guid: c0076d5886282c84fb8897827deb688a, type: 2}
     atk: 10
     speed: 0.5
     hp: 100
     money: 100
-    pathNum: 6
+    pathNum: 0
     enemyCount: 1
     durationSec: 1
-    waitSec: 5
+    waitSec: 1
   - enemy: {fileID: 1694742892598982, guid: 81ac10ae2ee5c30458071f81af90a643, type: 2}
     atk: 1
-    speed: 1.5
+    speed: 3
     hp: 2
-    money: 10
-    pathNum: 4
-    enemyCount: 10
+    money: 15
+    pathNum: 0
+    enemyCount: 15
     durationSec: 10
-    waitSec: 0
-  - enemy: {fileID: 1322155926546746, guid: 04fa0bcbb06c890459564850571dbdf7, type: 2}
-    atk: 2
-    speed: 1
-    hp: 6
-    money: 20
-    pathNum: 5
-    enemyCount: 8
-    durationSec: 8
-    waitSec: 1
-  - enemy: {fileID: 1975567479264546, guid: c0076d5886282c84fb8897827deb688a, type: 2}
-    atk: 10
-    speed: 0.5
-    hp: 150
-    money: 100
-    pathNum: 7
-    enemyCount: 1
-    durationSec: 1
     waitSec: 5
   - enemy: {fileID: 1975567479264546, guid: c0076d5886282c84fb8897827deb688a, type: 2}
     atk: 10
     speed: 0.5
-    hp: 150
+    hp: 100
     money: 100
-    pathNum: 6
+    pathNum: 1
     enemyCount: 1
     durationSec: 1
     waitSec: 0
@@ -678,7 +618,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &539934042
 RectTransform:
   m_ObjectHideFlags: 0

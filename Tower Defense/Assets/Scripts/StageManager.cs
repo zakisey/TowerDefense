@@ -5,28 +5,46 @@ using UnityEngine.UI;
 
 public class StageManager : MonoBehaviour
 {
-    // DBに向けてカラムごとリストに
-    public List<bool> lockedList;
-    public List<string> stageList;
-    public List<int> starList;
-    public List<Sprite> imageList;
+    public static StageManager instance = null;
 
-    private List<StageButton> buttonList;
-    
+    public List<StageData> stageList;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+        InitialiseState();
+    }
+
     // Use this for initialization
     void Start()
     {
-
+        
     }
 
-    private void InstantiateButtons()
+    /// <summary>
+    /// 各ステージの星の数を取得し、次のステージを解除していく
+    /// </summary>
+    private void InitialiseState()
     {
-        for (int i = 0; i < buttonList.Count; i++)
+        for (int i = 0; i < stageList.Count; i++)
         {
-            buttonList[i].locked = lockedList[i];
-            buttonList[i].stage = stageList[i];
-            buttonList[i].starNumber = starList[i];
-            buttonList[i].GetComponent<Image>().sprite = imageList[i];
+            string stageName = "Stage" + (i + 1).ToString();
+
+            if (PlayerPrefs.HasKey(stageName))
+            {
+                stageList[i].starNumber = PlayerPrefs.GetInt(stageName);
+
+                if (stageList[i].starNumber >= 1 && i < stageList.Count - 1) // 最後のステージ以外次のステージを解除
+                    stageList[i + 1].locked = false;
+            }
         }
+
     }
 }

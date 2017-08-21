@@ -8,13 +8,24 @@ public class StageButton : MonoBehaviour
 {
     public GameObject lockPicture;
     public GameObject starPicture;
-    
-    public bool locked;
-    public string stage;
-    public int starNumber;
+    public int index;
+
+    private string stageName;
+    private bool locked;
+    private int starNumber;
 
     // Use this for initialization
     void Start()
+    {
+        locked = StageManager.instance.stageList[index].locked;
+        starNumber = StageManager.instance.stageList[index].starNumber;
+        stageName = StageManager.instance.stageList[index].stageName;
+        this.gameObject.GetComponent<Image>().sprite = StageManager.instance.stageList[index].stageImage;
+
+        ShowPictures();
+    }
+
+    private void ShowPictures()
     {
         if (locked)
         {
@@ -35,6 +46,6 @@ public class StageButton : MonoBehaviour
 
     public void LoadStage()
     {
-        SceneManager.LoadScene(stage);
+        SceneManager.LoadScene(stageName);
     }
 }
