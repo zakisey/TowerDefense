@@ -57,7 +57,7 @@ public class Enemy : MonoBehaviour
         this.money = money;
         this.isFloat = isFloat;
         this.path = path;
-        HpBar = Instantiate(HpBar, new Vector3(0, 0, 0), Quaternion.identity, GameObject.Find("Canvas").transform);
+        HpBar = Instantiate(HpBar, new Vector3(0, 0, 0), Quaternion.identity, GameObject.Find("HPBars").transform);
         SetHpBarPos();
         HpBar.maxValue = HP;
         HpBar.value = HP;
