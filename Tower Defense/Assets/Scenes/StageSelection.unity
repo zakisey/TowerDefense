@@ -883,11 +883,11 @@ MonoBehaviour:
     stageName: Stage5
     locked: 1
     starNumber: 0
-  - stageImage: {fileID: 0}
+  - stageImage: {fileID: 21300000, guid: bbbc06d1a6e347d4381e39d1777f42f1, type: 3}
     stageName: Stage6
     locked: 1
     starNumber: 0
-  - stageImage: {fileID: 0}
+  - stageImage: {fileID: 21300000, guid: 2d28c93ba44bbe4488d71b5324aeadef, type: 3}
     stageName: Stage7
     locked: 1
     starNumber: 0
