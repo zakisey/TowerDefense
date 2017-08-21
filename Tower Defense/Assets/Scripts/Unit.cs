@@ -107,7 +107,7 @@ public class Unit : MonoBehaviour
         sellPrice = sellPrices[level];
         coolTimeSec = coolTimeSecs[level];
 
-        rangeCircleCollider.GetComponent<SphereCollider>().radius = range;
+        rangeCircleCollider.GetComponent<CircleCollider2D>().radius = range;
         coolTimeChargedSec = 0;
 
         NumberSprite.GetComponent<NumberSprite>().Number = level + 1;
@@ -149,7 +149,7 @@ public class Unit : MonoBehaviour
         canon.RotateAround(this.transform.position, new Vector3(0, 0, 1), angle);
     }
 
-    private void OnTriggerExit(Collider collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject == target)
         {
