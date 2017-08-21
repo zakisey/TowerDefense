@@ -218,12 +218,12 @@ MonoBehaviour:
     - {x: 8, y: 6}
     - {x: 8, y: 8}
   waves:
-  - enemy: {fileID: 1694742892598982, guid: 19ecc32b754e9634aa9515f582adc954, type: 2}
-    atk: 3
+  - enemy: {fileID: 1694742892598982, guid: 81ac10ae2ee5c30458071f81af90a643, type: 2}
+    atk: 1
     speed: 1.5
-    hp: 5
-    isFloat: 1
-    money: 10
+    hp: 2
+    isFloat: 0
+    money: 5
     pathNum: 0
     enemyCount: 10
     durationSec: 10
@@ -232,8 +232,8 @@ MonoBehaviour:
     atk: 2
     speed: 1
     hp: 6
-    isFloat: 1
-    money: 20
+    isFloat: 0
+    money: 10
     pathNum: 1
     enemyCount: 5
     durationSec: 10
@@ -241,16 +241,16 @@ MonoBehaviour:
   - enemy: {fileID: 1694742892598982, guid: 81ac10ae2ee5c30458071f81af90a643, type: 2}
     atk: 1
     speed: 2
-    hp: 2
-    isFloat: 1
+    hp: 5
+    isFloat: 0
     money: 10
     pathNum: 0
     enemyCount: 5
     durationSec: 5
     waitSec: 8
-  - enemy: {fileID: 1975567479264546, guid: c0076d5886282c84fb8897827deb688a, type: 2}
-    atk: 10
-    speed: 0.5
+  - enemy: {fileID: 1694742892598982, guid: 19ecc32b754e9634aa9515f582adc954, type: 2}
+    atk: 3
+    speed: 0.9
     hp: 100
     isFloat: 1
     money: 100
@@ -262,7 +262,7 @@ MonoBehaviour:
     atk: 1
     speed: 3
     hp: 2
-    isFloat: 1
+    isFloat: 0
     money: 15
     pathNum: 0
     enemyCount: 15
@@ -272,7 +272,7 @@ MonoBehaviour:
     atk: 10
     speed: 0.5
     hp: 100
-    isFloat: 1
+    isFloat: 0
     money: 100
     pathNum: 1
     enemyCount: 1
@@ -1028,7 +1028,7 @@ RectTransform:
   - {fileID: 1268248362}
   - {fileID: 1515102033}
   m_Father: {fileID: 573902377}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1121,6 +1121,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 286672001}
+  - {fileID: 1551542353}
   - {fileID: 539934042}
   - {fileID: 1593532637}
   m_Father: {fileID: 0}
@@ -2650,6 +2651,39 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1551542352
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1551542353}
+  m_Layer: 5
+  m_Name: HPBars
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1551542353
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1551542352}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 573902377}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &1567077456 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224179724204251078, guid: 667df6b78228ab845a0a0ced3b7c58ce,
@@ -2687,7 +2721,7 @@ RectTransform:
   - {fileID: 516842847}
   - {fileID: 90747817}
   m_Father: {fileID: 573902377}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
