@@ -251,7 +251,7 @@ MonoBehaviour:
   - enemy: {fileID: 1694742892598982, guid: 19ecc32b754e9634aa9515f582adc954, type: 2}
     atk: 3
     speed: 1.25
-    hp: 10
+    hp: 15
     isFloat: 1
     money: 20
     pathNum: 0
@@ -271,7 +271,7 @@ MonoBehaviour:
   - enemy: {fileID: 1694742892598982, guid: 19ecc32b754e9634aa9515f582adc954, type: 2}
     atk: 3
     speed: 1.5
-    hp: 20
+    hp: 30
     isFloat: 1
     money: 35
     pathNum: 1
@@ -2415,7 +2415,7 @@ GameObject:
   - component: {fileID: 1326136119}
   - component: {fileID: 1326136118}
   m_Layer: 0
-  m_Name: stage5
+  m_Name: stage1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -20,9 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4747038756313604}
   - component: {fileID: 212404833624256918}
-  - component: {fileID: 50112119261535660}
-  - component: {fileID: 60803945281320938}
   - component: {fileID: 114042338878557606}
+  - component: {fileID: 54006773767372166}
+  - component: {fileID: 65831689286879644}
   m_Layer: 0
   m_Name: PlayersBase
   m_TagString: Base
@@ -43,58 +43,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50112119261535660
-Rigidbody2D:
-  serializedVersion: 4
+--- !u!54 &54006773767372166
+Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1170406876124560}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
+  serializedVersion: 2
   m_Mass: 1
-  m_LinearDrag: 0
+  m_Drag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_UseGravity: 0
+  m_IsKinematic: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &60803945281320938
-PolygonCollider2D:
+  m_CollisionDetection: 0
+--- !u!65 &65831689286879644
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1170406876124560}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 0.64, y: 0.64}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.00055360794, y: 0.39354014}
-      - {x: -0.37374687, y: 0.025828242}
-      - {x: -0.4020815, y: -0.009998918}
-      - {x: -0.0014572144, y: -0.40444273}
-      - {x: 0.008541107, y: -0.40444273}
-      - {x: 0.3997202, y: -0.006180048}
-      - {x: 0.4020815, y: 0.001457572}
-      - {x: 0.07687187, y: 0.31561923}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114042338878557606
 MonoBehaviour:
   m_ObjectHideFlags: 1
