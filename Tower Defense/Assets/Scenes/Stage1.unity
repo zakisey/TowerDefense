@@ -250,7 +250,7 @@ MonoBehaviour:
     waitSec: 8
   - enemy: {fileID: 1694742892598982, guid: 19ecc32b754e9634aa9515f582adc954, type: 2}
     atk: 3
-    speed: 1.25
+    speed: 1
     hp: 15
     isFloat: 1
     money: 20
@@ -270,7 +270,7 @@ MonoBehaviour:
     waitSec: 5
   - enemy: {fileID: 1694742892598982, guid: 19ecc32b754e9634aa9515f582adc954, type: 2}
     atk: 3
-    speed: 1.5
+    speed: 1
     hp: 30
     isFloat: 1
     money: 35
