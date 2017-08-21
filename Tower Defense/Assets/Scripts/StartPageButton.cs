@@ -24,7 +24,10 @@ public class StartPageButton : MonoBehaviour
         SceneManager.LoadScene("StageSelection");
     }
 
-    public void ClearSave()
+    /// <summary>
+    /// ClearSaveを確認する画面を出す
+    /// </summary>
+    public void ShowClearConfirmation()
     {
         ConfirmClearScreen.SetActive(true);
         MainButtons.SetActive(false);

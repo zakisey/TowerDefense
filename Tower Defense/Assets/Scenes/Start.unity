@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 150877386}
   - component: {fileID: 150877385}
   m_Layer: 5
-  m_Name: No
+  m_Name: NoButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -568,7 +568,7 @@ GameObject:
   - component: {fileID: 1417643628}
   - component: {fileID: 1417643627}
   m_Layer: 5
-  m_Name: ClearAllButton
+  m_Name: ShowConfirmClearButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -633,7 +633,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1787828552}
-        m_MethodName: ClearSave
+        m_MethodName: ShowClearConfirmation
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -690,7 +690,7 @@ GameObject:
   - component: {fileID: 1524082586}
   - component: {fileID: 1524082585}
   m_Layer: 5
-  m_Name: Yes
+  m_Name: YesButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
