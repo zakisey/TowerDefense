@@ -160,6 +160,7 @@ MonoBehaviour:
   waveText: {fileID: 1326933190}
   moneyText: {fileID: 1653629023}
   socketPosList:
+<<<<<<< HEAD
   - {x: 10.5, y: 13.5}
   - {x: 21.5, y: 13.5}
   - {x: 14.5, y: 12.5}
@@ -185,6 +186,40 @@ MonoBehaviour:
   - {x: 27.5, y: 6.5}
   - {x: 27.5, y: 8.5}
   playersBasePos: {x: 16, y: 10}
+=======
+  - {x: 2.5, y: 16.5}
+  - {x: 2.5, y: 19.5}
+  - {x: 5.5, y: 5.5}
+  - {x: 5.5, y: 9.5}
+  - {x: 5.5, y: 12.5}
+  - {x: 5.5, y: 16.5}
+  - {x: 5.5, y: 19.5}
+  - {x: 8.5, y: 2.5}
+  - {x: 8.5, y: 5.5}
+  - {x: 8.5, y: 9.5}
+  - {x: 8.5, y: 12.5}
+  - {x: 8.5, y: 16.5}
+  - {x: 8.5, y: 19.5}
+  - {x: 12.5, y: 20.5}
+  - {x: 14.5, y: 2.5}
+  - {x: 14.5, y: 5.5}
+  - {x: 16.5, y: 15.5}
+  - {x: 16.5, y: 20.5}
+  - {x: 20.5, y: 2.5}
+  - {x: 20.5, y: 5.5}
+  - {x: 20.5, y: 20.5}
+  - {x: 21.5, y: 15.5}
+  - {x: 24.5, y: 15.5}
+  - {x: 25.5, y: 20.5}
+  - {x: 26.5, y: 2.5}
+  - {x: 26.5, y: 5.5}
+  - {x: 28.5, y: 20.5}
+  - {x: 29.5, y: 17.5}
+  - {x: 32.5, y: 2.5}
+  - {x: 32.5, y: 5.5}
+  - {x: 32.5, y: 19.5}
+  playersBasePos: {x: 7, y: 18}
+>>>>>>> d68498dc7df623212bed63e24141016ca26e0175
 --- !u!4 &69111213
 Transform:
   m_ObjectHideFlags: 0
@@ -211,6 +246,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pathList:
   - list:
+<<<<<<< HEAD
     - {x: 9, y: 24}
     - {x: 9, y: 22}
     - {x: 7, y: 22}
@@ -303,10 +339,43 @@ MonoBehaviour:
     money: 10
     pathNum: 0
     enemyCount: 10
+=======
+    - {x: 0, y: 18}
+    - {x: 7, y: 18}
+  - list:
+    - {x: 33, y: 18}
+    - {x: 31, y: 18}
+    - {x: 31, y: 22}
+    - {x: 27, y: 22}
+    - {x: 27, y: 14}
+    - {x: 23, y: 14}
+    - {x: 23, y: 22}
+    - {x: 19, y: 22}
+    - {x: 19, y: 14}
+    - {x: 15, y: 14}
+    - {x: 15, y: 22}
+    - {x: 11, y: 22}
+    - {x: 11, y: 18}
+    - {x: 7, y: 18}
+  - list:
+    - {x: 33, y: 4}
+    - {x: 7, y: 4}
+    - {x: 7, y: 18}
+  waves:
+  - enemy: {fileID: 1694742892598982, guid: 81ac10ae2ee5c30458071f81af90a643, type: 2}
+    atk: 1
+    speed: 2
+    hp: 2
+    isFloat: 0
+    money: 5
+    pathNum: 0
+    enemyCount: 15
+>>>>>>> d68498dc7df623212bed63e24141016ca26e0175
     durationSec: 10
     waitSec: 1
   - enemy: {fileID: 1694742892598982, guid: 81ac10ae2ee5c30458071f81af90a643, type: 2}
     atk: 1
+<<<<<<< HEAD
     speed: 1.25
     hp: 2
     isFloat: 0
@@ -345,6 +414,26 @@ MonoBehaviour:
     enemyCount: 1
     durationSec: 1
     waitSec: 5
+=======
+    speed: 2
+    hp: 2
+    isFloat: 0
+    money: 5
+    pathNum: 1
+    enemyCount: 15
+    durationSec: 10
+    waitSec: 1
+  - enemy: {fileID: 1694742892598982, guid: 81ac10ae2ee5c30458071f81af90a643, type: 2}
+    atk: 1
+    speed: 2
+    hp: 2
+    isFloat: 0
+    money: 5
+    pathNum: 2
+    enemyCount: 15
+    durationSec: 10
+    waitSec: 1
+>>>>>>> d68498dc7df623212bed63e24141016ca26e0175
 --- !u!1 &87163655
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,7 +444,11 @@ GameObject:
   - component: {fileID: 87163657}
   - component: {fileID: 87163656}
   m_Layer: 0
+<<<<<<< HEAD
   m_Name: stage9
+=======
+  m_Name: stage8
+>>>>>>> d68498dc7df623212bed63e24141016ca26e0175
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -393,12 +486,20 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+<<<<<<< HEAD
   m_Sprite: {fileID: 21300000, guid: 5377d5b2d5ee26b4bb7bc17c757bbf2a, type: 3}
+=======
+  m_Sprite: {fileID: 21300000, guid: f770a650c3d398a428ad521616c39521, type: 3}
+>>>>>>> d68498dc7df623212bed63e24141016ca26e0175
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
+<<<<<<< HEAD
   m_Size: {x: 20.48, y: 15.36}
+=======
+  m_Size: {x: 17.92, y: 14.72}
+>>>>>>> d68498dc7df623212bed63e24141016ca26e0175
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -410,7 +511,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 87163655}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< HEAD
   m_LocalPosition: {x: 16, y: 12, z: 0}
+=======
+  m_LocalPosition: {x: 16.5, y: 12.5, z: 0}
+>>>>>>> d68498dc7df623212bed63e24141016ca26e0175
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -986,6 +1091,7 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+<<<<<<< HEAD
     - target: {fileID: 114276996207614192, guid: 667df6b78228ab845a0a0ced3b7c58ce,
         type: 2}
       propertyPath: tooltipText
@@ -997,6 +1103,8 @@ Prefab:
 
         Target: All'
       objectReference: {fileID: 0}
+=======
+>>>>>>> d68498dc7df623212bed63e24141016ca26e0175
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 667df6b78228ab845a0a0ced3b7c58ce, type: 2}
   m_IsPrefabParent: 0
@@ -1113,9 +1221,13 @@ Prefab:
 
         Speed: 0.75
 
+<<<<<<< HEAD
         Range: 3
 
         Target: Ground'
+=======
+        Range: 3'
+>>>>>>> d68498dc7df623212bed63e24141016ca26e0175
       objectReference: {fileID: 0}
     - target: {fileID: 114387356622025432, guid: 667df6b78228ab845a0a0ced3b7c58ce,
         type: 2}
@@ -2867,9 +2979,13 @@ Prefab:
 
         Speed: 1.5
 
+<<<<<<< HEAD
         Range: 2
 
         Target: Aerial'
+=======
+        Range: 2'
+>>>>>>> d68498dc7df623212bed63e24141016ca26e0175
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 667df6b78228ab845a0a0ced3b7c58ce, type: 2}
@@ -3354,7 +3470,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2053317537}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< HEAD
   m_LocalPosition: {x: 16, y: 14.5, z: -10}
+=======
+  m_LocalPosition: {x: 16.5, y: 15, z: -10}
+>>>>>>> d68498dc7df623212bed63e24141016ca26e0175
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
