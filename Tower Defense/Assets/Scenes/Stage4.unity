@@ -575,7 +575,7 @@ RectTransform:
   - {fileID: 629167805}
   - {fileID: 1223906909}
   m_Father: {fileID: 573902377}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -720,6 +720,17 @@ Prefab:
         type: 2}
       propertyPath: m_Text
       value: $30
+      objectReference: {fileID: 0}
+    - target: {fileID: 114276996207614192, guid: 667df6b78228ab845a0a0ced3b7c58ce,
+        type: 2}
+      propertyPath: tooltipText
+      value: 'Attack: 1
+
+        Speed: 0.75
+
+        Range: 3
+
+        Target: Ground'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 667df6b78228ab845a0a0ced3b7c58ce, type: 2}
@@ -930,8 +941,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 286672001}
   - {fileID: 1088503446}
+  - {fileID: 286672001}
   - {fileID: 539934042}
   - {fileID: 533530817}
   m_Father: {fileID: 0}
@@ -1565,7 +1576,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 573902377}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2665,6 +2676,17 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 54fb012bc4b51b4469f9013f74f4f3ce,
         type: 3}
+    - target: {fileID: 114276996207614192, guid: 667df6b78228ab845a0a0ced3b7c58ce,
+        type: 2}
+      propertyPath: tooltipText
+      value: 'Attack: 3
+
+        Speed: 1.5
+
+        Range: 2
+
+        Target: Aerial'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 667df6b78228ab845a0a0ced3b7c58ce, type: 2}
   m_IsPrefabParent: 0
@@ -2879,6 +2901,17 @@ Prefab:
         type: 2}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114276996207614192, guid: 667df6b78228ab845a0a0ced3b7c58ce,
+        type: 2}
+      propertyPath: tooltipText
+      value: 'Attack: 3
+
+        Speed: 1.5
+
+        Range: 2
+
+        Target: All'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 667df6b78228ab845a0a0ced3b7c58ce, type: 2}
