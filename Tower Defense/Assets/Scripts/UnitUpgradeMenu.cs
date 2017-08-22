@@ -32,7 +32,14 @@ public class UnitUpgradeMenu : MonoBehaviour
     private void SetPricesText()
     {
         Unit unitScript = unitToUpgrade.GetComponent<Unit>();
-        upgradeText.text = "Upgrade - $" + unitScript.upgradeCost;
+        if (unitScript.IsAtMaxLevel())
+        {
+            upgradeText.text = "Max Level!";
+        }
+        else
+        {
+            upgradeText.text = "Upgrade - $" + unitScript.upgradeCost;
+        }
         sellText.text = "Sell - $" + unitScript.sellPrice;
     }
 

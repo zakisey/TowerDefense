@@ -85,9 +85,14 @@ public class Unit : MonoBehaviour
         Fire();
     }
 
+    public bool IsAtMaxLevel()
+    {
+        return level == maxLevel;
+    }
+
     public bool IsUpgradable()
     {
-        return level <= maxLevel && upgradeCosts[level] <= GameManager.instance.Money;
+        return level < maxLevel && upgradeCosts[level] <= GameManager.instance.Money;
     }
 
     public void Upgrade()
