@@ -2905,11 +2905,11 @@ Prefab:
     - target: {fileID: 114276996207614192, guid: 667df6b78228ab845a0a0ced3b7c58ce,
         type: 2}
       propertyPath: tooltipText
-      value: 'Attack: 3
+      value: 'Attack: 10
 
-        Speed: 1.5
+        Speed: 5
 
-        Range: 2
+        Range: 7
 
         Target: All'
       objectReference: {fileID: 0}
