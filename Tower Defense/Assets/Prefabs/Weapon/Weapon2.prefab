@@ -149,9 +149,9 @@ MonoBehaviour:
   - 4
   atks:
   - 3
-  - 5
-  - 8
-  - 10
+  - 6
+  - 12
+  - 24
   initialCost: 50
   upgradeCosts: 3200000064000000c8000000
   sellPrices: 190000003200000064000000c8000000
