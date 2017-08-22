@@ -907,7 +907,7 @@ MonoBehaviour:
     stageName: Stage11
     locked: 1
     starNumber: 0
-  - stageImage: {fileID: 0}
+  - stageImage: {fileID: 21300000, guid: a09084b2162310a44b525e9df1d7201c, type: 3}
     stageName: Stage12
     locked: 1
     starNumber: 0
