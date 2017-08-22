@@ -160,10 +160,6 @@ MonoBehaviour:
   waveText: {fileID: 1326933190}
   moneyText: {fileID: 1653629023}
   socketPosList:
-  - {x: 6.5, y: 19.5}
-  - {x: 23.5, y: 19.5}
-  - {x: 13.5, y: 16.5}
-  - {x: 16.5, y: 16.5}
   - {x: 9.5, y: 16.5}
   - {x: 20.5, y: 16.5}
   - {x: 9.5, y: 7.5}
