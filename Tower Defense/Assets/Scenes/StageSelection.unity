@@ -887,7 +887,7 @@ MonoBehaviour:
     stageName: Stage6
     locked: 1
     starNumber: 0
-  - stageImage: {fileID: 21300000, guid: 2d28c93ba44bbe4488d71b5324aeadef, type: 3}
+  - stageImage: {fileID: 21300000, guid: f8254043523d1194882c3afa6eb513ea, type: 3}
     stageName: Stage7
     locked: 1
     starNumber: 0
@@ -899,7 +899,7 @@ MonoBehaviour:
     stageName: Stage9
     locked: 1
     starNumber: 0
-  - stageImage: {fileID: 21300000, guid: f8254043523d1194882c3afa6eb513ea, type: 3}
+  - stageImage: {fileID: 21300000, guid: 2d28c93ba44bbe4488d71b5324aeadef, type: 3}
     stageName: Stage10
     locked: 1
     starNumber: 0
