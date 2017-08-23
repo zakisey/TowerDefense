@@ -41,7 +41,7 @@ public class BoardManager : MonoBehaviour
 
     public void SetLifeText(int life)
     {
-        lifeText.GetComponent<Text>().text = "Life: " + life;
+        lifeText.GetComponent<Text>().text = "Life: " + ((life > 0) ? life : 0);
     }
 
     public void SetWaveText(int currentWaveNum, int maxWaveNum)
