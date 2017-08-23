@@ -318,7 +318,7 @@ MonoBehaviour:
     speed: 0.75
     hp: 18
     isFloat: 1
-    money: 50
+    money: 40
     pathNum: 0
     enemyCount: 10
     durationSec: 10
@@ -328,7 +328,7 @@ MonoBehaviour:
     speed: 0.75
     hp: 18
     isFloat: 1
-    money: 50
+    money: 40
     pathNum: 3
     enemyCount: 10
     durationSec: 10
