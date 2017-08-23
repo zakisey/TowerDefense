@@ -230,7 +230,7 @@ MonoBehaviour:
     speed: 1
     hp: 10
     isFloat: 0
-    money: 35
+    money: 30
     pathNum: 1
     enemyCount: 5
     durationSec: 15
@@ -240,7 +240,7 @@ MonoBehaviour:
     speed: 1
     hp: 9
     isFloat: 1
-    money: 55
+    money: 30
     pathNum: 0
     enemyCount: 3
     durationSec: 10
@@ -254,13 +254,13 @@ MonoBehaviour:
     pathNum: 0
     enemyCount: 1
     durationSec: 1
-    waitSec: 10
+    waitSec: 1
   - enemy: {fileID: 1322155926546746, guid: 04fa0bcbb06c890459564850571dbdf7, type: 2}
     atk: 3
     speed: 1
     hp: 15
     isFloat: 0
-    money: 55
+    money: 35
     pathNum: 1
     enemyCount: 15
     durationSec: 10
@@ -270,7 +270,7 @@ MonoBehaviour:
     speed: 1
     hp: 15
     isFloat: 1
-    money: 55
+    money: 35
     pathNum: 1
     enemyCount: 15
     durationSec: 10
@@ -280,7 +280,7 @@ MonoBehaviour:
     speed: 2
     hp: 10
     isFloat: 0
-    money: 30
+    money: 20
     pathNum: 1
     enemyCount: 30
     durationSec: 10
@@ -290,7 +290,7 @@ MonoBehaviour:
     speed: 1.5
     hp: 16
     isFloat: 1
-    money: 40
+    money: 25
     pathNum: 1
     enemyCount: 20
     durationSec: 10
@@ -300,7 +300,7 @@ MonoBehaviour:
     speed: 1
     hp: 30
     isFloat: 1
-    money: 50
+    money: 70
     pathNum: 0
     enemyCount: 10
     durationSec: 10
@@ -310,7 +310,7 @@ MonoBehaviour:
     speed: 2
     hp: 20
     isFloat: 0
-    money: 50
+    money: 25
     pathNum: 1
     enemyCount: 20
     durationSec: 10
