@@ -218,7 +218,8 @@ MonoBehaviour:
     - {x: 3, y: 19}
     - {x: 3, y: 14}
     - {x: 8, y: 14}
-    - {x: 8, y: 11}
+    - {x: 8, y: 16}
+    - {x: 13, y: 16}
     - {x: 13, y: 11}
     - {x: 16, y: 10}
   - list:
@@ -229,19 +230,22 @@ MonoBehaviour:
     - {x: 29, y: 19}
     - {x: 29, y: 14}
     - {x: 24, y: 14}
-    - {x: 24, y: 11}
+    - {x: 24, y: 16}
+    - {x: 19, y: 16}
     - {x: 19, y: 11}
     - {x: 16, y: 10}
   - list:
     - {x: 0, y: 14}
     - {x: 8, y: 14}
-    - {x: 8, y: 11}
+    - {x: 8, y: 16}
+    - {x: 13, y: 16}
     - {x: 13, y: 11}
     - {x: 16, y: 10}
   - list:
     - {x: 32, y: 14}
     - {x: 24, y: 14}
-    - {x: 24, y: 11}
+    - {x: 24, y: 16}
+    - {x: 19, y: 16}
     - {x: 19, y: 11}
     - {x: 16, y: 10}
   - list:
@@ -314,7 +318,7 @@ MonoBehaviour:
     pathNum: 1
     enemyCount: 10
     durationSec: 10
-    waitSec: 300
+    waitSec: 1
   - enemy: {fileID: 1322155926546746, guid: 04fa0bcbb06c890459564850571dbdf7, type: 2}
     atk: 2
     speed: 0.5
