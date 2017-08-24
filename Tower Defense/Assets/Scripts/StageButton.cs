@@ -13,6 +13,21 @@ public class StageButton : MonoBehaviour
     private string stageName;
     private bool locked;
     private int starNumber;
+    public int StarNumber
+    {
+        get
+        {
+            return starNumber;
+        }
+        set
+        {
+            starNumber = value;
+            if (starNumber > 3)
+            {
+                starNumber = 3;
+            }
+        }
+    }
 
     // Use this for initialization
     void Start()
@@ -20,7 +35,7 @@ public class StageButton : MonoBehaviour
         lockPicture = StageManager.instance.lockPicture;
         starPicture = StageManager.instance.starPicture;
         locked = StageManager.instance.stageList[index].locked;
-        starNumber = StageManager.instance.stageList[index].starNumber;
+        StarNumber = StageManager.instance.stageList[index].starNumber;
         stageName = StageManager.instance.stageList[index].stageName;
         this.gameObject.GetComponent<Image>().sprite = StageManager.instance.stageList[index].stageImage;
 
@@ -38,7 +53,7 @@ public class StageButton : MonoBehaviour
         {
             float xAdjustment = -this.transform.GetComponent<RectTransform>().rect.width / 4;
             float yAdjustment = -this.transform.GetComponent<RectTransform>().rect.height / 2;
-            for (int i = 0; i < starNumber; i++)
+            for (int i = 0; i < StarNumber; i++)
             {
                 Instantiate(starPicture, new Vector2(this.transform.position.x + xAdjustment, this.transform.position.y + yAdjustment), Quaternion.identity, this.transform);
                 xAdjustment += this.transform.GetComponent<RectTransform>().rect.width / 4;
