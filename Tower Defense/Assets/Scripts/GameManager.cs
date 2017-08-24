@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private GameObject GameOverScreen, ClearScreen;
     private GameObject unitUpgradeMenu;
+    private GameObject StageMenu;
 
     public int Money
     {
@@ -164,10 +165,12 @@ public class GameManager : MonoBehaviour
         GameOverScreen = GameObject.Find("GameOver");
         ClearScreen = GameObject.Find("Clear");
         unitUpgradeMenu = GameObject.Find("UnitUpgradeMenu");
+        StageMenu = GameObject.Find("StageMenu");
 
         GameOverScreen.SetActive(false);
         ClearScreen.SetActive(false);
         unitUpgradeMenu.SetActive(false);
+        StageMenu.SetActive(false);
     }
 
     public void ShowUnitUpgradeMenu(GameObject unitToUpgrade)
@@ -252,6 +255,20 @@ public class GameManager : MonoBehaviour
     public void OnClickToRetry()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    /// <summary>
+    /// ゲームを止めてステージメニューを表示
+    /// </summary>
+    public void OnClickToStageMenu()
+    {
+        PauseGame();
+        StageMenu.SetActive(true);
+    }
+
+    public void OnClickCloseStageMenu()
+    {
+        StageMenu.SetActive(false);
     }
 
 }
