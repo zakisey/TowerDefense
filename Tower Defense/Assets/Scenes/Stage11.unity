@@ -1259,13 +1259,7 @@ Prefab:
     - target: {fileID: 114276996207614192, guid: 667df6b78228ab845a0a0ced3b7c58ce,
         type: 2}
       propertyPath: tooltipText
-      value: 'Attack: 1
-
-        Speed: 0.75
-
-        Range: 3
-
-        Target: Ground'
+      value: "Attack: 1\r\nSpeed: 0.75\r\nRange: 2\r\nTarget: Ground"
       objectReference: {fileID: 0}
     - target: {fileID: 114387356622025432, guid: 667df6b78228ab845a0a0ced3b7c58ce,
         type: 2}
@@ -3483,7 +3477,7 @@ Prefab:
 
         Speed: 1.5
 
-        Range: 2
+        Range: 3
 
         Target: Aerial'
       objectReference: {fileID: 0}
