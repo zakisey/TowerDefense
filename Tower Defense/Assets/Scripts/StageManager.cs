@@ -7,6 +7,8 @@ public class StageManager : MonoBehaviour
 {
     public static StageManager instance = null;
 
+    public GameObject lockPicture;
+    public GameObject starPicture;
     public List<StageData> stageList;
 
     private void Awake()

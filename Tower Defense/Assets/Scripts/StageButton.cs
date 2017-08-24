@@ -6,10 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class StageButton : MonoBehaviour
 {
-    public GameObject lockPicture;
-    public GameObject starPicture;
     public int index;
 
+    private GameObject lockPicture;
+    private GameObject starPicture;
     private string stageName;
     private bool locked;
     private int starNumber;
@@ -17,6 +17,8 @@ public class StageButton : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        lockPicture = StageManager.instance.lockPicture;
+        starPicture = StageManager.instance.starPicture;
         locked = StageManager.instance.stageList[index].locked;
         starNumber = StageManager.instance.stageList[index].starNumber;
         stageName = StageManager.instance.stageList[index].stageName;

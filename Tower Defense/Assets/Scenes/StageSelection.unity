@@ -156,10 +156,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d8b80fb3596ed3478f9c661d7b6c084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lockPicture: {fileID: 1455380090328936, guid: 6b49120e5d7bae646bd34267e52b1233,
-    type: 2}
-  starPicture: {fileID: 1697099628069082, guid: bfa422e8b55e1724fa647e793e170b93,
-    type: 2}
   index: 7
 --- !u!114 &130995711
 MonoBehaviour:
@@ -401,10 +397,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d8b80fb3596ed3478f9c661d7b6c084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lockPicture: {fileID: 1455380090328936, guid: 6b49120e5d7bae646bd34267e52b1233,
-    type: 2}
-  starPicture: {fileID: 1697099628069082, guid: bfa422e8b55e1724fa647e793e170b93,
-    type: 2}
   index: 9
 --- !u!114 &347900011
 MonoBehaviour:
@@ -539,10 +531,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d8b80fb3596ed3478f9c661d7b6c084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lockPicture: {fileID: 1455380090328936, guid: 6b49120e5d7bae646bd34267e52b1233,
-    type: 2}
-  starPicture: {fileID: 1697099628069082, guid: bfa422e8b55e1724fa647e793e170b93,
-    type: 2}
   index: 10
 --- !u!114 &489344560
 MonoBehaviour:
@@ -820,10 +808,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d8b80fb3596ed3478f9c661d7b6c084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lockPicture: {fileID: 1455380090328936, guid: 6b49120e5d7bae646bd34267e52b1233,
-    type: 2}
-  starPicture: {fileID: 1697099628069082, guid: bfa422e8b55e1724fa647e793e170b93,
-    type: 2}
   index: 4
 --- !u!114 &731718858
 MonoBehaviour:
@@ -937,6 +921,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 035b4bf4f41ffb647b47594d19069175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockPicture: {fileID: 1455380090328936, guid: 6b49120e5d7bae646bd34267e52b1233,
+    type: 2}
+  starPicture: {fileID: 1697099628069082, guid: bfa422e8b55e1724fa647e793e170b93,
+    type: 2}
   stageList:
   - stageImage: {fileID: 21300000, guid: f62e61d41b35028498b38e3fe6802cb8, type: 3}
     stageName: Stage1
@@ -1047,10 +1035,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d8b80fb3596ed3478f9c661d7b6c084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lockPicture: {fileID: 1455380090328936, guid: 6b49120e5d7bae646bd34267e52b1233,
-    type: 2}
-  starPicture: {fileID: 1697099628069082, guid: bfa422e8b55e1724fa647e793e170b93,
-    type: 2}
   index: 5
 --- !u!114 &1020335800
 MonoBehaviour:
@@ -1185,10 +1169,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d8b80fb3596ed3478f9c661d7b6c084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lockPicture: {fileID: 1455380090328936, guid: 6b49120e5d7bae646bd34267e52b1233,
-    type: 2}
-  starPicture: {fileID: 1697099628069082, guid: bfa422e8b55e1724fa647e793e170b93,
-    type: 2}
   index: 1
 --- !u!114 &1038386834
 MonoBehaviour:
@@ -1408,10 +1388,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d8b80fb3596ed3478f9c661d7b6c084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lockPicture: {fileID: 1455380090328936, guid: 6b49120e5d7bae646bd34267e52b1233,
-    type: 2}
-  starPicture: {fileID: 1697099628069082, guid: bfa422e8b55e1724fa647e793e170b93,
-    type: 2}
   index: 0
 --- !u!1 &1206238297
 GameObject:
@@ -1595,10 +1571,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d8b80fb3596ed3478f9c661d7b6c084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lockPicture: {fileID: 1455380090328936, guid: 6b49120e5d7bae646bd34267e52b1233,
-    type: 2}
-  starPicture: {fileID: 1697099628069082, guid: bfa422e8b55e1724fa647e793e170b93,
-    type: 2}
   index: 6
 --- !u!114 &1289627793
 MonoBehaviour:
@@ -1733,10 +1705,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d8b80fb3596ed3478f9c661d7b6c084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lockPicture: {fileID: 1455380090328936, guid: 6b49120e5d7bae646bd34267e52b1233,
-    type: 2}
-  starPicture: {fileID: 1697099628069082, guid: bfa422e8b55e1724fa647e793e170b93,
-    type: 2}
   index: 8
 --- !u!114 &1303072281
 MonoBehaviour:
@@ -1960,10 +1928,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d8b80fb3596ed3478f9c661d7b6c084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lockPicture: {fileID: 1455380090328936, guid: 6b49120e5d7bae646bd34267e52b1233,
-    type: 2}
-  starPicture: {fileID: 1697099628069082, guid: bfa422e8b55e1724fa647e793e170b93,
-    type: 2}
   index: 3
 --- !u!114 &1587358982
 MonoBehaviour:
@@ -2160,10 +2124,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d8b80fb3596ed3478f9c661d7b6c084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lockPicture: {fileID: 1455380090328936, guid: 6b49120e5d7bae646bd34267e52b1233,
-    type: 2}
-  starPicture: {fileID: 1697099628069082, guid: bfa422e8b55e1724fa647e793e170b93,
-    type: 2}
   index: 11
 --- !u!114 &1866775925
 MonoBehaviour:
@@ -2298,10 +2258,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d8b80fb3596ed3478f9c661d7b6c084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lockPicture: {fileID: 1455380090328936, guid: 6b49120e5d7bae646bd34267e52b1233,
-    type: 2}
-  starPicture: {fileID: 1697099628069082, guid: bfa422e8b55e1724fa647e793e170b93,
-    type: 2}
   index: 2
 --- !u!114 &1930545216
 MonoBehaviour:
