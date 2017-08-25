@@ -19,6 +19,8 @@ public class Shot : MonoBehaviour
         }
         // targetの方へ移動
         transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
+        // targetの方へ向きを変える
+        transform.rotation = Quaternion.FromToRotation(new Vector3(0, 1, 0), target.transform.position - transform.position);
         // targetにぶつかったらダメージを与えて消滅
         if (transform.position == target.transform.position)
         {
