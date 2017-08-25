@@ -9,6 +9,7 @@ public class UnitUpgradeMenu : MonoBehaviour
     public Button upgradeButton;
     private GameObject unitToUpgrade;
 
+
     public void SetUnitToUpgrade(GameObject unit)
     {
         gameObject.SetActive(true);
@@ -21,7 +22,8 @@ public class UnitUpgradeMenu : MonoBehaviour
     // 実際の表示位置と違う位置に表示されるバグがあったので、これを書いたら直った…
     private void Update()
     {
-        transform.position = transform.position;    
+        transform.position = transform.position;
+        SetButtonState(); 
     }
 
     private void SetButtonState()
