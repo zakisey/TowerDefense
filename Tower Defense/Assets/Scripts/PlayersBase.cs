@@ -10,6 +10,9 @@ public class PlayersBase : MonoBehaviour
     /// HPバー描画用
     /// </summary>
     public Slider HpBar;
+    // 今の最大HPは10から変えるつもりがない
+    public float maxHP = 10;
+
     private float hp;
     public float HP
     {
@@ -31,7 +34,7 @@ public class PlayersBase : MonoBehaviour
 
     void Start()
     {
-        HP = 10;
+        HP = maxHP;
         Vector3 hpBarPos = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, -0.6f));
         HpBar = Instantiate(HpBar, hpBarPos, Quaternion.identity, GameObject.Find("HPBars").transform);
         HpBar.maxValue = HP;

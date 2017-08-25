@@ -216,20 +216,31 @@ public class GameManager : MonoBehaviour
         if (ClearScreen.activeInHierarchy) return;
         ClearScreen.SetActive(true);
 
+        // 3つの星を表示させる
+        DisplayStar(-100.0f, 0.0f);
+        DisplayStar(0.0f, 0.5f);
+        DisplayStar(100.0f, 1.0f);
+    }
+
+    /// <summary>
+    /// 星を表示させ、HPが一定の閾値以下であれば黒くする
+    /// </summary>
+    /// <param name="xOffset">横方向のオフセット</param>
+    /// <param name="hpRatio">HP閾値</param>
+    private void DisplayStar(float xOffset, float hpRatio)
+    {
         //ベースのライフをもとに星を表示
-        //ベースは1つしかないことを前提としてbaseLifeを取得している
-        float baseLife = FindObjectOfType<PlayersBase>().HP, MaxLife = 10f;
+        float baseLife = FindObjectOfType<PlayersBase>().HP;
+        float maxLife = FindObjectOfType<PlayersBase>().maxHP;
+        
         //配置の際はキャンバスのscaleを考慮して場所を決める(デザインが楽なので)
         Vector3 canvasScale = GameObject.Find("Canvas").transform.localScale;
-        //生成した星の情報を変えるためだけのオブジェクト
-        GameObject starObject;
-        //1つ目の星には何もしない
-        Instantiate(Star, ClearScreen.transform.position + new Vector3(-100 * canvasScale.x, 5 * canvasScale.y, 0), Quaternion.identity, ClearScreen.transform);
-        //2つ目以降はスコアによって色を変える
-        starObject = Instantiate(Star, ClearScreen.transform.position + new Vector3(0 * canvasScale.x, 5 * canvasScale.y, 0), Quaternion.identity, ClearScreen.transform);
-        if (baseLife / MaxLife < 0.5) starObject.GetComponent<Image>().color = new Color(0, 0, 0);
-        starObject = Instantiate(Star, ClearScreen.transform.position + new Vector3(100 * canvasScale.x, 5 * canvasScale.y, 0), Quaternion.identity, ClearScreen.transform);
-        if (baseLife / MaxLife < 1) starObject.GetComponent<Image>().color = new Color(0, 0, 0);
+
+        GameObject starObject = Instantiate(Star, ClearScreen.transform.position + new Vector3(xOffset * canvasScale.x, 5 * canvasScale.y, 0), Quaternion.identity, ClearScreen.transform);
+
+        // HPが閾値以下であれば黒くする
+        if (baseLife / maxLife < hpRatio)
+            starObject.GetComponent<Image>().color = new Color(0, 0, 0);
     }
 
     private void SaveScore()

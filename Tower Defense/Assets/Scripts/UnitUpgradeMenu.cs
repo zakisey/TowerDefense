@@ -9,6 +9,7 @@ public class UnitUpgradeMenu : MonoBehaviour
     public Button upgradeButton;
     private GameObject unitToUpgrade;
 
+
     public void SetUnitToUpgrade(GameObject unit)
     {
         gameObject.SetActive(true);
@@ -21,7 +22,8 @@ public class UnitUpgradeMenu : MonoBehaviour
     // 実際の表示位置と違う位置に表示されるバグがあったので、これを書いたら直った…
     private void Update()
     {
-        transform.position = transform.position;    
+        transform.position = transform.position;
+        SetButtonState();
     }
 
     private void SetButtonState()
@@ -46,7 +48,22 @@ public class UnitUpgradeMenu : MonoBehaviour
     // メニューがユニットの横に出るように位置を調整
     private void SetPosition()
     {
-        transform.position = Camera.main.WorldToScreenPoint(unitToUpgrade.transform.position + new Vector3(3, 0));
+        Vector3 unitPos = Camera.main.WorldToScreenPoint(unitToUpgrade.transform.position);
+        Rect menuSize = this.gameObject.GetComponent<RectTransform>().rect;
+        float screenWidth = Camera.main.pixelWidth;
+
+        // カメラのサイズが違う時に自動で調整する(Stage 1のサイズ9.0fを基準とする)
+        float cameraScale = Camera.main.orthographicSize / 9.0f;
+        float xOffset = 2.5f * cameraScale;
+
+        if (menuSize.width > (screenWidth - unitPos.x)) // 右に寄りすぎる時（縦方向は現在考慮しない）
+        {
+            transform.position = Camera.main.WorldToScreenPoint(unitToUpgrade.transform.position + new Vector3(-xOffset, 0));
+        }
+        else
+        {
+            transform.position = Camera.main.WorldToScreenPoint(unitToUpgrade.transform.position + new Vector3(xOffset, 0));
+        }
     }
 
     public void OnClickUpgrade()
