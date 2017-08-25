@@ -1,14 +1,16 @@
 fileFormatVersion: 2
 guid: 5b491ef779df65046a427efbb42b7ed8
-timeCreated: 1503627300
+timeCreated: 1503629934
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
   defaultReferences:
-  - cannonAudio: {fileID: 82726417073945690, guid: 1dcdf4cc15e5b5e46973c2032ac6b0fc,
+  - defaultCannonAudio: {fileID: 82726417073945690, guid: 1dcdf4cc15e5b5e46973c2032ac6b0fc,
       type: 2}
-  - missileAudio: {fileID: 82022532561691460, guid: 29faea86e25ba694386ed7441e0c79e2,
+  - defaultMissileAudio: {fileID: 82022532561691460, guid: 29faea86e25ba694386ed7441e0c79e2,
       type: 2}
+  - extraCannonAudio: {instanceID: 0}
+  - extraMissileAudio: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
