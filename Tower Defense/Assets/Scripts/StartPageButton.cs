@@ -38,8 +38,6 @@ public class StartPageButton : MonoBehaviour
     /// </summary>
     public void DoConfirmClearYes()
     {
-        Debug.Log("Clear: Yes");
-
         ConfirmClearScreen.SetActive(false);
         MainButtons.SetActive(true);
 
@@ -51,8 +49,6 @@ public class StartPageButton : MonoBehaviour
     /// </summary>
     public void DoConfirmClearNo()
     {
-        Debug.Log("Clear: No");
-
         ConfirmClearScreen.SetActive(false);
         MainButtons.SetActive(true);
     }
