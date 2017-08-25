@@ -119,6 +119,7 @@ GameObject:
   - component: {fileID: 69111212}
   - component: {fileID: 69111211}
   - component: {fileID: 69111214}
+  - component: {fileID: 69111215}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -407,6 +408,21 @@ MonoBehaviour:
     enemyCount: 5
     durationSec: 10
     waitSec: 5
+--- !u!114 &69111215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 69111210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b491ef779df65046a427efbb42b7ed8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cannonAudio: {fileID: 82450532527807598, guid: d042d3cb0586b0b428a9ceb5b6f3270b,
+    type: 2}
+  missileAudio: {fileID: 82252228537320554, guid: a10905ad56a28de48a489292d0cee247,
+    type: 2}
 --- !u!1 &87163655
 GameObject:
   m_ObjectHideFlags: 0
