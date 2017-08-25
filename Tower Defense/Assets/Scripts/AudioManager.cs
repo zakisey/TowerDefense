@@ -6,8 +6,10 @@ public class AudioManager : MonoBehaviour {
 
     public static AudioManager instance = null;
 
-    public AudioSource cannonAudio;
-    public AudioSource missileAudio;
+    public AudioSource defaultCannonAudio;
+    public AudioSource defaultMissileAudio;
+    public AudioSource extraCannonAudio;
+    public AudioSource extraMissileAudio;
 
     private void Awake()
     {
@@ -21,12 +23,30 @@ public class AudioManager : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// 音声タイプで流す効果音を決める
+    /// </summary>
+    /// <param name="audioType">CannonかMissile</param>
     public void PlaySound(string audioType)
     {
-        if (audioType.ToLower() == "cannon")
-            StartCoroutine(CoPlaySound(cannonAudio));
-        else if (audioType.ToLower() == "missile")
-            StartCoroutine(CoPlaySound(missileAudio));
+        // 特殊の効果音がある場合、確率でそれを流す
+        switch(audioType.ToLower())
+        {
+            case "cannon":
+                if (extraCannonAudio == null || Random.Range(0.0f, 4.0f) < 3.0f) // 4分の1
+                    StartCoroutine(CoPlaySound(defaultCannonAudio));
+                else
+                    StartCoroutine(CoPlaySound(extraCannonAudio));
+                break;
+            case "missile":
+                if (extraMissileAudio == null || Random.Range(0.0f, 3.0f) < 1.0f) // 3分の2
+                    StartCoroutine(CoPlaySound(defaultMissileAudio));
+                else
+                    StartCoroutine(CoPlaySound(extraMissileAudio));
+                break;
+            default:
+                break;
+        }
     }
 
     private IEnumerator CoPlaySound(AudioSource audioSource)
