@@ -73,7 +73,9 @@ public class GameManager : MonoBehaviour
             switch (clicked.tag)
             {
                 case "Socket":
-                    if (mode == GameMode.UnitPlacing)
+                    //条件式の2つ目について
+                    //ユニットが置いてない(ソケットが子objectを持たない)時に置ける
+                    if (mode == GameMode.UnitPlacing && clicked.transform.childCount == 0)
                     {
                         Money -= unitToPlace.GetComponent<Unit>().initialCost;
                         BoardManager.instance.SetUnitOnSocket(unitToPlace, clicked.gameObject);
