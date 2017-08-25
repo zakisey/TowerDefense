@@ -17,6 +17,11 @@ public class Unit : MonoBehaviour
     public int maxLevel;
     public bool canAttackGround;
     public bool canAttackFloat;
+    /// <summary>
+    /// 弾の音声タイプ
+    /// </summary>
+    public string audioType;
+    
 
     // Prefabs
     public GameObject shot;
@@ -28,11 +33,6 @@ public class Unit : MonoBehaviour
     /// 画像用
     /// </summary>
     public GameObject rangeCirclePicture;
-    /// <summary>
-    /// 効果音用
-    /// </summary>
-    public AudioSource cannonAudio;
-
     public GameObject NumberSprite;
 
     [System.NonSerialized]
@@ -53,7 +53,7 @@ public class Unit : MonoBehaviour
     private GameObject target;
     private Transform canon;
     private Vector2 canonVector;
-
+    
     // Use this for initialization
     void Start()
     {
@@ -83,6 +83,11 @@ public class Unit : MonoBehaviour
         }
         RotateCanon();
         Fire();
+    }
+
+    void OnGUI()
+    {
+
     }
 
     public bool IsAtMaxLevel()
@@ -171,18 +176,10 @@ public class Unit : MonoBehaviour
         Shot shotScript = shot.GetComponent<Shot>();
         shotScript.target = target;
         shotScript.atk = this.atk;
-        StartCoroutine(PlaySound(cannonAudio));
+        AudioManager.instance.PlaySound(audioType);
         coolTimeChargedSec = 0f;
     }
 
-    private IEnumerator PlaySound(AudioSource audioSource)
-    {
-        AudioSource audio = Instantiate(audioSource, this.transform);
-        audio.Play();
-
-        yield return new WaitWhile(() => audio.isPlaying);
-        Destroy(audio.gameObject);
-    }
 
     private void OnMouseDown()
     {
