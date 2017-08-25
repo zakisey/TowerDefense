@@ -168,8 +168,7 @@ MonoBehaviour:
     type: 2}
   rangeCirclePicture: {fileID: 1352484919877188, guid: 6880b10be7fb8244ea37420d7684d9d4,
     type: 2}
-  cannonAudio: {fileID: 82726417073945690, guid: 1dcdf4cc15e5b5e46973c2032ac6b0fc,
-    type: 2}
+  audioType: Missile
   NumberSprite: {fileID: 1017463150011894}
 --- !u!114 &114459298124856450
 MonoBehaviour:

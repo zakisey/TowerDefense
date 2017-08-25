@@ -163,12 +163,11 @@ MonoBehaviour:
   maxLevel: 3
   canAttackGround: 0
   canAttackFloat: 1
+  audioType: Cannon
   shot: {fileID: 1401135235265064, guid: 623dfba1a0240474c9dfa707df8d607a, type: 2}
   rangeCircleCollider: {fileID: 1636938936203996, guid: 65ab254a09dcdf54db0de512ad61d94c,
     type: 2}
   rangeCirclePicture: {fileID: 1352484919877188, guid: 6880b10be7fb8244ea37420d7684d9d4,
-    type: 2}
-  cannonAudio: {fileID: 82726417073945690, guid: 1dcdf4cc15e5b5e46973c2032ac6b0fc,
     type: 2}
   NumberSprite: {fileID: 1680383547967320}
 --- !u!114 &114614399835144652
