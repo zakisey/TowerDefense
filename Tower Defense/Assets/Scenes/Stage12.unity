@@ -1148,7 +1148,7 @@ Prefab:
       propertyPath: tooltipText
       value: 'Attack: 10
 
-        Speed: 5
+        Cool Down: 5
 
         Range: 7
 
@@ -1387,7 +1387,7 @@ Prefab:
     - target: {fileID: 114276996207614192, guid: 667df6b78228ab845a0a0ced3b7c58ce,
         type: 2}
       propertyPath: tooltipText
-      value: "Attack: 1\r\nSpeed: 0.75\r\nRange: 2\r\nTarget: Ground"
+      value: "Attack: 1\r\nCool Down: 0.75\r\nRange: 2\r\nTarget: Ground"
       objectReference: {fileID: 0}
     - target: {fileID: 114387356622025432, guid: 667df6b78228ab845a0a0ced3b7c58ce,
         type: 2}
@@ -3723,7 +3723,7 @@ Prefab:
       propertyPath: tooltipText
       value: 'Attack: 3
 
-        Speed: 1.5
+        Cool Down: 1.5
 
         Range: 3
 

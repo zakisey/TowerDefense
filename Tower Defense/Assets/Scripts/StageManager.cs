@@ -34,10 +34,10 @@ public class StageManager : MonoBehaviour
             if (PlayerPrefs.HasKey(stageList[i].stageName))
             {
                 stageList[i].starNumber = PlayerPrefs.GetInt(stageList[i].stageName);
-
-                if (stageList[i].starNumber >= 1 && i < stageList.Count - 1) // 最後のステージ以外次のステージを解除
-                    stageList[i + 1].locked = false;
             }
+
+            if (stageList[i].starNumber >= 1 && i < stageList.Count - 1) // 最後のステージ以外次のステージを解除
+                stageList[i + 1].locked = false;
         }
 
     }
