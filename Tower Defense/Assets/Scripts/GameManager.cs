@@ -129,6 +129,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1.0f;
         resumeButton.interactable = false;
         pauseButton.interactable = true;
+        StageMenu.SetActive(false);
     }
 
     public void FastForwardGame()
