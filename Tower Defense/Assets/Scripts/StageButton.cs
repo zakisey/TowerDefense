@@ -53,7 +53,6 @@ public class StageButton : MonoBehaviour
         {
             float xAdjustment = -this.transform.GetComponent<RectTransform>().rect.width / 4;
             float yAdjustment = -this.transform.GetComponent<RectTransform>().rect.height / 2;
-            Debug.Log(transform.position.y);
             for (int i = 0; i < StarNumber; i++)
             {
                 Instantiate(starPicture, new Vector2(this.transform.position.x + xAdjustment, this.transform.position.y + yAdjustment), Quaternion.identity, this.transform);
