@@ -79,15 +79,16 @@ public class GameManager : MonoBehaviour
                     {
                         Money -= unitToPlace.GetComponent<Unit>().initialCost;
                         BoardManager.instance.SetUnitOnSocket(unitToPlace, clicked.gameObject);
+                        ChangeToNormalMode();
                     }
                     break;
             }
         }
 
-        if (Input.GetMouseButtonDown(0))
+        //右クリックをするとnormalモードに変わる
+        if (Input.GetMouseButtonDown(1))
         {
-            unitToPlace = null;
-            ChangeGameMode(GameMode.Normal);
+            ChangeToNormalMode();
         }
 
         // クリア判定
@@ -177,6 +178,7 @@ public class GameManager : MonoBehaviour
 
     public void ShowUnitUpgradeMenu(GameObject unitToUpgrade)
     {
+        if (mode != GameMode.Normal) return;
         UnitUpgradeMenu menu = unitUpgradeMenu.GetComponent<UnitUpgradeMenu>();
         menu.SetUnitToUpgrade(unitToUpgrade);
     }
@@ -198,6 +200,15 @@ public class GameManager : MonoBehaviour
     {
         this.mode = GameMode.UnitPlacing;
         this.unitToPlace = unitToPlace;
+    }
+
+    /// <summary>
+    /// モード変更以外の処理も行う(例：マウスについたユニットアイコンを消す)
+    /// </summary>
+    public void ChangeToNormalMode()
+    {
+        unitToPlace = null;
+        ChangeGameMode(GameMode.Normal);
     }
 
     // ゲームをクリア(Waveが全て終わり、敵が盤面におらず、HPが1以上)したときに呼ばれる
@@ -232,7 +243,7 @@ public class GameManager : MonoBehaviour
         //ベースのライフをもとに星を表示
         float baseLife = FindObjectOfType<PlayersBase>().HP;
         float maxLife = FindObjectOfType<PlayersBase>().maxHP;
-        
+
         //配置の際はキャンバスのscaleを考慮して場所を決める(デザインが楽なので)
         Vector3 canvasScale = GameObject.Find("Canvas").transform.localScale;
 
