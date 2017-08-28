@@ -36,13 +36,13 @@ public class UnitUpgradeMenu : MonoBehaviour
         Unit unitScript = unitToUpgrade.GetComponent<Unit>();
         if (unitScript.IsAtMaxLevel())
         {
-            upgradeText.text = "Max Level!";
+            upgradeText.text = "Max\nLevel!";
         }
         else
         {
-            upgradeText.text = "Upgrade - $" + unitScript.upgradeCost;
+            upgradeText.text = "Upgrade\n - $" + unitScript.upgradeCost;
         }
-        sellText.text = "Sell - $" + unitScript.sellPrice;
+        sellText.text = "Sell\n - $" + unitScript.sellPrice;
     }
 
     // メニューがユニットの横に出るように位置を調整
