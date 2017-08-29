@@ -296,4 +296,13 @@ public class GameManager : MonoBehaviour
         StageMenu.SetActive(false);
     }
 
+    /// <summary>
+    /// UnitUpgradeMenuのボタンとunitが重なっているかどうか
+    /// </summary>
+    public bool UnitIsOverlappedByUpgradeMenu()
+    {
+        if (!unitUpgradeMenu.activeInHierarchy) return false;
+        return unitUpgradeMenu.GetComponent<UnitUpgradeMenu>().ButtonMouseHover();
+    }
+
 }

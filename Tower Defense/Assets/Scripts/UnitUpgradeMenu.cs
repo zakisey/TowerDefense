@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UnitUpgradeMenu : MonoBehaviour
+//ButtonMouseHoverに必要なので
+//継承がMonoBehaviour->Selectableに変更
+public class UnitUpgradeMenu : Selectable
 {
     public Text upgradeText, sellText;
     public Button upgradeButton;
@@ -42,7 +44,7 @@ public class UnitUpgradeMenu : MonoBehaviour
         {
             upgradeText.text = "Upgrade\n - $" + unitScript.upgradeCost;
         }
-        sellText.text = "Sell\n - $" + unitScript.sellPrice;
+        sellText.text = "Sell\n + $" + unitScript.sellPrice;
     }
 
     // メニューがユニットの横に出るように位置を調整
@@ -88,4 +90,15 @@ public class UnitUpgradeMenu : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
+
+    /// <summary>
+    /// ボタンがマウスホバーされているかどうか
+    /// </summary>
+    /// <returns></returns>
+    public bool ButtonMouseHover()
+    {
+        if (currentSelectionState == SelectionState.Highlighted) return true;
+        return false;
+    }
+
 }
