@@ -2376,7 +2376,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4f265f2ddd86694a9358e0ca09cb879, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ApiBaseUrl: http://localhost:51008/
+  ApiBaseUrl: http://172.27.20.18/TDDemo/
 --- !u!4 &1589297690
 Transform:
   m_ObjectHideFlags: 0
