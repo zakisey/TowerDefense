@@ -122,19 +122,26 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
         pauseButton.interactable = false;
         resumeButton.interactable = true;
+        fastButton.interactable = false;
     }
 
     public void ResumeGame()
     {
         Time.timeScale = 1.0f;
-        resumeButton.interactable = false;
         pauseButton.interactable = true;
+        resumeButton.interactable = false;
+        fastButton.interactable = true;
+        AudioManager.instance.SetPitchResume();
         StageMenu.SetActive(false);
     }
 
     public void FastForwardGame()
     {
-        // TODO: 早送り機能の実装
+        Time.timeScale = 2.0f;
+        pauseButton.interactable = true;
+        resumeButton.interactable = true;
+        fastButton.interactable = false;
+        AudioManager.instance.SetPitchFastForward();
     }
 
     // ユニットを設置するモードのとき、マウスカーソルの位置に設置するユニットを表示する

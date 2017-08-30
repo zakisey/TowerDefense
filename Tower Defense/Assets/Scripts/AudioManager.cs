@@ -11,6 +11,8 @@ public class AudioManager : MonoBehaviour {
     public AudioSource extraCannonAudio;
     public AudioSource extraMissileAudio;
 
+    private float pitch = 1f;
+
     private void Awake()
     {
         if (instance == null)
@@ -52,9 +54,20 @@ public class AudioManager : MonoBehaviour {
     private IEnumerator CoPlaySound(AudioSource audioSource)
     {
         AudioSource audio = Instantiate(audioSource, this.transform);
+        audio.pitch = this.pitch;
         audio.Play();
 
         yield return new WaitWhile(() => audio.isPlaying);
         Destroy(audio.gameObject);
+    }
+
+    public void SetPitchResume()
+    {
+        pitch = 1f;
+    }
+
+    public void SetPitchFastForward()
+    {
+        pitch = 2f;
     }
 }
