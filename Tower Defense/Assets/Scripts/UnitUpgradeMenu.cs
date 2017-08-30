@@ -11,7 +11,6 @@ public class UnitUpgradeMenu : Selectable
     public Button upgradeButton;
     private GameObject unitToUpgrade;
 
-
     public void SetUnitToUpgrade(GameObject unit)
     {
         gameObject.SetActive(true);
@@ -21,15 +20,15 @@ public class UnitUpgradeMenu : Selectable
         SetPosition();
     }
 
-    // 実際の表示位置と違う位置に表示されるバグがあったので、これを書いたら直った…
     private void Update()
     {
-        transform.position = transform.position;
         SetButtonState();
+        CloseMenu();
     }
 
     private void SetButtonState()
     {
+        if (unitToUpgrade == null) return;
         upgradeButton.interactable = unitToUpgrade.GetComponent<Unit>().IsUpgradable();
     }
 
@@ -114,4 +113,21 @@ public class UnitUpgradeMenu : Selectable
         return false;
     }
 
+    /// <summary>
+    /// メニューではないところをクリックすると メニューが閉じる
+    /// </summary>
+    private void CloseMenu()
+    {
+        //メニューではないところをクリックしたときのみ反応する
+        if (ButtonMouseHover() || !Input.GetMouseButtonDown(0)) return;
+
+        Vector2 tapPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Collider2D collision = Physics2D.OverlapPoint(tapPoint);
+
+        //例外：UnitToUpgradeのソケット
+        //理由：メニューが出た瞬間に消えてしまうから
+        if (collision && collision.transform.gameObject == unitToUpgrade.transform.parent.gameObject) return;
+
+        gameObject.SetActive(false);
+    }
 }
