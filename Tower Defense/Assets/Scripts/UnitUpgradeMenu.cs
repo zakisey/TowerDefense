@@ -50,29 +50,35 @@ public class UnitUpgradeMenu : Selectable
     // メニューがユニットの横に出るように位置を調整
     private void SetPosition()
     {
-        float menuWidth = GetComponent<RectTransform>().sizeDelta.x;
-        float canvasWidth = 800;
-        // 15f:調整のための数値
-        float xOffset = (menuWidth / 2 + 15f) / canvasWidth;
+        Vector2 menuSize = GetComponent<RectTransform>().sizeDelta;
+        Vector2 canvasSize = new Vector2(800f, 600f);
 
-        Vector3 unitPos = Camera.main.WorldToViewportPoint(unitToUpgrade.transform.position);
+        Vector3 menuPos = Camera.main.WorldToViewportPoint(unitToUpgrade.transform.position);
+        // 15f:調整のための数値
+        float xOffset = (menuSize.x / 2 + 15f) / canvasSize.x;
 
         // 基本的にはユニットの右にmenuを表示
-        // menuがゲーム画面を出てしまうとき（縦方向は現在考慮しない）
-        if (unitPos.x + xOffset + menuWidth / canvasWidth > 1)
+        // menuがゲーム画面を出てしまうとき
+        if (menuPos.x + xOffset + menuSize.x / canvasSize.x > 1)
         {
             //ユニットの左に表示する
-            unitPos += new Vector3(-xOffset, 0, 0);
+            menuPos += new Vector3(-xOffset, 0, 0);
         }
         else
         {
-            unitPos += new Vector3(xOffset, 0, 0);
+            menuPos += new Vector3(xOffset, 0, 0);
+        }
+
+        //下にはみ出した場合もチェック
+        if (menuPos.y - menuSize.y / canvasSize.y / 2 < 0)
+        {
+            menuPos = new Vector3(menuPos.x, menuSize.y / canvasSize.y / 2, 0);
         }
 
         // 調整したviewport座標をキャンバスの座標に変換
         transform.position = new Vector2(
-            (unitPos.x * Camera.main.pixelWidth),
-            (unitPos.y * Camera.main.pixelHeight));
+            (menuPos.x * Camera.main.pixelWidth),
+            (menuPos.y * Camera.main.pixelHeight));
     }
 
     public void OnClickUpgrade()
