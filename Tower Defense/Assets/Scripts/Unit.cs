@@ -183,6 +183,8 @@ public class Unit : MonoBehaviour
 
     private void OnMouseDown()
     {
+        //メニューのボタンとユニットが重なっている場合、メニューを優先させる
+        if (GameManager.instance.UnitIsOverlappedByUpgradeMenu()) return;
         GameManager.instance.ShowUnitUpgradeMenu(gameObject);
     }
 
