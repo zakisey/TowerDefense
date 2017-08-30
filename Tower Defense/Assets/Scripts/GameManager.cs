@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -256,8 +257,31 @@ public class GameManager : MonoBehaviour
         else
             thisScore = 1;
 
-        if (!PlayerPrefs.HasKey(stageName) || thisScore > PlayerPrefs.GetInt(stageName))
-            PlayerPrefs.SetInt(stageName, thisScore);
+        // ログイン済の場合はサーバーにデータを保存
+        if (UserInfoManager.instance.UserName != null)
+        {
+            StartCoroutine(PostRecord(stageName.Replace("Stage", ""), thisScore));
+        }
+        else
+        {
+            // ログインしていない場合はPlayerPrefsにデータを保存
+            if (!PlayerPrefs.HasKey(stageName) || thisScore > PlayerPrefs.GetInt(stageName))
+            {
+                PlayerPrefs.SetInt(stageName, thisScore);
+            }
+        }
+    }
+
+    private IEnumerator PostRecord(string stageName, int score)
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("UserName", UserInfoManager.instance.UserName);
+        form.AddField("StageNum", stageName);
+        form.AddField("Stars", score);
+
+        UnityWebRequest request = UnityWebRequest.Post(UserInfoManager.instance.ApiBaseUrl + "api/records", form);
+        yield return request.Send();
+        print("post " + form.ToString());
     }
 
     public void OnClickToReturn()

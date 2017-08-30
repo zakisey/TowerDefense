@@ -29,8 +29,7 @@ public class StageButton : MonoBehaviour
         }
     }
 
-    // Use this for initialization
-    void Start()
+    public void ShowPictures()
     {
         lockPicture = StageManager.instance.lockPicture;
         starPicture = StageManager.instance.starPicture;
@@ -39,11 +38,6 @@ public class StageButton : MonoBehaviour
         stageName = StageManager.instance.stageList[index].stageName;
         this.gameObject.GetComponent<Image>().sprite = StageManager.instance.stageList[index].stageImage;
 
-        ShowPictures();
-    }
-
-    private void ShowPictures()
-    {
         if (locked)
         {
             this.GetComponent<Button>().interactable = false;
@@ -53,7 +47,6 @@ public class StageButton : MonoBehaviour
         {
             float xAdjustment = -this.transform.GetComponent<RectTransform>().rect.width / 4;
             float yAdjustment = -this.transform.GetComponent<RectTransform>().rect.height / 2;
-            Debug.Log(transform.position.y);
             for (int i = 0; i < StarNumber; i++)
             {
                 Instantiate(starPicture, new Vector2(this.transform.position.x + xAdjustment, this.transform.position.y + yAdjustment), Quaternion.identity, this.transform);
