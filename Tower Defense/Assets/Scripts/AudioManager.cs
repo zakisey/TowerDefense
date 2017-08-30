@@ -6,6 +6,8 @@ public class AudioManager : MonoBehaviour {
 
     public static AudioManager instance = null;
 
+    public AudioSource BGM;
+
     public AudioSource defaultCannonAudio;
     public AudioSource defaultMissileAudio;
     public AudioSource extraCannonAudio;
@@ -23,6 +25,7 @@ public class AudioManager : MonoBehaviour {
         {
             Destroy(gameObject);
         }
+        StartCoroutine(CoPlaySound(BGM));
     }
 
     /// <summary>

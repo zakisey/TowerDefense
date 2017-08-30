@@ -544,6 +544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b491ef779df65046a427efbb42b7ed8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BGM: {fileID: 82142773017631916, guid: 19a8d36bfac0ce94786f606f0f9c627e, type: 2}
   defaultCannonAudio: {fileID: 82726417073945690, guid: 1dcdf4cc15e5b5e46973c2032ac6b0fc,
     type: 2}
   defaultMissileAudio: {fileID: 82022532561691460, guid: 29faea86e25ba694386ed7441e0c79e2,
