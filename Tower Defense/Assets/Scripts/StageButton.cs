@@ -29,8 +29,7 @@ public class StageButton : MonoBehaviour
         }
     }
 
-    // Use this for initialization
-    void Start()
+    public void ShowPictures()
     {
         lockPicture = StageManager.instance.lockPicture;
         starPicture = StageManager.instance.starPicture;
@@ -39,11 +38,6 @@ public class StageButton : MonoBehaviour
         stageName = StageManager.instance.stageList[index].stageName;
         this.gameObject.GetComponent<Image>().sprite = StageManager.instance.stageList[index].stageImage;
 
-        ShowPictures();
-    }
-
-    private void ShowPictures()
-    {
         if (locked)
         {
             this.GetComponent<Button>().interactable = false;

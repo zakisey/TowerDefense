@@ -1,23 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 
 public class StartPageButton : MonoBehaviour
 {
-    private GameObject MainButtons;
-    private GameObject ConfirmClearScreen;
-
-    void Awake()
-    {
-        MainButtons = GameObject.Find("MainButtons");
-        ConfirmClearScreen = GameObject.Find("ConfirmClear");
-    }
-
-    void Start()
-    {
-        ConfirmClearScreen.SetActive(false);
-    }
+    public GameObject MainButtons;
+    public GameObject ConfirmClearScreen;
 
     public void StartGame()
     {
@@ -41,7 +31,35 @@ public class StartPageButton : MonoBehaviour
         ConfirmClearScreen.SetActive(false);
         MainButtons.SetActive(true);
 
-        PlayerPrefs.DeleteAll();
+        if (UserInfoManager.instance.UserName != null)
+        {
+            // ログイン済ならサーバーからユーザーのデータを削除する
+            StartCoroutine(DeleteRecords());
+        }
+        else
+        {
+            // ログインしていなければPlayerPrefsのデータを削除する
+            PlayerPrefs.DeleteAll();
+        }
+
+    }
+
+    private IEnumerator DeleteRecords()
+    {
+        UnityWebRequest request = UnityWebRequest.Delete(UserInfoManager.instance.ApiBaseUrl + "api/records/" + UserInfoManager.instance.UserName);
+        yield return request.Send();
+        if (request.isNetworkError)
+        {
+            Debug.Log(request.error);
+        }
+        else
+        {
+            if (request.responseCode == 201)
+            {
+                // ユーザー作成成功
+                Debug.Log("deleted user data: " + UserInfoManager.instance.UserName);
+            }
+        }
     }
 
     /// <summary>
