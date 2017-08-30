@@ -2499,7 +2499,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Please select stage:'
+  m_Text: Please select stage
 --- !u!222 &1985587542
 CanvasRenderer:
   m_ObjectHideFlags: 0
