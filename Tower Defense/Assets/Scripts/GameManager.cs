@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
@@ -290,7 +291,7 @@ public class GameManager : MonoBehaviour
         // ログイン済の場合はサーバーにデータを保存
         if (UserInfoManager.instance.UserName != null)
         {
-            StartCoroutine(PostRecord(stageName.Replace("Stage", ""), thisScore));
+            StartCoroutine(CreateOrUpdateRecord(stageName.Replace("Stage", ""), thisScore));
         }
         else
         {
@@ -302,16 +303,31 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private IEnumerator PostRecord(string stageName, int score)
+    private IEnumerator CreateOrUpdateRecord(string stageName, int score)
     {
         WWWForm form = new WWWForm();
         form.AddField("UserName", UserInfoManager.instance.UserName);
         form.AddField("StageNum", stageName);
         form.AddField("Stars", score);
-
         UnityWebRequest request = UnityWebRequest.Post(UserInfoManager.instance.ApiBaseUrl + "api/records", form);
         yield return request.Send();
-        print("post " + form.ToString());
+
+        if (request.responseCode == 409)
+        {
+            // すでにクリアしたステージのレコードをPOSTしようとしてConflictしたときは、更新するためPUTリクエストを投げる
+            JSONObject json = new JSONObject();
+            json.AddField("UserName", UserInfoManager.instance.UserName);
+            json.AddField("StageNum", stageName);
+            json.AddField("Stars", score);
+            byte[] data = System.Text.Encoding.UTF8.GetBytes(json.ToString());
+            UnityWebRequest putRequest = UnityWebRequest.Put(UserInfoManager.instance.ApiBaseUrl + "api/records/" + UserInfoManager.instance.UserName, data);
+            putRequest.SetRequestHeader("Content-Type", "application/json");
+            yield return putRequest.Send();
+            if (putRequest.responseCode == 204)
+            {
+                print("put record success");
+            }
+        }
     }
 
     public void OnClickToReturn()
