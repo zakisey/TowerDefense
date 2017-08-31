@@ -12,7 +12,10 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance = null;
 
     private AudioSource currentBGM = null;
+    private float SEVolumeRate, BGMVolumeRate;
     private float pitch = 1f;
+    
+    private float BGMVolume = 0.3f;
 
 
     private void Awake()
@@ -27,7 +30,10 @@ public class AudioManager : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
     }
-    
+    private void Start()
+    {
+        LoadVolume();
+    }
     public void PlayBGM(AudioSource bgm)
     {
         if (bgm == null) // BGMなしのシーン
@@ -41,8 +47,28 @@ public class AudioManager : MonoBehaviour
                 Destroy(currentBGM.gameObject);
 
             currentBGM = Instantiate(bgm, this.transform);
+            BGMVolume = currentBGM.GetComponent<AudioSource>().volume;
+            currentBGM.GetComponent<AudioSource>().volume = BGMVolume * BGMVolumeRate;
             currentBGM.Play();
         }
+    }
+       
+    /// <summary>
+    /// SESliderの値が変化したときのみ呼ばれる
+    /// </summary>
+    /// <param name="value"></param>
+    public void ChangeSEVolume(float value)
+    {
+        SEVolumeRate = value;
+    }
+    /// <summary>
+    /// BGMSliderの値が変化したときのみ呼ばれる
+    /// </summary>
+    /// <param name="value"></param>
+    public void ChangeBGMVolume(float value)
+    {
+        BGMVolumeRate = value;
+        currentBGM.GetComponent<AudioSource>().volume = BGMVolume * value;
     }
 
     public void PlaySound(AudioSource audioSource)
@@ -54,6 +80,7 @@ public class AudioManager : MonoBehaviour
     {
         AudioSource audio = Instantiate(audioSource, this.transform);
         audio.pitch = this.pitch;
+        audio.volume *= SEVolumeRate; 
         audio.Play();
 
         yield return new WaitWhile(() => audio.isPlaying);
@@ -69,4 +96,36 @@ public class AudioManager : MonoBehaviour
     {
         pitch = 2f;
     }
+
+    private void LoadVolume()
+    {
+
+        if (PlayerPrefs.HasKey("SEVolumeRate"))
+        {
+            SEVolumeRate = PlayerPrefs.GetFloat("SEVolumeRate");
+        }
+        else
+        {
+            SEVolumeRate = 1.0f;
+        }
+
+        if (PlayerPrefs.HasKey("BGMVolumeRate"))
+        {
+            BGMVolumeRate = PlayerPrefs.GetFloat("BGMVolumeRate");
+        }
+        else
+        {
+            BGMVolumeRate = 1.0f;
+        }
+
+    }
+
+    public void SaveVolumeData()
+    {
+        PlayerPrefs.SetFloat("SEVolumeRate", SEVolumeRate);
+        PlayerPrefs.SetFloat("BGMVolumeRate", BGMVolumeRate);
+    }
+
+    public float GetSEVolumeRate() { return SEVolumeRate; }
+    public float GetBGMVolumeRate() { return BGMVolumeRate; }
 }
