@@ -186,12 +186,14 @@ public class GameManager : MonoBehaviour
         GameOverScreen.SetActive(false);
         ClearScreen.SetActive(false);
         unitUpgradeMenu.SetActive(false);
-        StageMenu.SetActive(false);
-        // TODO:AudioManagerから音量をもらってSliderのvalueを初期化する
-
+        // AudioManagerから音量をもらってSliderのvalueを初期化する
+        SESlider.value = AudioManager.instance.GetSEVolumeRate();
+        BGMSlider.value = AudioManager.instance.GetBGMVolumeRate();
         // AudioManagerの音量に変更を加える
-        SESlider.onValueChanged.AddListener(delegate { });
-        BGMSlider.onValueChanged.AddListener(delegate { });
+        SESlider.onValueChanged.AddListener(delegate { AudioManager.instance.ChangeSEVolume(SESlider.value); });
+        BGMSlider.onValueChanged.AddListener(delegate { AudioManager.instance.ChangeBGMVolume(BGMSlider.value); });
+
+        StageMenu.SetActive(false);
     }
 
     public void ShowUnitUpgradeMenu(GameObject unitToUpgrade)
@@ -333,8 +335,8 @@ public class GameManager : MonoBehaviour
 
     public void OnClickCloseStageMenu()
     {
-        // TODO:音量のデータをAudioManagerを使ってPlayerPrefsに保存する
-
+        // 音量のデータをAudioManagerを使ってPlayerPrefsに保存する
+        AudioManager.instance.SaveVolumeData();
         StageMenu.SetActive(false);
     }
 
