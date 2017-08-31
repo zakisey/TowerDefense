@@ -9,8 +9,11 @@ public class StartPageButton : MonoBehaviour
     public GameObject MainButtons;
     public GameObject ConfirmClearScreen;
 
+    public AudioSource startSound;
+
     public void StartGame()
     {
+        AudioManager.instance.PlaySound(startSound);
         SceneManager.LoadScene("StageSelection");
     }
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Unit : MonoBehaviour
 {
@@ -18,10 +19,14 @@ public class Unit : MonoBehaviour
     public bool canAttackGround;
     public bool canAttackFloat;
     /// <summary>
-    /// 弾の音声タイプ
+    /// 音声関連
     /// </summary>
-    public string audioType;
-    
+    public AudioSource defaultAudio;
+    public AudioSource dogAudio;
+    public AudioSource catAudio;
+    public AudioSource mouseAudio;
+    public float chanceSpNumerator; // スペシャル音声のチャンス（分子）
+    public float chanceSpDenominator; //スペシャル音声のチャンス（分母）
 
     // Prefabs
     public GameObject shot;
@@ -176,8 +181,41 @@ public class Unit : MonoBehaviour
         Shot shotScript = shot.GetComponent<Shot>();
         shotScript.target = target;
         shotScript.atk = this.atk;
-        AudioManager.instance.PlaySound(audioType);
+        PlaySound();
         coolTimeChargedSec = 0f;
+    }
+
+    private void PlaySound()
+    {
+        string sceneNo = SceneManager.GetActiveScene().name.Replace("Stage", "");
+
+        switch(sceneNo)
+        {
+            case "4":
+                ChooseSpecialSound(dogAudio);
+                break;
+            case "8":
+                ChooseSpecialSound(catAudio);
+                break;
+            case "12":
+                ChooseSpecialSound(mouseAudio);
+                break;
+            default:
+                AudioManager.instance.PlaySound(defaultAudio);
+                break;
+        }
+    }
+
+    /// <summary>
+    /// 確率でスペシャル音声を流す
+    /// </summary>
+    /// <param name="spAudioSource">スペシャル音声</param>
+    private void ChooseSpecialSound(AudioSource spAudioSource)
+    {
+        if (Random.Range(0.0f, chanceSpDenominator) < chanceSpNumerator)
+            AudioManager.instance.PlaySound(spAudioSource);
+        else
+            AudioManager.instance.PlaySound(defaultAudio);
     }
 
 
