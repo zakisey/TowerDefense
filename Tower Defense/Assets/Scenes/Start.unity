@@ -1338,6 +1338,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainButtons: {fileID: 0}
   ConfirmClearScreen: {fileID: 0}
+  startSound: {fileID: 0}
 --- !u!114 &628639601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1351,6 +1352,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainButtons: {fileID: 0}
   ConfirmClearScreen: {fileID: 0}
+  startSound: {fileID: 0}
 --- !u!114 &628639602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2677,6 +2679,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1787828553}
   - component: {fileID: 1787828552}
+  - component: {fileID: 1787828554}
   m_Layer: 0
   m_Name: ScreenManager
   m_TagString: Untagged
@@ -2697,6 +2700,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainButtons: {fileID: 768804576}
   ConfirmClearScreen: {fileID: 442451918}
+  startSound: {fileID: 82985192911854428, guid: 56bdff9584c244e458a2a5a8783b627f,
+    type: 2}
 --- !u!4 &1787828553
 Transform:
   m_ObjectHideFlags: 0
@@ -2710,6 +2715,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1787828554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1787828551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f755e8ee2c673b2448aeac0808811390, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bgm: {fileID: 82908317528695444, guid: 71701272bd30c5e42971e4bc370e1dc4, type: 2}
 --- !u!1 &1811183130
 GameObject:
   m_ObjectHideFlags: 0
@@ -2760,6 +2777,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainButtons: {fileID: 0}
   ConfirmClearScreen: {fileID: 0}
+  startSound: {fileID: 0}
 --- !u!114 &1811183133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2773,6 +2791,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainButtons: {fileID: 0}
   ConfirmClearScreen: {fileID: 0}
+  startSound: {fileID: 0}
 --- !u!114 &1811183134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2883,6 +2902,46 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1905276826}
+--- !u!1 &1923545331
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1923545332}
+  - component: {fileID: 1923545333}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1923545332
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1923545331}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 400, y: 280.70044, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1923545333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1923545331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b491ef779df65046a427efbb42b7ed8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1978790818
 GameObject:
   m_ObjectHideFlags: 0

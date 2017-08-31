@@ -163,12 +163,19 @@ MonoBehaviour:
   maxLevel: 3
   canAttackGround: 1
   canAttackFloat: 0
+  defaultAudio: {fileID: 82726417073945690, guid: 1dcdf4cc15e5b5e46973c2032ac6b0fc,
+    type: 2}
+  dogAudio: {fileID: 82531195172238344, guid: 8ef98559afa1e8649ada49d06ac763b1, type: 2}
+  catAudio: {fileID: 82506331225516228, guid: 569436b2c191e4d4c997fcb9d1e31f86, type: 2}
+  mouseAudio: {fileID: 82450532527807598, guid: d042d3cb0586b0b428a9ceb5b6f3270b,
+    type: 2}
+  chanceSpNumerator: 1
+  chanceSpDenominator: 3
   shot: {fileID: 1401135235265064, guid: 623dfba1a0240474c9dfa707df8d607a, type: 2}
   rangeCircleCollider: {fileID: 1636938936203996, guid: 65ab254a09dcdf54db0de512ad61d94c,
     type: 2}
   rangeCirclePicture: {fileID: 1352484919877188, guid: 6880b10be7fb8244ea37420d7684d9d4,
     type: 2}
-  audioType: Cannon
   NumberSprite: {fileID: 1069487174158592}
 --- !u!114 &114484812667215810
 MonoBehaviour:

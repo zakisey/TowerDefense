@@ -299,10 +299,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 69111213}
+  - component: {fileID: 69111215}
   - component: {fileID: 69111212}
   - component: {fileID: 69111211}
   - component: {fileID: 69111214}
-  - component: {fileID: 69111215}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -547,18 +547,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 69111210}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b491ef779df65046a427efbb42b7ed8, type: 3}
+  m_Script: {fileID: 11500000, guid: f755e8ee2c673b2448aeac0808811390, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BGM: {fileID: 82142773017631916, guid: 19a8d36bfac0ce94786f606f0f9c627e, type: 2}
-  defaultCannonAudio: {fileID: 82726417073945690, guid: 1dcdf4cc15e5b5e46973c2032ac6b0fc,
-    type: 2}
-  defaultMissileAudio: {fileID: 82022532561691460, guid: 29faea86e25ba694386ed7441e0c79e2,
-    type: 2}
-  extraCannonAudio: {fileID: 82531195172238344, guid: 8ef98559afa1e8649ada49d06ac763b1,
-    type: 2}
-  extraMissileAudio: {fileID: 82192215692337360, guid: 370781d469203b54b9815d2b0848bab9,
-    type: 2}
+  bgm: {fileID: 82142773017631916, guid: 19a8d36bfac0ce94786f606f0f9c627e, type: 2}
 --- !u!1 &87163655
 GameObject:
   m_ObjectHideFlags: 0
