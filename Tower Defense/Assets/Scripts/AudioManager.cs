@@ -1,19 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class AudioManager : MonoBehaviour {
+/// <summary>
+/// 他のクラスからAudioSourceをもらって再生を管理する
+/// </summary>
+public class AudioManager : MonoBehaviour
+{
 
     public static AudioManager instance = null;
 
-    public AudioSource BGM;
-
-    public AudioSource defaultCannonAudio;
-    public AudioSource defaultMissileAudio;
-    public AudioSource extraCannonAudio;
-    public AudioSource extraMissileAudio;
-
+    private AudioSource currentBGM = null;
     private float pitch = 1f;
+
 
     private void Awake()
     {
@@ -25,33 +25,29 @@ public class AudioManager : MonoBehaviour {
         {
             Destroy(gameObject);
         }
-        StartCoroutine(CoPlaySound(BGM));
+        DontDestroyOnLoad(gameObject);
+    }
+    
+    public void PlayBGM(AudioSource bgm)
+    {
+        if (bgm == null) // BGMなしのシーン
+        {
+            Destroy(currentBGM.gameObject);
+            currentBGM = null;
+        }
+        else if (currentBGM == null || currentBGM.GetComponent<AudioSource>().clip != bgm.clip) // 何も流していないか、違うBGMがインプットされた
+        {
+            if (currentBGM != null) // すでに何か流しているなら消す
+                Destroy(currentBGM.gameObject);
+
+            currentBGM = Instantiate(bgm, this.transform);
+            currentBGM.Play();
+        }
     }
 
-    /// <summary>
-    /// 音声タイプで流す効果音を決める
-    /// </summary>
-    /// <param name="audioType">CannonかMissile</param>
-    public void PlaySound(string audioType)
+    public void PlaySound(AudioSource audioSource)
     {
-        // 特殊の効果音がある場合、確率でそれを流す
-        switch(audioType.ToLower())
-        {
-            case "cannon":
-                if (extraCannonAudio == null || Random.Range(0.0f, 4.0f) < 3.0f) // 4分の1
-                    StartCoroutine(CoPlaySound(defaultCannonAudio));
-                else
-                    StartCoroutine(CoPlaySound(extraCannonAudio));
-                break;
-            case "missile":
-                if (extraMissileAudio == null || Random.Range(0.0f, 3.0f) < 1.0f) // 3分の2
-                    StartCoroutine(CoPlaySound(defaultMissileAudio));
-                else
-                    StartCoroutine(CoPlaySound(extraMissileAudio));
-                break;
-            default:
-                break;
-        }
+        StartCoroutine(CoPlaySound(audioSource));
     }
 
     private IEnumerator CoPlaySound(AudioSource audioSource)
