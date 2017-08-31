@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour
     private GameObject GameOverScreen, ClearScreen;
     private GameObject unitUpgradeMenu;
     private GameObject StageMenu;
+    private Slider SESlider;
+    private Slider BGMSlider;
 
     public int Money
     {
@@ -178,11 +180,18 @@ public class GameManager : MonoBehaviour
         ClearScreen = GameObject.Find("Clear");
         unitUpgradeMenu = GameObject.Find("UnitUpgradeMenu");
         StageMenu = GameObject.Find("StageMenu");
+        SESlider = StageMenu.transform.Find("SESlider").GetComponent<Slider>();
+        BGMSlider = StageMenu.transform.Find("BGMSlider").GetComponent<Slider>();
 
         GameOverScreen.SetActive(false);
         ClearScreen.SetActive(false);
         unitUpgradeMenu.SetActive(false);
         StageMenu.SetActive(false);
+        // TODO:AudioManagerから音量をもらってSliderのvalueを初期化する
+
+        // AudioManagerの音量に変更を加える
+        SESlider.onValueChanged.AddListener(delegate { });
+        BGMSlider.onValueChanged.AddListener(delegate { });
     }
 
     public void ShowUnitUpgradeMenu(GameObject unitToUpgrade)
@@ -324,6 +333,8 @@ public class GameManager : MonoBehaviour
 
     public void OnClickCloseStageMenu()
     {
+        // TODO:音量のデータをAudioManagerを使ってPlayerPrefsに保存する
+
         StageMenu.SetActive(false);
     }
 
