@@ -315,18 +315,30 @@ public class GameManager : MonoBehaviour
         if (request.responseCode == 409)
         {
             // すでにクリアしたステージのレコードをPOSTしようとしてConflictしたときは、更新するためPUTリクエストを投げる
-            JSONObject json = new JSONObject();
-            json.AddField("UserName", UserInfoManager.instance.UserName);
-            json.AddField("StageNum", stageName);
-            json.AddField("Stars", score);
-            byte[] data = System.Text.Encoding.UTF8.GetBytes(json.ToString());
+            StartCoroutine(PutIfHigher(stageName, score));
+        }
+    }
+
+    private IEnumerator PutIfHigher(string stageName, int score)
+    {
+        // サーバースコアをGET
+        int stageIndex = int.Parse(stageName.Replace("Stage", "")) - 1;
+
+        UnityWebRequest getRequest = UnityWebRequest.Get(UserInfoManager.instance.ApiBaseUrl + "api/records/" + UserInfoManager.instance.UserName);
+        yield return getRequest.Send();
+        JSONObject getJson = new JSONObject(getRequest.downloadHandler.text);
+        int serverScore = int.Parse(getJson[stageIndex].GetField("Stars").ToString());
+        
+        if (score > serverScore) // サーバースコアより高ければPUT
+        {
+            JSONObject putJson = new JSONObject();
+            putJson.AddField("UserName", UserInfoManager.instance.UserName);
+            putJson.AddField("StageNum", stageName);
+            putJson.AddField("Stars", score);
+            byte[] data = System.Text.Encoding.UTF8.GetBytes(putJson.ToString());
             UnityWebRequest putRequest = UnityWebRequest.Put(UserInfoManager.instance.ApiBaseUrl + "api/records/" + UserInfoManager.instance.UserName, data);
             putRequest.SetRequestHeader("Content-Type", "application/json");
             yield return putRequest.Send();
-            if (putRequest.responseCode == 204)
-            {
-                print("put record success");
-            }
         }
     }
 
