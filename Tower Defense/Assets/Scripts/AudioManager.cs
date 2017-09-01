@@ -29,10 +29,11 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
         }
         DontDestroyOnLoad(gameObject);
+        LoadVolume();
     }
     private void Start()
     {
-        LoadVolume();
+        
     }
     public void PlayBGM(AudioSource bgm)
     {
