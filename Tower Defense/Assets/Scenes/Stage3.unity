@@ -412,8 +412,8 @@ MonoBehaviour:
   waves:
   - enemy: {fileID: 1322155926546746, guid: 04fa0bcbb06c890459564850571dbdf7, type: 2}
     atk: 2
-    speed: 0.8
-    hp: 10
+    speed: 1
+    hp: 6
     isFloat: 0
     money: 20
     pathNum: 0
@@ -432,8 +432,8 @@ MonoBehaviour:
     waitSec: 1
   - enemy: {fileID: 1322155926546746, guid: 04fa0bcbb06c890459564850571dbdf7, type: 2}
     atk: 2
-    speed: 0.9
-    hp: 10
+    speed: 1
+    hp: 6
     isFloat: 0
     money: 20
     pathNum: 0
@@ -462,14 +462,14 @@ MonoBehaviour:
     waitSec: 3
   - enemy: {fileID: 1694742892598982, guid: 81ac10ae2ee5c30458071f81af90a643, type: 2}
     atk: 1
-    speed: 2
+    speed: 1
     hp: 3
     isFloat: 0
-    money: 10
+    money: 15
     pathNum: 2
-    enemyCount: 15
-    durationSec: 5
-    waitSec: 20
+    enemyCount: 10
+    durationSec: 10
+    waitSec: 5
   - enemy: {fileID: 1694742892598982, guid: 19ecc32b754e9634aa9515f582adc954, type: 2}
     atk: 2
     speed: 1
@@ -477,7 +477,7 @@ MonoBehaviour:
     isFloat: 1
     money: 30
     pathNum: 1
-    enemyCount: 10
+    enemyCount: 5
     durationSec: 10
     waitSec: 1
   - enemy: {fileID: 1694742892598982, guid: 19ecc32b754e9634aa9515f582adc954, type: 2}
@@ -487,7 +487,7 @@ MonoBehaviour:
     isFloat: 1
     money: 40
     pathNum: 3
-    enemyCount: 10
+    enemyCount: 5
     durationSec: 10
     waitSec: 1
   - enemy: {fileID: 1694742892598982, guid: 19ecc32b754e9634aa9515f582adc954, type: 2}
@@ -503,16 +503,26 @@ MonoBehaviour:
   - enemy: {fileID: 1694742892598982, guid: 81ac10ae2ee5c30458071f81af90a643, type: 2}
     atk: 1
     speed: 2
-    hp: 11
+    hp: 6
     isFloat: 0
     money: 30
     pathNum: 4
     enemyCount: 7
     durationSec: 10
     waitSec: 5
+  - enemy: {fileID: 1694742892598982, guid: 81ac10ae2ee5c30458071f81af90a643, type: 2}
+    atk: 1
+    speed: 1.5
+    hp: 12
+    isFloat: 0
+    money: 10
+    pathNum: 0
+    enemyCount: 10
+    durationSec: 10
+    waitSec: 3
   - enemy: {fileID: 1322155926546746, guid: 04fa0bcbb06c890459564850571dbdf7, type: 2}
     atk: 2
-    speed: 1
+    speed: 0.8
     hp: 50
     isFloat: 0
     money: 50
